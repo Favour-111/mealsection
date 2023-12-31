@@ -236,7 +236,7 @@ function sendmessage() {
     selectedPackElement.options[selectedPackElement.selectedIndex].text;
 
   var message =
-    "*Cafeteria order*\n" +
+    "*snack ville order*\n" +
     "Name: " +
     name +
     "\n" +

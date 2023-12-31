@@ -117,13 +117,10 @@ function createCartProduct(title, price, imgSrc, quantity) {
   `;
 }
 
-let productSelect = document.getElementById("select");
-productSelect.addEventListener("change", updateTotal);
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
-  const selectedValue = parseInt(productSelect.value);
-  let total = selectedValue + 120;
+  let total = +120;
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");
@@ -231,12 +228,9 @@ function sendmessage() {
   var date = document.getElementById("date").value;
   var gender = document.getElementById("gender").value;
   var PhoneNumber = "+2348069989705";
-  var selectedPackElement = document.getElementById("select");
-  var selectedPack =
-    selectedPackElement.options[selectedPackElement.selectedIndex].text;
 
   var message =
-    "*Cafeteria order*\n" +
+    "*Ola's snack order*\n" +
     "Name: " +
     name +
     "\n" +
@@ -252,9 +246,7 @@ function sendmessage() {
     "Gender: " +
     gender +
     "\n\n" +
-    "*Orders:*\n" +
-    "Selected pack: " +
-    selectedPack;
+    "*Orders:*\n";
 
   itemList.forEach((item) => {
     message +=

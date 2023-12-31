@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap");
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+body {
+  width: 100%;
+}
 .counter {
   background-color: red;
   border-radius: 100%;
@@ -26,7 +34,15 @@ header {
   width: 100%;
   z-index: 99;
 }
-
+.imghead {
+  color: black !important;
+}
+.imghead a {
+  color: black !important;
+}
+.dropdown-menu {
+  text-transform: capitalize !important;
+}
 .logo {
   font-size: 1.1rem;
   font-weight: 500;
@@ -45,6 +61,17 @@ header {
   margin-bottom: 30px;
 }
 
+.HomeLogo {
+  width: 100px !important;
+}
+.Home {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .cart-count {
   position: absolute;
   background-color: red;
@@ -68,7 +95,7 @@ img {
 
 .container {
   max-width: 1200px;
-  padding: 4rem;
+  /* padding: 4rem; */
   margin: auto;
   width: 100%;
 }
@@ -114,6 +141,7 @@ h2.title {
   font-size: 1rem;
   font-weight: 600;
   color: #ff6348;
+  text-transform: capitalize !important;
 }
 
 .food-price {
@@ -124,7 +152,7 @@ h2.title {
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: #2ed573;
+  background-color: black;
   color: white;
   padding: 10px;
   font-size: 1.1rem;
@@ -133,7 +161,8 @@ h2.title {
 }
 
 .add-cart:hover {
-  background-color: rgba(255, 0, 0, 0.786);
+  background-color: white;
+  color: black;
 }
 
 .cart {
@@ -193,7 +222,7 @@ h2.title {
 
 .cart-food-title {
   font-size: 1rem;
-  text-transform: uppercase;
+  text-transform: capitalize !important;
   color: #ff6348;
   font-weight: 500;
 }
@@ -201,7 +230,10 @@ h2.title {
 .cart-price {
   font-weight: 500;
 }
-
+.error {
+  color: red;
+  margin-bottom: 10px !important;
+}
 .cart-quantity {
   border: 1px solid rgba(0, 0, 0, 0.1);
   outline: none;
@@ -209,7 +241,17 @@ h2.title {
   text-align: center;
   font-size: 1rem;
 }
-
+.inpValue {
+  overflow: scroll !important;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.219);
+  height: 40px;
+  border-radius: 10px;
+  padding: 5px 15px 0 15px;
+}
+.inpValue::-webkit-scrollbar {
+  display: none !important;
+}
 .cart-remove {
   font-size: 24px;
   color: red;
@@ -250,4 +292,74 @@ h2.title {
 }
 .meaLogo {
   width: 40px !important;
+}
+.backtotop {
+  background-color: rgba(0, 0, 0, 0.365) !important;
+  transition: 0.4s;
+}
+.backtotop:hover {
+  background-color: black !important;
+}
+#backToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.imghead {
+  margin-bottom: 20px !important;
+  margin-left: 10px !important;
+}
+
+#backToTopBtn:hover {
+  background-color: #0056b3;
+}
+@media screen and (max-width: 376px) {
+  .cart {
+    position: fixed;
+    top: 0;
+    right: -130%;
+    width: 380px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(40, 37, 37, 0.1);
+    z-index: 100;
+  }
+  .cart-active {
+    right: 0;
+    transition: 0.5s;
+  }
+}
+@media screen and (max-width: 320px) {
+  .cart {
+    position: fixed;
+    top: 0;
+    right: -160%;
+    width: 330px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(40, 37, 37, 0.1);
+    z-index: 100;
+  }
+  i {
+    display: none !important;
+  }
+  .cart-active {
+    right: 0;
+    transition: 0.5s;
+  }
 }
