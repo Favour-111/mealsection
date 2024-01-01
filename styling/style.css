@@ -121,6 +121,7 @@ h2.title {
   padding: 10px;
   box-shadow: 0 1px 4px rgba(40, 37, 37, 0.1);
   border-radius: 3px;
+  text-align: center !important;
 }
 
 .pic {
@@ -142,6 +143,7 @@ h2.title {
   font-weight: 600;
   color: #ff6348;
   text-transform: capitalize !important;
+  font-family: "Roboto Slab", serif;
 }
 
 .food-price {
@@ -149,20 +151,23 @@ h2.title {
 }
 
 .add-cart {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background-color: black;
+  background-color: #ff6348ac;
+  box-shadow: 3px 3px 14px 0px rgba(0, 0, 0, 0.06);
+  margin: 0 auto;
   color: white;
-  padding: 10px;
+  width: 120px !important;
+  padding: 5px !important;
+  border-radius: 10px;
+  text-transform: capitalize;
   font-size: 1.1rem;
   cursor: pointer;
   transition: 0.5s;
+  text-align: center !important;
+  font-family: "Roboto Slab", serif;
 }
 
 .add-cart:hover {
-  background-color: white;
-  color: black;
+  background-color: #ff6348;
 }
 
 .cart {
@@ -361,5 +366,15 @@ h2.title {
   .cart-active {
     right: 0;
     transition: 0.5s;
+  }
+}
+
+@media screen and (max-width: 488px) {
+  .shop-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+    gap: 1.5rem;
+    justify-content: center;
+    align-content: center;
   }
 }
