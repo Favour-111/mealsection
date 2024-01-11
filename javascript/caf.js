@@ -99,7 +99,47 @@ function addCart() {
   cartBasket.append(element);
   loadContent();
 }
+function changeQty() {
+  const inputValue = parseInt(this.parentElement.querySelector("input").value);
 
+  if (isNaN(inputValue) || inputValue < 1) {
+    this.parentElement.querySelector("input").value = 1;
+  }
+
+  let title = this.parentElement.querySelector(".cart-food-title").innerHTML;
+  let item = itemList.find((el) => el.title === title);
+  if (item) {
+    item.quantity = parseInt(this.parentElement.querySelector("input").value);
+  }
+
+  loadContent();
+}
+// Increment and Decrement Buttons
+document.addEventListener("click", function (event) {
+  if (event.target.classList.contains("quantity-btn")) {
+    const action = event.target.getAttribute("data-action");
+    const quantityElement = event.target.parentElement.querySelector("input");
+    let quantity = parseInt(quantityElement.value);
+
+    if (action === "increment") {
+      quantity++;
+    } else if (action === "decrement" && quantity > 1) {
+      quantity--;
+    }
+
+    quantityElement.value = quantity;
+
+    let title = event.target
+      .closest(".cart-box")
+      .querySelector(".cart-food-title").innerHTML;
+    let item = itemList.find((el) => el.title === title);
+    if (item) {
+      item.quantity = quantity;
+    }
+
+    loadContent();
+  }
+});
 function createCartProduct(title, price, imgSrc, quantity) {
   return `
     <div class="cart-box">
@@ -110,7 +150,11 @@ function createCartProduct(title, price, imgSrc, quantity) {
           <div class="cart-price">${price}</div>
           <div class="cart-amt">${price}</div>
         </div>
-        <input type="number" value="${quantity}" class="cart-quantity">
+        <div class="cart-quantity">
+        <button class="quantity-btn" data-action="decrement">-</button>
+        <input type="text" value="${quantity}" readonly class="QuantityBox">
+        <button class="quantity-btn" data-action="increment">+</button>
+      </div>
       </div>
       <ion-icon name="trash" class="cart-remove"></ion-icon>
     </div>
@@ -127,19 +171,21 @@ function updateTotal() {
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");
-    let price = parseFloat(priceElement.innerHTML.replace("N.", ""));
-    let qty = product.querySelector(".cart-quantity").value;
+    let price = parseFloat(priceElement.innerHTML.replace("₦", ""));
+    let qty = parseInt(product.querySelector(".cart-quantity input").value);
     total += price * qty;
-    product.querySelector(".cart-amt").innerText = "N." + price * qty;
+    product.querySelector(".cart-amt").innerText =
+      "₦" + (price * qty).toFixed(2);
   });
 
-  totalValue.innerHTML = "N." + total;
+  totalValue.innerHTML = "₦" + total.toFixed(2);
 
   // Add Product Count in Cart Icon
   const cartCount = document.querySelector(".cart-count");
-  let count = itemList.length;
+  let count = itemList.reduce((acc, item) => acc + item.quantity, 0);
   cartCount.innerHTML = count;
 }
+
 // Function to scroll to the top of the page
 function scrollToTop() {
   document.body.scrollTop = 0; // For Safari
