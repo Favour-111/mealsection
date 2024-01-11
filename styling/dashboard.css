@@ -3,9 +3,10 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Roboto Slab", serif;
 }
-
+body {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
 .body {
   height: 100vh;
   display: flex;
@@ -13,7 +14,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .intro {
   background-image: url("https://ggmixblog.com/wp-content/uploads/2019/04/ghanaian-jolloff-11.jpg");
   width: 100%;
@@ -21,12 +21,6 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  text-transform: uppercase;
-  align-items: center;
-  justify-content: center;
-  color: white;
 }
 
 #backToTopBtn {
@@ -47,6 +41,7 @@
 #backToTopBtn:hover {
   background-color: #0056b3;
 }
+
 .contents {
   margin-top: 20px !important;
   width: 30% !important;
@@ -75,4 +70,55 @@
   .resturantImages {
     width: 320px;
   }
+}
+.nthletter {
+  color: #ee4c7c !important;
+  font-size: 25px !important;
+}
+.button-6 {
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.button-6:hover,
+.button-6:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.button-6:hover {
+  transform: translateY(-1px);
+}
+
+.button-6:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
 }

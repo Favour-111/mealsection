@@ -118,10 +118,13 @@ h2.title {
 .food-box {
   position: relative;
   background-color: #fff;
-  padding: 10px;
-  box-shadow: 0 1px 4px rgba(40, 37, 37, 0.1);
+  padding: 5px;
+  box-shadow: 0 1px 4px rgba(40, 37, 37, 0.09);
   border-radius: 3px;
+  display: flex !important;
+  flex-direction: column;
   text-align: center !important;
+  padding-bottom: 30px !important;
 }
 
 .pic {
@@ -139,11 +142,10 @@ h2.title {
 }
 
 .food-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ff6348;
-  text-transform: capitalize !important;
-  font-family: "Roboto Slab", serif;
+  font-size: 15px;
+  text-transform: capitalize;
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
 }
 
 .food-price {
@@ -151,25 +153,35 @@ h2.title {
 }
 
 .add-cart {
-  background-color: #ff6348ac;
-  box-shadow: 3px 3px 14px 0px rgba(0, 0, 0, 0.06);
-  margin: 0 auto;
-  color: white;
-  width: 120px !important;
-  padding: 5px !important;
-  border-radius: 10px;
+  background-color: rgba(51, 51, 51, 0.05);
+  border-radius: 8px;
+  font-size: 15px !important;
+  width: 150px !important;
+  margin: 0 auto !important;
   text-transform: capitalize;
-  font-size: 1.1rem;
+  border-width: 0;
+  color: #333333;
   cursor: pointer;
-  transition: 0.5s;
-  text-align: center !important;
-  font-family: "Roboto Slab", serif;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif !important;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
-
 .add-cart:hover {
-  background-color: #ff6348;
+  background-color: rgba(51, 51, 51, 0.322);
 }
-
 .cart {
   position: fixed;
   top: 0;
@@ -278,16 +290,6 @@ h2.title {
   margin-left: 0.5rem;
 }
 
-.btn-buy {
-  padding: 12px 20px;
-  background-color: #2f3542;
-  color: #fff;
-  border: none;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-}
-
 #cart-close {
   position: absolute;
   top: 1rem;
@@ -377,4 +379,47 @@ h2.title {
     justify-content: center;
     align-content: center;
   }
+}
+.btn-buy {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1a1a1a;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #3b3b3b;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 50px;
+  min-width: 0;
+  outline: none;
+  padding: 10px 20px !important;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+}
+
+.btn-buy:disabled {
+  pointer-events: none;
+}
+
+.btn-buy:hover {
+  color: #fff;
+  background-color: #1a1a1a;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.btn-buy:active {
+  box-shadow: none;
+  transform: translateY(0);
 }

@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:ital,wght@1,5");
 body {
-  background-color: rgb(44, 42, 42) !important;
+  background-color: #9a1750 !important;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -21,7 +21,7 @@ a {
   color: white !important;
   text-align: center !important;
   margin-top: 15px !important;
-  border: 2px solid crimson;
+  border: 2px solid #ee4c7e;
   width: 220px !important;
   transition: 0.3s;
   padding: 10px 0;
@@ -30,7 +30,7 @@ a {
   word-spacing: 5px !important;
 }
 a:hover {
-  background-color: crimson;
+  background-color: #ee4c7e;
 }
 #hero ::after {
   content: "";
@@ -52,6 +52,8 @@ a:hover {
 #hero h1 {
   display: block;
   letter-spacing: 2px !important;
+  font-family: "Poppins", sans-serif;
+  font-family: "Roboto Slab", serif;
   width: fit-content;
   font-size: 4rem;
   position: relative;
@@ -69,13 +71,14 @@ a:hover {
   animation: text_reveal_name.5s ease forwards;
   animation-delay: 3s;
 }
+
 #hero h1 span {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 0;
-  background-color: crimson;
+  background-color: #ee4c7e;
   animation: text_reveal_box 1s ease;
   animation-delay: 0.5s;
 }
@@ -103,7 +106,7 @@ a:hover {
 }
 #hero container .cta:hover {
   color: white;
-  background-color: crimson;
+  background-color: #5d001e;
 }
 /*end hero*/
 /*section for services*/
@@ -120,12 +123,12 @@ a:hover {
 }
 @keyframes text_reveal {
   100% {
-    color: white;
+    color: #e2e3df;
   }
 }
 @keyframes text_reveal_name {
   100% {
-    color: crimson;
+    color: #e3afbc;
     font-weight: 500;
   }
 }
