@@ -4,10 +4,7 @@
   padding: 0;
   margin: 0;
 }
-body {
-  font-family: "Dancing Script", cursive !important;
-  font-family: "Salsa", cursive !important;
-}
+
 .body {
   height: 100vh;
   display: flex;
@@ -88,7 +85,11 @@ body {
 }
 .product {
   text-decoration: none !important;
+  font-family: sans-serif !important;
+  font-weight: bold !important;
+  font-family: "Dancing Script", cursive !important;
 }
+
 /* .fa-arrow-right {
   border: 1px solid rgba(0, 0, 0, 0.623) !important;
   border-radius: 100%;
