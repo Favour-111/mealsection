@@ -428,12 +428,12 @@ h2.title {
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.158);
-  width: 50%;
+  width: 70%;
   border-radius: 20px !important;
-  padding: 5px 30px;
+  padding: 5px 20px;
 }
 .QuantityBox {
-  width: 30px !important;
+  width: 35px !important;
   text-align: center;
   border: none !important;
   background-color: transparent;
@@ -444,8 +444,7 @@ h2.title {
   border: none !important;
   width: 30px;
   transition: 0.2s;
-}
-.quantity-btn:hover {
-  border-radius: 100%;
-  background-color: rgba(0, 0, 0, 0.14) !important;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
 }

@@ -131,13 +131,12 @@ function displayProducts(productArray) {
     productArray.forEach((product) => {
       const listItem = document.createElement("div");
       listItem.innerHTML = `
-     <div>
+     <a href="${product.href}" class="product text-dark ">
      <img  height="250px"
-     width="300px"
+     width="350px"
      class="resturantImages mt-2" src="${product.Image}"/>
-     <p class="text-capitalize mt-1">${product.description}</p>
-     <a href="${product.href}" class="button-6">Explore <i class="fa-solid fa-arrow-right ms-2"></i></a>
-     </div>
+     <p class="text-capitalize box-text mt-1">${product.description}</p>
+     </a>
       `;
       productListElement.appendChild(listItem);
     });

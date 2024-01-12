@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:ital,wght@1,5");
 body {
-  background-color: #9a1750 !important;
+  background-color: #08090a !important;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -18,10 +18,10 @@ body {
 a {
   margin-left: 30px !important;
   text-decoration: none !important;
-  color: white !important;
+  color: #d3d3d3 !important;
   text-align: center !important;
   margin-top: 15px !important;
-  border: 2px solid #ee4c7e;
+  border: 2px solid #a4161a;
   width: 220px !important;
   transition: 0.3s;
   padding: 10px 0;
@@ -30,7 +30,7 @@ a {
   word-spacing: 5px !important;
 }
 a:hover {
-  background-color: #ee4c7e;
+  background-color: #a4161a;
 }
 #hero ::after {
   content: "";
@@ -52,25 +52,27 @@ a:hover {
 #hero h1 {
   display: block;
   letter-spacing: 2px !important;
-  font-family: "Poppins", sans-serif;
-  font-family: "Roboto Slab", serif;
+  font-family: "Salsa", cursive;
   width: fit-content;
   font-size: 4rem;
   position: relative;
   color: transparent;
   animation: text_reveal 0.5s ease forwards;
-  animation-delay: 1s;
+  animation-delay: 0.7s;
 }
 #hero h1:nth-child(1) {
-  animation-delay: 1s;
+  animation-delay: 1.5s;
 }
 #hero h1:nth-child(2) {
-  animation-delay: 2s;
-}
-#hero h1:nth-child(3) {
-  animation: text_reveal_name.5s ease forwards;
   animation-delay: 3s;
 }
+#hero h1:nth-child(3) {
+  animation-delay: 4s;
+}
+/* #hero h1:nth-child(3) {
+  animation: text_reveal_name.5s ease forwards;
+  animation-delay: 3s;
+} */
 
 #hero h1 span {
   position: absolute;
@@ -78,18 +80,18 @@ a:hover {
   left: 0;
   height: 100%;
   width: 0;
-  background-color: #ee4c7e;
+  background-color: #a4161a;
   animation: text_reveal_box 1s ease;
-  animation-delay: 0.5s;
+  animation-delay: 1s;
 }
 #hero h1 :nth-child(1) span {
-  animation-delay: 0.5s;
+  animation-delay: 1s;
 }
 #hero h1:nth-child(2) span {
-  animation-delay: 1.5s;
+  animation-delay: 2.5s;
 }
 #hero h1 :nth-child(3) span {
-  animation-delay: 2.5s;
+  animation-delay: 1s;
 }
 #hero container .cta {
   display: inline-block;
@@ -101,12 +103,12 @@ a:hover {
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   margin-top: 30px;
-  transition: 0.3s ease;
+  transition: 0.8s ease;
   transition-property: background-color, color;
 }
 #hero container .cta:hover {
   color: white;
-  background-color: #5d001e;
+  background-color: #a4161a;
 }
 /*end hero*/
 /*section for services*/
@@ -123,12 +125,12 @@ a:hover {
 }
 @keyframes text_reveal {
   100% {
-    color: #e2e3df;
+    color: #d3d3d3;
   }
 }
 @keyframes text_reveal_name {
   100% {
-    color: #e3afbc;
+    color: #d3d3d3;
     font-weight: 500;
   }
 }
