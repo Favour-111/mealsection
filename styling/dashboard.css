@@ -65,7 +65,25 @@
   height: 200px !important;
   width: 100% !important;
 }
-
+.boldText {
+  text-transform: uppercase !important;
+  font-weight: bolder !important;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
+  font-family: "Pacifico", cursive;
+}
+.lighttxt {
+  font-weight: lighter !important;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
+  font-family: "Pacifico", cursive;
+}
+::placeholder {
+  font-weight: bold !important;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
+  font-family: "Pacifico", cursive;
+}
 @media only screen and (max-width: 400px) {
   .resturantImages {
     width: 320px;
@@ -87,6 +105,7 @@
   font-family: "Josefin Sans", sans-serif;
   font-family: "Kanit", sans-serif;
   font-family: "Pacifico", cursive;
+  font-size: 18px !important;
 }
 .campus {
   font-family: "Bebas Neue", sans-serif !important;
