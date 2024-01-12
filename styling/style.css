@@ -75,7 +75,7 @@ header {
 .cart-count {
   position: absolute;
   background-color: red;
-  top: 21px;
+  top: 30px;
   right: -3px;
   font-size: 10px;
   padding: 0 5px;
@@ -153,14 +153,14 @@ h2.title {
 }
 
 .add-cart {
-  background-color: rgba(51, 51, 51, 0.05);
+  background-image: linear-gradient(90deg, #a4161b95, #a4161a);
   border-radius: 8px;
   font-size: 15px !important;
   width: 150px !important;
   margin: 0 auto !important;
   text-transform: capitalize;
   border-width: 0;
-  color: #333333;
+  color: white;
   cursor: pointer;
   display: inline-block;
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
@@ -170,7 +170,8 @@ h2.title {
   line-height: 20px;
   list-style: none;
   margin: 0;
-  padding: 10px 12px;
+  padding: 13px 7px;
+  margin-top: 10px !important;
   text-align: center;
   transition: all 200ms;
   vertical-align: baseline;
@@ -181,6 +182,11 @@ h2.title {
 }
 .add-cart:hover {
   background-color: rgba(51, 51, 51, 0.322);
+}
+.cartIco {
+  background-color: #a4161b3c;
+  padding: 5px;
+  border-radius: 100%;
 }
 .cart {
   position: fixed;
@@ -243,7 +249,14 @@ h2.title {
   color: #ff6348;
   font-weight: 500;
 }
-
+.imghead .btn {
+  transition: 0.1s;
+}
+.imghead .btn:hover {
+  background-image: linear-gradient(90deg, #a4161b95, #a4161a) !important;
+  color: white !important;
+  border-radius: 30px !important;
+}
 .cart-price {
   font-weight: 500;
 }
@@ -258,7 +271,7 @@ h2.title {
   text-align: center;
   font-size: 1rem;
 }
-.inpValue {
+.img .inpValue {
   overflow: scroll !important;
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.219);
@@ -303,6 +316,7 @@ h2.title {
 .backtotop {
   background-color: rgba(0, 0, 0, 0.365) !important;
   transition: 0.4s;
+  padding: 15px 20px !important;
 }
 .backtotop:hover {
   background-color: black !important;
