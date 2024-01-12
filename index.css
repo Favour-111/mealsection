@@ -52,7 +52,8 @@ a:hover {
 #hero h1 {
   display: block;
   letter-spacing: 4px !important;
-  font-family: "Salsa", cursive;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Pacifico", cursive;
   font-weight: bold;
   width: fit-content;
   font-size: 4rem;

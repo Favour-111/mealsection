@@ -65,9 +65,7 @@
   height: 200px !important;
   width: 100% !important;
 }
-.navbar {
-  background-color: #08090a !important;
-}
+
 @media only screen and (max-width: 400px) {
   .resturantImages {
     width: 320px;
@@ -85,11 +83,18 @@
 }
 .product {
   text-decoration: none !important;
-  font-family: sans-serif !important;
   font-weight: bold !important;
-  font-family: "Dancing Script", cursive !important;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
+  font-family: "Pacifico", cursive;
 }
-
+.campus {
+  font-family: "Bebas Neue", sans-serif !important;
+  font-family: "Josefin Sans", sans-serif !important;
+  font-family: "Kanit", sans-serif !important;
+  font-family: "Pacifico", cursive !important;
+  font-size: 30px !important;
+}
 /* .fa-arrow-right {
   border: 1px solid rgba(0, 0, 0, 0.623) !important;
   border-radius: 100%;
