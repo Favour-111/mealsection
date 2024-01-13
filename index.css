@@ -7,6 +7,9 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+.logoblack {
+  width: 150px;
+}
 #hero {
   background: url(image/17-minute\ zucchini\ and\ ricotta\ pizza.jpg);
   background-size: contain;

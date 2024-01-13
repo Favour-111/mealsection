@@ -145,11 +145,18 @@ h2.title {
   font-size: 15px;
   text-transform: capitalize;
   margin-top: 10px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Bebas Neue", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
+  font-family: "Pacifico", cursive;
 }
 
 .food-price {
   font-weight: 500;
+  font-family: "Bebas Neue", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
+  font-family: "Pacifico", cursive;
 }
 
 .add-cart {
@@ -163,8 +170,10 @@ h2.title {
   color: white;
   cursor: pointer;
   display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
-    sans-serif !important;
+  font-family: "Bebas Neue", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
+  font-family: "Pacifico", cursive;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -185,7 +194,7 @@ h2.title {
 }
 .cartIco {
   background-color: #a4161b3c;
-  padding: 5px;
+  padding: 4px 5px;
   border-radius: 100%;
 }
 .cart {
@@ -246,7 +255,7 @@ h2.title {
 .cart-food-title {
   font-size: 1rem;
   text-transform: capitalize !important;
-  color: #ff6348;
+  color: black;
   font-weight: 500;
 }
 .imghead .btn {
