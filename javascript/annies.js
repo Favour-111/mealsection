@@ -41,7 +41,7 @@ function loadContent() {
 
 //Remove Item
 function removeItem() {
-  if (confirm("Are Your Sure to Remove")) {
+  if (confirm("Confirm Removal?")) {
     let title = this.parentElement.querySelector(".cart-food-title").innerHTML;
     itemList = itemList.filter((el) => el.title != title);
     this.parentElement.remove();
@@ -108,7 +108,7 @@ function addCart() {
 
   // Check Product already Exist in Cart
   if (itemList.find((el) => el.title == newProduct.title)) {
-    alert("Product Already added in Cart");
+    alert("Product Already in Cart");
     return;
   } else {
     itemList.push(newProduct);

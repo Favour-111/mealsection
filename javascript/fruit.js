@@ -41,7 +41,7 @@ function loadContent() {
 
 //Remove Item
 function removeItem() {
-  if (confirm("Are Your Sure to Remove")) {
+  if (confirm("Confirm Removal?")) {
     let title = this.parentElement.querySelector(".cart-food-title").innerHTML;
     itemList = itemList.filter((el) => el.title != title);
     this.parentElement.remove();
@@ -81,7 +81,7 @@ function addCart() {
 
   // Check Product already Exist in Cart
   if (itemList.find((el) => el.title == newProduct.title)) {
-    alert("Product Already added in Cart");
+    alert("Product Already in Cart");
     return;
   } else {
     itemList.push(newProduct);
@@ -99,7 +99,47 @@ function addCart() {
   cartBasket.append(element);
   loadContent();
 }
+function changeQty() {
+  const inputValue = parseInt(this.parentElement.querySelector("input").value);
 
+  if (isNaN(inputValue) || inputValue < 1) {
+    this.parentElement.querySelector("input").value = 1;
+  }
+
+  let title = this.parentElement.querySelector(".cart-food-title").innerHTML;
+  let item = itemList.find((el) => el.title === title);
+  if (item) {
+    item.quantity = parseInt(this.parentElement.querySelector("input").value);
+  }
+
+  loadContent();
+}
+// Increment and Decrement Buttons
+document.addEventListener("click", function (event) {
+  if (event.target.classList.contains("quantity-btn")) {
+    const action = event.target.getAttribute("data-action");
+    const quantityElement = event.target.parentElement.querySelector("input");
+    let quantity = parseInt(quantityElement.value);
+
+    if (action === "increment") {
+      quantity++;
+    } else if (action === "decrement" && quantity > 1) {
+      quantity--;
+    }
+
+    quantityElement.value = quantity;
+
+    let title = event.target
+      .closest(".cart-box")
+      .querySelector(".cart-food-title").innerHTML;
+    let item = itemList.find((el) => el.title === title);
+    if (item) {
+      item.quantity = quantity;
+    }
+
+    loadContent();
+  }
+});
 function createCartProduct(title, price, imgSrc, quantity) {
   return `
     <div class="cart-box">
@@ -110,27 +150,35 @@ function createCartProduct(title, price, imgSrc, quantity) {
           <div class="cart-price">${price}</div>
           <div class="cart-amt">${price}</div>
         </div>
-        <input type="number" value="${quantity}" class="cart-quantity">
+        <div class="cart-quantity">
+        <button class="quantity-btn" data-action="decrement">-</button>
+        <input type="text" value="${quantity}" readonly class="QuantityBox">
+        <button class="quantity-btn" data-action="increment">+</button>
+      </div>
       </div>
       <ion-icon name="trash" class="cart-remove"></ion-icon>
     </div>
   `;
 }
 
+let productSelect = document.getElementById("select");
+productSelect.addEventListener("change", updateTotal);
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
-  let total = +120;
+  const selectedValue = parseInt(productSelect.value);
+  let total = selectedValue + 150;
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");
-    let price = parseFloat(priceElement.innerHTML.replace("N.", ""));
-    let qty = product.querySelector(".cart-quantity").value;
+    let price = parseFloat(priceElement.innerHTML.replace("₦", ""));
+    let qty = parseInt(product.querySelector(".cart-quantity input").value);
     total += price * qty;
-    product.querySelector(".cart-amt").innerText = "N." + price * qty;
+    product.querySelector(".cart-amt").innerText =
+      "₦" + (price * qty).toFixed(2);
   });
 
-  totalValue.innerHTML = "N." + total;
+  totalValue.innerHTML = "₦" + total.toFixed(2);
 
   // Add Product Count in Cart Icon
   const cartCount = document.querySelector(".cart-count");

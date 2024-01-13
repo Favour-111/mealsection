@@ -41,7 +41,7 @@ function loadContent() {
 
 //Remove Item
 function removeItem() {
-  if (confirm("Are Your Sure to Remove")) {
+  if (confirm("Confirm Removal?")) {
     let title = this.parentElement.querySelector(".cart-food-title").innerHTML;
     itemList = itemList.filter((el) => el.title != title);
     this.parentElement.remove();
@@ -81,7 +81,7 @@ function addCart() {
 
   // Check Product already Exist in Cart
   if (itemList.find((el) => el.title == newProduct.title)) {
-    alert("Product Already added in Cart");
+    alert("Product Already in Cart");
     return;
   } else {
     itemList.push(newProduct);
@@ -182,10 +182,9 @@ function updateTotal() {
 
   // Add Product Count in Cart Icon
   const cartCount = document.querySelector(".cart-count");
-  let count = itemList.reduce((acc, item) => acc + item.quantity, 0);
+  let count = itemList.length;
   cartCount.innerHTML = count;
 }
-
 // Function to scroll to the top of the page
 function scrollToTop() {
   document.body.scrollTop = 0; // For Safari
