@@ -178,6 +178,7 @@ function createCartProduct(title, price, imgSrc, quantity) {
 
 let productSelect = document.getElementById("select");
 productSelect.addEventListener("change", updateTotal);
+
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
@@ -196,7 +197,7 @@ function updateTotal() {
   totalValue.innerHTML = "₦" + total.toFixed(2);
 
   // Add Product Count in Cart Icon
-  const cartCount = document.querySelector(".cart-count");
+  let cartCount = document.querySelector(".cart-count"); // Move inside the function
   let count = itemList.length;
   cartCount.innerHTML = count;
 }

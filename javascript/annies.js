@@ -97,7 +97,6 @@ document.addEventListener("click", function (event) {
 let itemList = [];
 
 //Add Cart
-//Add Cart
 function addCart() {
   let food = this.parentElement;
   let title = food.querySelector(".food-title").innerHTML;
@@ -106,8 +105,9 @@ function addCart() {
 
   let newProduct = { title, price, imgSrc, quantity: 1 };
 
-  // Check Product already Exist in Cart
-  if (itemList.find((el) => el.title == newProduct.title)) {
+  // Check if the product already exists in the cart
+  let existingProduct = itemList.find((el) => el.title == newProduct.title);
+  if (existingProduct) {
     alert("Product Already in Cart");
     return;
   } else {
@@ -124,8 +124,21 @@ function addCart() {
   element.innerHTML = newProductElement;
   let cartBasket = document.querySelector(".cart-content");
   cartBasket.append(element);
+
+  // Update the cart count
+  updateCartCount();
+
+  // Reload content after updating the cart count
   loadContent();
 }
+function updateCartCount() {
+  const cartCountElement = document.getElementById("cart-count");
+  if (cartCountElement) {
+    cartCountElement.innerText = itemList.length.toString();
+  }
+}
+// Update the cart count directly
+updateCartCount();
 
 function createCartProduct(title, price, imgSrc, quantity) {
   return `
@@ -168,10 +181,8 @@ function updateTotal() {
 
   totalValue.innerHTML = "₦" + total.toFixed(2);
 
-  // Add Product Count in Cart Icon
-  const cartCount = document.querySelector(".cart-count");
-  let count = itemList.reduce((acc, item) => acc + item.quantity, 0);
-  cartCount.innerHTML = count;
+  // Update the total in the itemList
+  itemList.total = total;
 }
 
 // Function to scroll to the top of the page
@@ -294,11 +305,11 @@ function sendmessage() {
     message +=
       "\n" + `${item.title} x${item.quantity} N. ${item.price * item.quantity}`;
   });
-
   message +=
     "\n\n" +
     "*Total*: N." +
-    document.querySelector(".total-price").innerText.split("N.")[1];
+    (itemList.total ||
+      document.querySelector(".total-price").innerText.split("N.")[1]);
 
   // URL Encode the message
   var encodedMessage = encodeURIComponent(message);

@@ -142,6 +142,20 @@ document.addEventListener("click", function (event) {
 });
 
 function createCartProduct(title, price, imgSrc, quantity) {
+  let isSoup = title.toLowerCase().includes("soup");
+
+  if (isSoup) {
+    return `
+      <div class="cart-box">
+        <img src="${imgSrc}" class="cart-img">
+        <div class="detail-box">
+          <div class="cart-food-title">${title}</div>
+        </div>
+        <ion-icon name="trash" class="cart-remove"></ion-icon>
+      </div>
+    `;
+  }
+
   return `
     <div class="cart-box">
       <img src="${imgSrc}" class="cart-img">
@@ -152,10 +166,10 @@ function createCartProduct(title, price, imgSrc, quantity) {
           <div class="cart-amt">${price}</div>
         </div>
         <div class="cart-quantity">
-        <button class="quantity-btn" data-action="decrement">-</button>
-        <input type="text" value="${quantity}" readonly class="QuantityBox">
-        <button class="quantity-btn" data-action="increment">+</button>
-      </div>
+          <button class="quantity-btn" data-action="decrement">-</button>
+          <input type="text" value="${quantity}" readonly class="QuantityBox">
+          <button class="quantity-btn" data-action="increment">+</button>
+        </div>
       </div>
       <ion-icon name="trash" class="cart-remove"></ion-icon>
     </div>
@@ -164,6 +178,7 @@ function createCartProduct(title, price, imgSrc, quantity) {
 
 let productSelect = document.getElementById("select");
 productSelect.addEventListener("change", updateTotal);
+
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
@@ -182,7 +197,7 @@ function updateTotal() {
   totalValue.innerHTML = "₦" + total.toFixed(2);
 
   // Add Product Count in Cart Icon
-  const cartCount = document.querySelector(".cart-count");
+  let cartCount = document.querySelector(".cart-count"); // Move inside the function
   let count = itemList.length;
   cartCount.innerHTML = count;
 }
@@ -282,7 +297,7 @@ function sendmessage() {
     selectedPackElement.options[selectedPackElement.selectedIndex].text;
 
   var message =
-    "*Sweetym order*\n" +
+    "*Sweetyme order*\n" +
     "Name: " +
     name +
     "\n" +

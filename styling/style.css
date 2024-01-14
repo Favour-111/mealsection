@@ -5,6 +5,10 @@ body {
   font-family: "Bebas Neue", sans-serif !important;
   font-weight: lighter;
 }
+.navbar {
+  font-family: "Bebas Neue", sans-serif !important;
+  font-weight: 700 !important;
+}
 .counter {
   background-color: red;
   border-radius: 100%;
@@ -274,13 +278,13 @@ h2.title {
   text-align: center;
   font-size: 1rem;
 }
-.img .inpValue {
+.inpValue {
   overflow: scroll !important;
-  width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.219);
-  height: 40px;
-  border-radius: 10px;
-  padding: 5px 15px 0 15px;
+  width: 100% !important;
+  border: 1px solid rgba(0, 0, 0, 0.219) !important;
+  height: 40px !important;
+  border-radius: 10px !important;
+  padding: 5px 15px 0 15px !important;
 }
 .inpValue::-webkit-scrollbar {
   display: none !important;
