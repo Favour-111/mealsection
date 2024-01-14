@@ -297,14 +297,8 @@ function sendmessage() {
     "*Orders:*\n";
 
   itemList.forEach((item) => {
-    message +=
-      "\n" + `${item.title} x${item.quantity} N. ${item.price * item.quantity}`;
+    message += "\n\n" + "Total: " + totalAmount;
   });
-
-  message +=
-    "\n\n" +
-    "*Total*: N." +
-    document.querySelector(".total-price").innerText.split("N.")[1];
 
   // URL Encode the message
   var encodedMessage = encodeURIComponent(message);

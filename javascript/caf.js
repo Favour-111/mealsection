@@ -296,7 +296,9 @@ function sendmessage() {
   var selectedPackElement = document.getElementById("select");
   var selectedPack =
     selectedPackElement.options[selectedPackElement.selectedIndex].text;
-
+  updateTotal();
+  var totalValueElement = document.querySelector(".total-price");
+  var totalAmount = "₦" + totalValueElement.innerText.split("₦")[1];
   var message =
     "*Cafetaria order*\n" +
     "Name: " +
@@ -319,14 +321,8 @@ function sendmessage() {
     selectedPack;
 
   itemList.forEach((item) => {
-    message +=
-      "\n" + `${item.title} x${item.quantity} N. ${item.price * item.quantity}`;
+    message += "\n\n" + "Total: " + totalAmount;
   });
-
-  message +=
-    "\n\n" +
-    "*Total*: N." +
-    document.querySelector(".total-price").innerText.split("N.")[1];
 
   // URL Encode the message
   var encodedMessage = encodeURIComponent(message);
