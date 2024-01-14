@@ -149,7 +149,8 @@ function createCartProduct(title, price, imgSrc, quantity) {
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
-  let total = +150;
+  const selectedValue = parseInt(productSelect.value);
+  let total = selectedValue + 200;
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");
@@ -160,6 +161,7 @@ function updateTotal() {
       "₦" + (price * qty).toFixed(2);
   });
 
+  // Update the total value displayed
   totalValue.innerHTML = "₦" + total.toFixed(2);
 
   // Add Product Count in Cart Icon

@@ -202,3 +202,7 @@
 .phone:hover {
   box-shadow: -3px 4px 23px 0px rgba(0, 0, 0, 0.8);
 }
+.underlinetxt {
+  text-decoration: underline !important;
+  text-transform: capitalize;
+}

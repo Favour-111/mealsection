@@ -168,7 +168,7 @@ function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
   const selectedValue = parseInt(productSelect.value);
-  let total = selectedValue + 150;
+  let total = selectedValue + 200;
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");
@@ -179,10 +179,13 @@ function updateTotal() {
       "₦" + (price * qty).toFixed(2);
   });
 
+  // Update the total value displayed
   totalValue.innerHTML = "₦" + total.toFixed(2);
 
-  // Update the total in the itemList
-  itemList.total = total;
+  // Add Product Count in Cart Icon
+  const cartCount = document.querySelector(".cart-count");
+  let count = itemList.length;
+  cartCount.innerHTML = count;
 }
 
 // Function to scroll to the top of the page
@@ -279,7 +282,7 @@ function sendmessage() {
   var selectedPackElement = document.getElementById("select");
   var selectedPack =
     selectedPackElement.options[selectedPackElement.selectedIndex].text;
-
+  updateTotal();
   var message =
     "*annies  order*\n" +
     "Name: " +
@@ -307,9 +310,8 @@ function sendmessage() {
   });
   message +=
     "\n\n" +
-    "*Total*: N." +
-    (itemList.total ||
-      document.querySelector(".total-price").innerText.split("N.")[1]);
+    "Total: N." +
+    document.querySelector(".total-price").innerText.split("N.")[1];
 
   // URL Encode the message
   var encodedMessage = encodeURIComponent(message);
