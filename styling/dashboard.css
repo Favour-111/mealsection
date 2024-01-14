@@ -146,3 +146,59 @@
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
 }
+.footer {
+  background-color: #08090ad4 !important;
+  width: 100% !important;
+  color: #d3d3d3 !important;
+  font-family: "Bebas Neue", sans-serif !important;
+}
+.facebook {
+  background-color: #4267b2;
+  padding: 10px 15px !important;
+  border-radius: 100% !important;
+}
+.facebook:hover {
+  box-shadow: -3px 4px 23px 0px rgba(0, 0, 0, 0.8);
+}
+.twitter {
+  color: #1da1f2 !important;
+  background-color: white !important;
+  padding: 10px 12px !important;
+  border-radius: 100% !important;
+}
+.twitter:hover {
+  box-shadow: -3px 4px 23px 0px rgba(0, 0, 0, 0.8);
+}
+.instagram {
+  border-radius: 100%;
+  padding: 10px 15px;
+  background-image: linear-gradient(
+    #405de6,
+    #5b51d8,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1d,
+    #f56040
+  );
+}
+.instagram:hover {
+  box-shadow: -3px 4px 23px 0px rgba(0, 0, 0, 0.8);
+}
+.whatapp {
+  border-radius: 100%;
+  padding: 10px 15px;
+  background-color: #25d366;
+}
+.whatapp:hover {
+  box-shadow: -3px 4px 23px 0px rgba(0, 0, 0, 0.8);
+}
+.phone {
+  border-radius: 100%;
+  padding: 10px 15px;
+  background-color: #25d366;
+  margin-top: 20px !important;
+}
+.phone:hover {
+  box-shadow: -3px 4px 23px 0px rgba(0, 0, 0, 0.8);
+}
