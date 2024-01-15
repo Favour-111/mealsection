@@ -158,7 +158,7 @@ h2.title {
 }
 
 .add-cart {
-  background-image: linear-gradient(90deg, #a4161b95, #a4161a);
+  background-color: #a4161b7e !important;
   border-radius: 8px;
   font-size: 15px !important;
   width: 150px !important;
@@ -188,7 +188,7 @@ h2.title {
   touch-action: manipulation;
 }
 .add-cart:hover {
-  background-color: rgba(51, 51, 51, 0.322);
+  background-image: linear-gradient(90deg, #a4161b95, #a4161a);
 }
 .cartIco {
   background-color: #a4161b3c;

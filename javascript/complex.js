@@ -149,7 +149,6 @@ function createCartProduct(title, price, imgSrc, quantity) {
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
-  const selectedValue = parseInt(productSelect.value);
   let total = 150;
 
   cartItems.forEach((product) => {

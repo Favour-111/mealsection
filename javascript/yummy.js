@@ -181,14 +181,10 @@ function createCartProduct(title, price, imgSrc, quantity) {
   `;
 }
 
-let productSelect = document.getElementById("select");
-productSelect.addEventListener("change", updateTotal);
-
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
-  const selectedValue = parseInt(productSelect.value);
-  let total = selectedValue + 150;
+  let total = 150;
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");
@@ -319,9 +315,7 @@ function sendmessage() {
     "Gender: " +
     gender +
     "\n\n" +
-    "*Orders:*\n" +
-    "Selected pack: " +
-    selectedPack;
+    "*Orders:*\n";
 
   itemList.forEach((item) => {
     message +=
