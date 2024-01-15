@@ -70,18 +70,22 @@ function changeQty() {
 let itemList = [];
 
 //Add Cart
-//Add Cart
+// Add Cart
 function addCart() {
   let food = this.parentElement;
   let title = food.querySelector(".food-title").innerHTML;
-  let price = food.querySelector(".food-price").innerHTML;
+  let priceElement = food.querySelector(".food-price");
+
+  // Use textContent to get the text content of the price element
+  let price = priceElement ? priceElement.textContent : "";
+
   let imgSrc = food.querySelector(".food-img").src;
 
   let newProduct = { title, price, imgSrc, quantity: 1 };
 
-  // Check Product already Exist in Cart
+  // Check if Product already exists in Cart
   if (itemList.find((el) => el.title == newProduct.title)) {
-    alert("Product Already in Cart");
+    alert("Product Already added in Cart");
     return;
   } else {
     itemList.push(newProduct);
@@ -99,6 +103,7 @@ function addCart() {
   cartBasket.append(element);
   loadContent();
 }
+
 function changeQty() {
   const inputValue = parseInt(this.parentElement.querySelector("input").value);
 
@@ -142,6 +147,20 @@ document.addEventListener("click", function (event) {
 });
 
 function createCartProduct(title, price, imgSrc, quantity) {
+  let isSoup = title.toLowerCase().includes("soup");
+
+  if (isSoup) {
+    return `
+      <div class="cart-box">
+        <img src="${imgSrc}" class="cart-img">
+        <div class="detail-box">
+          <div class="cart-food-title">${title}</div>
+        </div>
+        <ion-icon name="trash" class="cart-remove"></ion-icon>
+      </div>
+    `;
+  }
+
   return `
     <div class="cart-box">
       <img src="${imgSrc}" class="cart-img">
@@ -152,10 +171,10 @@ function createCartProduct(title, price, imgSrc, quantity) {
           <div class="cart-amt">${price}</div>
         </div>
         <div class="cart-quantity">
-        <button class="quantity-btn" data-action="decrement">-</button>
-        <input type="text" value="${quantity}" readonly class="QuantityBox">
-        <button class="quantity-btn" data-action="increment">+</button>
-      </div>
+          <button class="quantity-btn" data-action="decrement">-</button>
+          <input type="text" value="${quantity}" readonly class="QuantityBox">
+          <button class="quantity-btn" data-action="increment">+</button>
+        </div>
       </div>
       <ion-icon name="trash" class="cart-remove"></ion-icon>
     </div>
@@ -164,6 +183,7 @@ function createCartProduct(title, price, imgSrc, quantity) {
 
 let productSelect = document.getElementById("select");
 productSelect.addEventListener("change", updateTotal);
+
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
@@ -304,8 +324,17 @@ function sendmessage() {
     selectedPack;
 
   itemList.forEach((item) => {
-    message += "\n\n" + "Total: " + totalAmount;
+    message +=
+      "\n" + `${item.title} x${item.quantity} N. ${item.price * item.quantity}`;
   });
+
+  // Calculate the total price separately
+  var totalPrice = itemList.reduce(
+    (accumulator, item) => accumulator + item.price * item.quantity,
+    0
+  );
+
+  message += "\n\n" + "*Total*: N." + totalPrice.toFixed(2); // Ensure the total price is formatted as a fixed decimal
 
   // URL Encode the message
   var encodedMessage = encodeURIComponent(message);

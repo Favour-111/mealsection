@@ -150,7 +150,7 @@ function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
   const selectedValue = parseInt(productSelect.value);
-  let total = selectedValue + 150;
+  let total = 150;
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");
@@ -262,7 +262,7 @@ function sendmessage() {
   var PhoneNumber = "+2348069989705";
 
   var message =
-    "*COMPLEX order*\n" +
+    "*EDS order*\n" +
     "Name: " +
     name +
     "\n" +
@@ -279,7 +279,6 @@ function sendmessage() {
     gender +
     "\n\n" +
     "*Orders:*\n";
-
   itemList.forEach((item) => {
     message += "\n\n" + "Total: " + totalAmount;
   });

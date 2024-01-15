@@ -70,18 +70,22 @@ function changeQty() {
 let itemList = [];
 
 //Add Cart
-//Add Cart
+// Add Cart
 function addCart() {
   let food = this.parentElement;
   let title = food.querySelector(".food-title").innerHTML;
-  let price = food.querySelector(".food-price").innerHTML;
+  let priceElement = food.querySelector(".food-price");
+
+  // Use textContent to get the text content of the price element
+  let price = priceElement ? priceElement.textContent : "";
+
   let imgSrc = food.querySelector(".food-img").src;
 
   let newProduct = { title, price, imgSrc, quantity: 1 };
 
-  // Check Product already Exist in Cart
+  // Check if Product already exists in Cart
   if (itemList.find((el) => el.title == newProduct.title)) {
-    alert("Product Already in Cart");
+    alert("Product Already added in Cart");
     return;
   } else {
     itemList.push(newProduct);
@@ -99,6 +103,7 @@ function addCart() {
   cartBasket.append(element);
   loadContent();
 }
+
 function changeQty() {
   const inputValue = parseInt(this.parentElement.querySelector("input").value);
 
@@ -296,11 +301,9 @@ function sendmessage() {
   var selectedPackElement = document.getElementById("select");
   var selectedPack =
     selectedPackElement.options[selectedPackElement.selectedIndex].text;
-  updateTotal();
-  var totalValueElement = document.querySelector(".total-price");
-  var totalAmount = "₦" + totalValueElement.innerText.split("₦")[1];
+
   var message =
-    "*Cafetaria order*\n" +
+    "*Cafeteria order*\n" +
     "Name: " +
     name +
     "\n" +
@@ -321,8 +324,17 @@ function sendmessage() {
     selectedPack;
 
   itemList.forEach((item) => {
-    message += "\n\n" + "Total: " + totalAmount;
+    message +=
+      "\n" + `${item.title} x${item.quantity} N. ${item.price * item.quantity}`;
   });
+
+  // Calculate the total price separately
+  var totalPrice = itemList.reduce(
+    (accumulator, item) => accumulator + item.price * item.quantity,
+    0
+  );
+
+  message += "\n\n" + "*Total*: N." + totalPrice.toFixed(2); // Ensure the total price is formatted as a fixed decimal
 
   // URL Encode the message
   var encodedMessage = encodeURIComponent(message);

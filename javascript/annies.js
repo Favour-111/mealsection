@@ -51,7 +51,59 @@ function removeItem() {
 
 //Change Quantity
 // Change Quantity
-// Change Quantity
+function changeQty() {
+  if (isNaN(this.value) || this.value < 1) {
+    this.value = 1;
+  }
+
+  // Update the quantity in the itemList
+  let title = this.parentElement.querySelector(".cart-food-title").innerHTML;
+  let item = itemList.find((el) => el.title === title);
+  if (item) {
+    item.quantity = parseInt(this.value);
+  }
+
+  // Reload content after updating quantity
+  loadContent();
+}
+
+let itemList = [];
+
+//Add Cart
+// Add Cart
+function addCart() {
+  let food = this.parentElement;
+  let title = food.querySelector(".food-title").innerHTML;
+  let priceElement = food.querySelector(".food-price");
+
+  // Use textContent to get the text content of the price element
+  let price = priceElement ? priceElement.textContent : "";
+
+  let imgSrc = food.querySelector(".food-img").src;
+
+  let newProduct = { title, price, imgSrc, quantity: 1 };
+
+  // Check if Product already exists in Cart
+  if (itemList.find((el) => el.title == newProduct.title)) {
+    alert("Product Already added in Cart");
+    return;
+  } else {
+    itemList.push(newProduct);
+  }
+
+  let newProductElement = createCartProduct(
+    title,
+    price,
+    imgSrc,
+    newProduct.quantity
+  );
+  let element = document.createElement("div");
+  element.innerHTML = newProductElement;
+  let cartBasket = document.querySelector(".cart-content");
+  cartBasket.append(element);
+  loadContent();
+}
+
 function changeQty() {
   const inputValue = parseInt(this.parentElement.querySelector("input").value);
 
@@ -94,53 +146,21 @@ document.addEventListener("click", function (event) {
   }
 });
 
-let itemList = [];
-
-//Add Cart
-function addCart() {
-  let food = this.parentElement;
-  let title = food.querySelector(".food-title").innerHTML;
-  let price = food.querySelector(".food-price").innerHTML;
-  let imgSrc = food.querySelector(".food-img").src;
-
-  let newProduct = { title, price, imgSrc, quantity: 1 };
-
-  // Check if the product already exists in the cart
-  let existingProduct = itemList.find((el) => el.title == newProduct.title);
-  if (existingProduct) {
-    alert("Product Already in Cart");
-    return;
-  } else {
-    itemList.push(newProduct);
-  }
-
-  let newProductElement = createCartProduct(
-    title,
-    price,
-    imgSrc,
-    newProduct.quantity
-  );
-  let element = document.createElement("div");
-  element.innerHTML = newProductElement;
-  let cartBasket = document.querySelector(".cart-content");
-  cartBasket.append(element);
-
-  // Update the cart count
-  updateCartCount();
-
-  // Reload content after updating the cart count
-  loadContent();
-}
-function updateCartCount() {
-  const cartCountElement = document.getElementById("cart-count");
-  if (cartCountElement) {
-    cartCountElement.innerText = itemList.length.toString();
-  }
-}
-// Update the cart count directly
-updateCartCount();
-
 function createCartProduct(title, price, imgSrc, quantity) {
+  let isSoup = title.toLowerCase().includes("soup");
+
+  if (isSoup) {
+    return `
+      <div class="cart-box">
+        <img src="${imgSrc}" class="cart-img">
+        <div class="detail-box">
+          <div class="cart-food-title">${title}</div>
+        </div>
+        <ion-icon name="trash" class="cart-remove"></ion-icon>
+      </div>
+    `;
+  }
+
   return `
     <div class="cart-box">
       <img src="${imgSrc}" class="cart-img">
@@ -151,19 +171,19 @@ function createCartProduct(title, price, imgSrc, quantity) {
           <div class="cart-amt">${price}</div>
         </div>
         <div class="cart-quantity">
-  <button class="quantity-btn" data-action="decrement">-</button>
-  <input type="text" value="${quantity}" readonly class="QuantityBox">
-  <button class="quantity-btn" data-action="increment">+</button>
-</div>
+          <button class="quantity-btn" data-action="decrement">-</button>
+          <input type="text" value="${quantity}" readonly class="QuantityBox">
+          <button class="quantity-btn" data-action="increment">+</button>
         </div>
-        <ion-icon name="trash" class="cart-remove"></ion-icon>
-        </div>
-        `;
+      </div>
+      <ion-icon name="trash" class="cart-remove"></ion-icon>
+    </div>
+  `;
 }
-//
 
 let productSelect = document.getElementById("select");
 productSelect.addEventListener("change", updateTotal);
+
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
@@ -187,7 +207,6 @@ function updateTotal() {
   let count = itemList.length;
   cartCount.innerHTML = count;
 }
-
 // Function to scroll to the top of the page
 function scrollToTop() {
   document.body.scrollTop = 0; // For Safari
@@ -282,11 +301,9 @@ function sendmessage() {
   var selectedPackElement = document.getElementById("select");
   var selectedPack =
     selectedPackElement.options[selectedPackElement.selectedIndex].text;
-  updateTotal();
-  var totalValueElement = document.querySelector(".total-price");
-  var totalAmount = "₦" + totalValueElement.innerText.split("₦")[1];
+
   var message =
-    "*annies  order*\n" +
+    "*Annies order*\n" +
     "Name: " +
     name +
     "\n" +
@@ -307,8 +324,17 @@ function sendmessage() {
     selectedPack;
 
   itemList.forEach((item) => {
-    message += "\n\n" + "Total: " + totalAmount;
+    message +=
+      "\n" + `${item.title} x${item.quantity} N. ${item.price * item.quantity}`;
   });
+
+  // Calculate the total price separately
+  var totalPrice = itemList.reduce(
+    (accumulator, item) => accumulator + item.price * item.quantity,
+    0
+  );
+
+  message += "\n\n" + "*Total*: N." + totalPrice.toFixed(2); // Ensure the total price is formatted as a fixed decimal
 
   // URL Encode the message
   var encodedMessage = encodeURIComponent(message);
