@@ -161,13 +161,10 @@ function createCartProduct(title, price, imgSrc, quantity) {
   `;
 }
 
-let productSelect = document.getElementById("select");
-productSelect.addEventListener("change", updateTotal);
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
-  const selectedValue = parseInt(productSelect.value);
-  let total = selectedValue + 200;
+  let total = 200;
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");

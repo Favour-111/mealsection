@@ -14,12 +14,13 @@ body {
   justify-content: center !important;
 }
 .logoblack {
-  width: 150px;
+  width: 120px;
   float: right !important;
 }
 #hero {
   padding-left: 30px !important;
   padding-bottom: 20px !important;
+  padding-top: 100px !important;
 }
 a {
   margin-left: 30px !important;
