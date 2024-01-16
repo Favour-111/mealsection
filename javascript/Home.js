@@ -100,7 +100,7 @@ const products = [
   },
   {
     Image: "../images/IMG-20240115-WA0009.jpg",
-    description: "kings food(BOC)",
+    description: "kings food(BOC)6pm",
     href: "kings.html",
   },
 ];
