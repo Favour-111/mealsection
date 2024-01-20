@@ -117,10 +117,12 @@ function displayProducts(productArray) {
       const listItem = document.createElement("div");
       listItem.innerHTML = `
      <a href="${product.href}" class="product text-dark ">
+     <div data-aos="fade-right">
      <img  height="250px"
      width="350px"
      class="resturantImages mt-2" src="${product.Image}"/>
      <p class="text-capitalize box-text mt-1">${product.description}</p>
+     </div>
      </a>
       `;
       productListElement.appendChild(listItem);

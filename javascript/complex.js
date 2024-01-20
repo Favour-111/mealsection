@@ -70,18 +70,20 @@ function changeQty() {
 let itemList = [];
 
 //Add Cart
-//Add Cart
+// Add Cart
 function addCart() {
   let food = this.parentElement;
   let title = food.querySelector(".food-title").innerHTML;
-  let price = food.querySelector(".food-price").innerHTML;
+  let priceElement = food.querySelector(".food-price");
   let imgSrc = food.querySelector(".food-img").src;
+
+  let price = priceElement ? priceElement.textContent : ""; // Get the actual price
 
   let newProduct = { title, price, imgSrc, quantity: 1 };
 
-  // Check Product already Exist in Cart
+  // Check if Product already exists in Cart
   if (itemList.find((el) => el.title == newProduct.title)) {
-    alert("Product Already in Cart");
+    showAlert("Product Already added in Cart");
     return;
   } else {
     itemList.push(newProduct);
@@ -89,7 +91,7 @@ function addCart() {
 
   let newProductElement = createCartProduct(
     title,
-    price,
+    price, // Use the actual price here
     imgSrc,
     newProduct.quantity
   );
@@ -98,7 +100,23 @@ function addCart() {
   let cartBasket = document.querySelector(".cart-content");
   cartBasket.append(element);
   loadContent();
+
+  showAlert("Product added to Cart");
 }
+
+// Function to show an alert and make it disappear after 2 seconds
+function showAlert(message) {
+  let alertDiv = document.createElement("div");
+  alertDiv.classList.add("alert");
+  alertDiv.textContent = message;
+  document.body.appendChild(alertDiv);
+
+  // Set a timeout to remove the alert after 2 seconds
+  setTimeout(function () {
+    alertDiv.remove();
+  }, 500);
+}
+
 document.addEventListener("click", function (event) {
   if (event.target.classList.contains("quantity-btn")) {
     const action = event.target.getAttribute("data-action");

@@ -75,17 +75,15 @@ function addCart() {
   let food = this.parentElement;
   let title = food.querySelector(".food-title").innerHTML;
   let priceElement = food.querySelector(".food-price");
-
-  // Use textContent to get the text content of the price element
-  let price = priceElement ? priceElement.textContent : "";
-
   let imgSrc = food.querySelector(".food-img").src;
+
+  let price = priceElement ? priceElement.textContent : ""; // Get the actual price
 
   let newProduct = { title, price, imgSrc, quantity: 1 };
 
   // Check if Product already exists in Cart
   if (itemList.find((el) => el.title == newProduct.title)) {
-    alert("Product Already added in Cart");
+    showAlert("Product Already added in Cart");
     return;
   } else {
     itemList.push(newProduct);
@@ -93,7 +91,7 @@ function addCart() {
 
   let newProductElement = createCartProduct(
     title,
-    price,
+    price, // Use the actual price here
     imgSrc,
     newProduct.quantity
   );
@@ -102,6 +100,21 @@ function addCart() {
   let cartBasket = document.querySelector(".cart-content");
   cartBasket.append(element);
   loadContent();
+
+  showAlert("Product added to Cart");
+}
+
+// Function to show an alert and make it disappear after 2 seconds
+function showAlert(message) {
+  let alertDiv = document.createElement("div");
+  alertDiv.classList.add("alert");
+  alertDiv.textContent = message;
+  document.body.appendChild(alertDiv);
+
+  // Set a timeout to remove the alert after 2 seconds
+  setTimeout(function () {
+    alertDiv.remove();
+  }, 500);
 }
 
 function changeQty() {

@@ -353,6 +353,22 @@ h2.title {
 .cart-food-title {
   font-family: "Bebas Neue", sans-serif !important;
 }
+.alert {
+  width: 100%;
+  text-align: center !important;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  background-color: #a4161a;
+  color: white;
+  border-radius: 5px;
+  z-index: 1000;
+  transition: 0.3s !important;
+  text-transform: uppercase;
+}
+
 @media screen and (max-width: 376px) {
   .cart {
     position: fixed;
