@@ -69,7 +69,6 @@ function changeQty() {
 
 let itemList = [];
 
-//Add Cart
 // Add Cart
 function addCart() {
   let food = this.parentElement;
@@ -101,7 +100,26 @@ function addCart() {
   cartBasket.append(element);
   loadContent();
 
+  // Increment the cart count based on product type
+  updateCartCount();
   showAlert("Product added to Cart");
+}
+
+// Function to update the cart count based on product type
+function updateCartCount() {
+  const cartCount = document.querySelector(".cart-count");
+  let count = itemList.reduce((acc, item) => acc + item.quantity, 0);
+
+  // Update the cart count based on product type
+  count = itemList.reduce((acc, item) => {
+    if (item.title.toLowerCase().includes("soup")) {
+      return acc + 1; // Increment count only for soup items
+    } else {
+      return acc + item.quantity; // Add quantity for regular items
+    }
+  }, 0);
+
+  cartCount.innerHTML = count;
 }
 
 // Function to show an alert and make it disappear after 2 seconds
@@ -162,6 +180,8 @@ document.addEventListener("click", function (event) {
 function createCartProduct(title, price, imgSrc, quantity) {
   let isSoup = title.toLowerCase().includes("soup");
 
+  let totalPrice = (parseFloat(price.replace("₦", "")) * quantity).toFixed(2);
+
   if (isSoup) {
     return `
       <div class="cart-box">
@@ -172,47 +192,61 @@ function createCartProduct(title, price, imgSrc, quantity) {
         <ion-icon name="trash" class="cart-remove"></ion-icon>
       </div>
     `;
-  }
-
-  return `
-    <div class="cart-box">
-      <img src="${imgSrc}" class="cart-img">
-      <div class="detail-box">
-        <div class="cart-food-title">${title}</div>
-        <div class="price-box">
-          <div class="cart-price">${price}</div>
-          <div class="cart-amt">${price}</div>
+  } else {
+    return `
+      <div class="cart-box">
+        <img src="${imgSrc}" class="cart-img">
+        <div class="detail-box">
+          <div class="cart-food-title">${title}</div>
+          <div class="price-box">
+            <div class="cart-price">${price}</div>
+            <div class="cart-amt">₦${totalPrice}</div>
+          </div>
+          <div class="cart-quantity">
+            <button class="quantity-btn" data-action="decrement">-</button>
+            <input type="text" value="${quantity}" readonly class="QuantityBox">
+            <button class="quantity-btn" data-action="increment">+</button>
+          </div>
         </div>
-        <div class="cart-quantity">
-          <button class="quantity-btn" data-action="decrement">-</button>
-          <input type="text" value="${quantity}" readonly class="QuantityBox">
-          <button class="quantity-btn" data-action="increment">+</button>
-        </div>
+        <ion-icon name="trash" class="cart-remove"></ion-icon>
       </div>
-      <ion-icon name="trash" class="cart-remove"></ion-icon>
-    </div>
-  `;
+    `;
+  }
 }
 
 let productSelect = document.getElementById("select");
 productSelect.addEventListener("change", updateTotal);
-
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
   const selectedValue = parseInt(productSelect.value);
-  let total = selectedValue + 150;
+  let packTotal = 0;
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");
-    let price = parseFloat(priceElement.innerHTML.replace("₦", ""));
-    let qty = parseInt(product.querySelector(".cart-quantity input").value);
-    total += price * qty;
-    product.querySelector(".cart-amt").innerText =
-      "₦" + (price * qty).toFixed(2);
+    let qtyElement = product.querySelector(".cart-quantity input");
+
+    // Check if both priceElement and qtyElement are present before proceeding
+    if (priceElement && qtyElement) {
+      let price = parseFloat(priceElement.innerHTML.replace("₦", ""));
+      let qty = parseInt(qtyElement.value);
+
+      // Check if the product title includes "soup"
+      if (
+        !product
+          .querySelector(".cart-food-title")
+          .innerHTML.toLowerCase()
+          .includes("soup")
+      ) {
+        packTotal += price * qty;
+        product.querySelector(".cart-amt").innerText =
+          "₦" + (price * qty).toFixed(2);
+      }
+    }
   });
 
   // Update the total value displayed
+  let total = packTotal + selectedValue + 150; // Add pack total, selected value, and base value
   totalValue.innerHTML = "₦" + total.toFixed(2);
 
   // Add Product Count in Cart Icon

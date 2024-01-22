@@ -201,18 +201,33 @@ function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
   const selectedValue = parseInt(productSelect.value);
-  let total = selectedValue + 150;
+  let packTotal = 0;
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");
-    let price = parseFloat(priceElement.innerHTML.replace("₦", ""));
-    let qty = parseInt(product.querySelector(".cart-quantity input").value);
-    total += price * qty;
-    product.querySelector(".cart-amt").innerText =
-      "₦" + (price * qty).toFixed(2);
+    let qtyElement = product.querySelector(".cart-quantity input");
+
+    // Check if both priceElement and qtyElement are present before proceeding
+    if (priceElement && qtyElement) {
+      let price = parseFloat(priceElement.innerHTML.replace("₦", ""));
+      let qty = parseInt(qtyElement.value);
+
+      // Check if the product title includes "soup"
+      if (
+        !product
+          .querySelector(".cart-food-title")
+          .innerHTML.toLowerCase()
+          .includes("soup")
+      ) {
+        packTotal += price * qty;
+        product.querySelector(".cart-amt").innerText =
+          "₦" + (price * qty).toFixed(2);
+      }
+    }
   });
 
   // Update the total value displayed
+  let total = packTotal + selectedValue + 150; // Add pack total, selected value, and base value
   totalValue.innerHTML = "₦" + total.toFixed(2);
 
   // Add Product Count in Cart Icon
@@ -220,6 +235,7 @@ function updateTotal() {
   let count = itemList.length;
   cartCount.innerHTML = count;
 }
+
 // Function to scroll to the top of the page
 function scrollToTop() {
   document.body.scrollTop = 0; // For Safari
