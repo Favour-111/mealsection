@@ -276,6 +276,10 @@ function sendmessage() {
   var hostel = document.getElementById("Hostel").value;
   var date = document.getElementById("date").value;
   var gender = document.getElementById("gender").value;
+  if (!name || !number || !hostel || !date || !gender) {
+    alert("Please fill out all required fields before placing the order.");
+    return;
+  }
   var PhoneNumber = "+2348069989705";
 
   var message =
@@ -296,9 +300,22 @@ function sendmessage() {
     gender +
     "\n\n" +
     "*Orders:*\n";
+
   itemList.forEach((item) => {
-    message += "\n\n" + "Total: " + totalAmount;
+    message +=
+      "\n" + `${item.title} x${item.quantity} N. ${item.price * item.quantity}`;
   });
+
+  // Calculate the total price separately
+  var totalPrice = itemList.reduce(
+    (accumulator, item) => accumulator + item.price * item.quantity,
+    0
+  );
+
+  var deliveryFee = 150;
+  totalPrice += deliveryFee;
+
+  message += "\n\n" + "*Total*: N." + totalPrice.toFixed(2);
 
   // URL Encode the message
   var encodedMessage = encodeURIComponent(message);

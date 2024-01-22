@@ -307,6 +307,10 @@ function sendmessage() {
   var hostel = document.getElementById("Hostel").value;
   var date = document.getElementById("date").value;
   var gender = document.getElementById("gender").value;
+  if (!name || !number || !hostel || !date || !gender) {
+    alert("Please fill out all required fields before placing the order.");
+    return;
+  }
   var PhoneNumber = "+2348069989705";
   var selectedPackElement = document.getElementById("select");
   var selectedPack =
@@ -342,7 +346,10 @@ function sendmessage() {
     0
   );
 
-  message += "\n\n" + "*Total*: N." + totalPrice.toFixed(2); // Ensure the total price is formatted as a fixed decimal
+  var deliveryFee = 150;
+  totalPrice += deliveryFee;
+
+  message += "\n\n" + "*Total*: N." + totalPrice.toFixed(2);
 
   // URL Encode the message
   var encodedMessage = encodeURIComponent(message);
