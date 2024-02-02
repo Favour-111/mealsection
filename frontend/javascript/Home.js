@@ -53,12 +53,12 @@ const products = [
     href: "yummy.html",
   },
 
-  {
-    Image: "../images/IMG-20240115-WA0003.jpg",
-    description: "school complex",
-    about: "drinks,snacks and your favorite edibles",
-    href: "complex.html",
-  },
+  // {
+  //   Image: "../images/IMG-20240115-WA0003.jpg",
+  //   description: "school complex",
+  //   about: "drinks,snacks and your favorite edibles",
+  //   href: "complex.html",
+  // },
   {
     Image:
       "https://urbanblisslife.com/wp-content/uploads/2023/01/Jolibee-Spaghetti-FEATURE.jpg",
