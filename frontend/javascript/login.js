@@ -12,5 +12,5 @@ function validatePassword() {
 
 function redirectToAnotherPage() {
   // Redirect to another page (for demonstration, redirecting to 'another-page.html')
-  window.location.href = "./htmlFolders/index.html";
+  window.location.href = "./htmlFolders/landing.html";
 }
