@@ -4,7 +4,9 @@
   padding: 0;
   margin: 0;
 }
-
+.video {
+  width: 100% !important;
+}
 .body {
   height: 100vh;
   display: flex;
