@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:ital,wght@1,5");
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-image: url(https://static.vecteezy.com/system/resources/previews/027/231/654/original/illustration-graphic-of-aesthetic-background-template-with-simple-and-minimalist-pastel-colors-vector.jpg);
+  font-family: "Bebas Neue", sans-serif !important;
+  text-transform: uppercase;
+}
+
+#login-form {
+  text-align: center;
+  width: 300px;
+  padding: 20px;
+}
+
+#password-input {
+  margin-bottom: 10px;
+  padding: 10px 20px 10px 5px;
+  width: 90%;
+  background-color: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  outline: none;
+}
+
+#login-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+h2 {
+  letter-spacing: 2px;
+}
+.form {
+  box-shadow: 0px -2px 35px -9px rgba(0, 0, 0, 0.47);
+
+  border-radius: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.228) !important;
+}
+.loginBtn {
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  margin-top: 20px;
+  text-transform: uppercase;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.fa-user {
+  margin-right: 10px !important;
+}
+.loginBtn:hover,
+.loginBtn:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.loginBtn:hover {
+  transform: translateY(-1px);
+}
+
+.loginBtn:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
