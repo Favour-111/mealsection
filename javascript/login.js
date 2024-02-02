@@ -5,6 +5,10 @@ function validatePassword() {
   // Check if the password is correct (for demonstration, using 'password123')
   if (passwordInput === "crawford") {
     loginBtn.disabled = false;
+  } else if (passwordInput === "CRAWFORD") {
+    loginBtn.disabled = false;
+  } else if (passwordInput === "Crawford") {
+    loginBtn.disabled = false;
   } else {
     loginBtn.disabled = true;
   }

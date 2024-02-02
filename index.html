@@ -30,23 +30,27 @@
         }
       }
     </style>
-    <div id="login-form" class="form">
-      <h2>Login</h2>
-      <input
-        type="password"
-        id="password-input"
-        placeholder="Enter password"
-        oninput="validatePassword()"
-      /><br />
-      <button
-        id="login-btn"
-        class="loginBtn"
-        onclick="redirectToAnotherPage()"
-        disabled
-      >
-        <i class="fa-solid fa-user"></i> Login
-      </button>
-      <script src="./javascript/login.js"></script>
+    <div class="body">
+      <div class="header">
+        <img src="./images/logowhite.jpg" width="100px" alt="" />
+      </div>
+      <div id="login-form" class="form">
+        <input
+          type="password"
+          id="password-input"
+          placeholder="Enter password"
+          oninput="validatePassword()"
+        /><br />
+        <button
+          id="login-btn"
+          class="loginBtn"
+          onclick="redirectToAnotherPage()"
+          disabled
+        >
+          <i class="fa-solid fa-user"></i> Login
+        </button>
+      </div>
     </div>
+    <script src="./javascript/login.js"></script>
   </body>
 </html>
