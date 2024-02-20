@@ -420,57 +420,6 @@ h2.title {
   text-transform: uppercase;
 }
 
-@media screen and (max-width: 376px) {
-  .cart {
-    position: fixed;
-    top: 0;
-    right: -130%;
-    width: 380px;
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 1px 4px rgba(40, 37, 37, 0.1);
-    z-index: 100;
-  }
-  .cart-active {
-    right: 0;
-    transition: 0.5s;
-  }
-}
-@media screen and (max-width: 320px) {
-  .cart {
-    position: fixed;
-    top: 0;
-    right: -160%;
-    width: 330px;
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 1px 4px rgba(40, 37, 37, 0.1);
-    z-index: 100;
-  }
-  i {
-    display: none !important;
-  }
-  .cart-active {
-    right: 0;
-    transition: 0.5s;
-  }
-}
-
-@media screen and (max-width: 488px) {
-  .shop-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, auto));
-    gap: 1.5rem;
-    justify-content: center;
-    align-content: center;
-  }
-}
 .btn-buy {
   appearance: none;
   background-color: rgba(0, 0, 0, 0.082);
@@ -575,4 +524,62 @@ select {
   font-size: 20px;
   box-shadow: 1px 6px 17px 0px rgba(0, 0, 0, 0.28);
   border-radius: 3px;
+}
+@media screen and (max-width: 376px) {
+  .cart {
+    position: fixed;
+    top: 0;
+    right: -130%;
+    width: 380px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(40, 37, 37, 0.1);
+    z-index: 100;
+  }
+  .cart-active {
+    right: 0;
+    transition: 0.5s;
+  }
+}
+@media screen and (max-width: 320px) {
+  .cart {
+    position: fixed;
+    top: 0;
+    right: -160%;
+    width: 330px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(40, 37, 37, 0.1);
+    z-index: 100;
+  }
+  i {
+    display: none !important;
+  }
+  .cart-active {
+    right: 0;
+    transition: 0.5s;
+  }
+}
+
+@media screen and (max-width: 488px) {
+  .shop-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+    gap: 1.5rem;
+    justify-content: center;
+    align-content: center;
+  }
+}
+@media screen and (max-width: 400px) {
+  .cart {
+    width: 320px;
+    font-size: 12px;
+    padding: 10px;
+  }
 }

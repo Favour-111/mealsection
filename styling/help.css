@@ -15,10 +15,10 @@ body {
   flex-wrap: wrap;
 }
 .section > div {
-  margin: 20px;
+  margin: 10px;
   background-color: #a4161b7e;
-  width: 330px;
-  height: 200px;
+  width: 350px;
+  height: 240px;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -80,4 +80,10 @@ body {
 .button:hover:after {
   opacity: 1;
   right: 10px;
+}
+
+@media screen and (max-width: 400px) {
+  .section > div {
+    font-size: 15px;
+  }
 }
