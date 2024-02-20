@@ -8,18 +8,28 @@ body {
   font-family: "Bebas Neue", sans-serif !important;
   font-weight: 700 !important;
 }
-.flexbox > div {
-  width: 370px !important;
-  margin: 20px;
-  height: 200px;
-  background-color: #a4161b97 !important;
+.section {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-transform: capitalize;
-  font-size: 15px;
+  flex-wrap: wrap;
 }
+.section > div {
+  margin: 20px;
+  background-color: #a4161b7e;
+  width: 330px;
+  height: 200px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  color: white !important;
+  font-family: "Bebas Neue", sans-serif !important;
+  font-weight: bold;
 
+  justify-content: center;
+}
 .icon {
   background-color: white;
   color: black;
@@ -38,7 +48,7 @@ body {
   color: #fff;
   text-align: center;
   font-size: 18px !important;
-  padding: 16px;
+  padding: 10px;
   width: 130px;
   transition: all 0.5s;
   cursor: pointer;
