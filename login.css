@@ -98,7 +98,6 @@ h2 {
 }
 #scroll-container {
   /* border: 3px solid #a4161a; */
-  box-shadow: -3px 1px 11px -1px rgba(0, 0, 0, 0.39);
   border-radius: 5px;
   height: 100px;
   width: 300px;

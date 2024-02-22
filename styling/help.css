@@ -8,6 +8,11 @@ body {
   font-family: "Bebas Neue", sans-serif !important;
   font-weight: 700 !important;
 }
+h2 {
+  font-weight: bold !important;
+  width: 100%;
+  letter-spacing: 2px;
+}
 .section {
   display: flex;
   align-items: center;
@@ -30,16 +35,55 @@ body {
 
   justify-content: center;
 }
-.icon {
-  background-color: white;
-  color: black;
-  padding: 8px 9px;
-  border-radius: 100%;
-  margin-top: 10px;
-  transition: 0.1s;
+.fa-facebook-f {
+  background-color: #4267b2;
+  padding: 10px 15px !important;
+  border-radius: 100% !important;
 }
-.icon:hover {
-  box-shadow: 1px 4px 15px -2px rgba(255, 255, 255, 0.75);
+.fa-facebook-f:hover {
+  box-shadow: -3px 4px 23px 0px rgba(0, 0, 0, 0.8);
+}
+.fa-twitter {
+  color: #1da1f2 !important;
+  background-color: white !important;
+  padding: 10px 12px !important;
+  border-radius: 100% !important;
+}
+.fa-twitter:hover {
+  box-shadow: -3px 4px 23px 0px rgba(0, 0, 0, 0.8);
+}
+.fa-instagram {
+  border-radius: 100%;
+  padding: 10px 15px;
+  background-image: linear-gradient(
+    #405de6,
+    #5b51d8,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1d,
+    #f56040
+  );
+}
+.fa-instagram:hover {
+  box-shadow: -3px 4px 23px 0px rgba(0, 0, 0, 0.8);
+}
+.fa-whatsapp {
+  border-radius: 100%;
+  padding: 8px 12px;
+  background-color: #25d366;
+}
+.fa-whatsapp:hover {
+  box-shadow: -3px 4px 23px 0px rgba(0, 0, 0, 0.8);
+}
+.fa-phone {
+  border-radius: 100%;
+  padding: 8px 12px;
+  background-color: #25d366;
+  margin-top: 20px !important;
+}
+.fa-phone:hover {
+  box-shadow: -3px 4px 23px 0px rgba(0, 0, 0, 0.8);
 }
 .button {
   border-radius: 4px;
