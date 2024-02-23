@@ -2,7 +2,7 @@ body {
   width: 100%;
   font-family: "Bebas Neue", sans-serif !important;
   font-weight: lighter;
-  background-color: #a4161b7e !important;
+  background-color: #08090ace !important;
 }
 .navbar {
   font-family: "Bebas Neue", sans-serif !important;
@@ -21,7 +21,7 @@ h2 {
 }
 .section > div {
   margin: 10px;
-  background-color: #a4161b7e;
+  background-color: #08090aa3;
   width: 350px;
   height: 240px;
   padding: 20px;
@@ -32,7 +32,7 @@ h2 {
   color: white !important;
   font-family: "Bebas Neue", sans-serif !important;
   font-weight: bold;
-
+  border-radius: 10px;
   justify-content: center;
 }
 .fa-facebook-f {
