@@ -151,8 +151,11 @@ function changeQty() {
   loadContent();
 }
 // Increment and Decrement Buttons
+// Increment and Decrement Buttons
 document.addEventListener("click", function (event) {
   if (event.target.classList.contains("quantity-btn")) {
+    event.preventDefault(); // Prevent the default behavior of the button
+
     const action = event.target.getAttribute("data-action");
     const quantityElement = event.target.parentElement.querySelector("input");
     let quantity = parseInt(quantityElement.value);
