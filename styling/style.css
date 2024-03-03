@@ -517,7 +517,7 @@ select {
 }
 .quantity-btn {
   background-color: #a4161a !important;
-  /* padding: 0 15px !important; */
+  touch-action: manipulation;
   border: none !important;
   text-align: center !important ;
   padding: 0 10px;
