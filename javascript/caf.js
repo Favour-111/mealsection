@@ -249,7 +249,7 @@ function updateTotal() {
   });
 
   // Update the total value displayed
-  let total = packTotal + selectedValue + 300; // Add pack total, selected value, and base value
+  let total = packTotal + selectedValue + 200; // Add pack total, selected value, and base value
   totalValue.innerHTML = "₦" + total.toFixed(2);
 
   // Add Product Count in Cart Icon
