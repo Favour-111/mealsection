@@ -204,7 +204,7 @@ function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
   const selectedValue = parseInt(productSelect.value);
-  let total = selectedValue + 400;
+  let total = selectedValue + 300;
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");

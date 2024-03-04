@@ -201,7 +201,7 @@ function createCartProduct(title, price, imgSrc, quantity) {
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
-  let total = 400;
+  let total = 300;
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");

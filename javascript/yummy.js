@@ -349,7 +349,7 @@ function sendmessage() {
     0
   );
 
-  var deliveryFee = 150;
+  var deliveryFee = 300;
   totalPrice += deliveryFee;
 
   message += "\n\n" + "*Total*: N." + totalPrice.toFixed(2);

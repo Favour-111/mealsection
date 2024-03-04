@@ -390,7 +390,7 @@ function sendmessage() {
 
   // Add the pack and delivery fee to the total price
   var selectedValue = parseInt(document.getElementById("select").value);
-  var deliveryFee = 150;
+  var deliveryFee = 200;
   totalPrice += selectedValue + deliveryFee;
 
   message += "\n\n" + "*Total*: N." + totalPrice.toFixed(2);
