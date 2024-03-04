@@ -37,7 +37,7 @@ const products = [
     Image: "../images/IMG-20240115-WA0010.jpg",
     description: 'the huts<span class="text-danger"> (UNAVAILABLE.....)</span>',
     about: "This is the real sensation 🔥",
-    // href: "./Huts.html",
+    href: "#",
   },
 
   {
@@ -102,6 +102,16 @@ const products = [
     Image: "../images/IMG-20240115-WA0009.jpg",
     description: "kings food(BOC)6pm",
     href: "kings.html",
+  },
+  {
+    Image: "../images/IMG-20240115-WA0009.jpg",
+    description: "kings food(BOC)6pm",
+    href: "kings.html",
+  },
+  {
+    Image: "../images/WhatsApp Image 2024-03-04 at 10.24.29_30e07e41.jpg",
+    description: "waffle dom(BOC)",
+    href: "#",
   },
 ];
 
