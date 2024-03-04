@@ -35,9 +35,9 @@ const products = [
 
   {
     Image: "../images/IMG-20240115-WA0010.jpg",
-    description: "the huts",
+    description: 'the huts<span class="text-danger"> (UNAVAILABLE.....)</span>',
     about: "This is the real sensation 🔥",
-    href: "./Huts.html",
+    // href: "./Huts.html",
   },
 
   {
