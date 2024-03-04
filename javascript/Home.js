@@ -106,7 +106,8 @@ const products = [
 
   {
     Image: "../images/WhatsApp Image 2024-03-04 at 10.24.29_30e07e41.jpg",
-    description: "waffle dom(BOC)",
+    description:
+      'waffle dom(BOC)<span class="text-danger"> (UNAVAILABLE.....)</span>',
     href: "#",
   },
 ];
