@@ -42,6 +42,7 @@
         transition: border-color 0.3s ease;
         font-size: 16px;
         box-sizing: border-box;
+        outline: none !important;
       }
       .password-hint {
         color: #6c757d;
@@ -104,6 +105,45 @@
 
       .show {
         display: block;
+      }
+      @media screen and (max-width: 500px) {
+        .login-container {
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 20px;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+          max-width: 320px;
+          width: 100%;
+          text-align: center;
+          position: relative;
+        }
+        .logo {
+          position: absolute;
+          top: -90px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          background-color: black;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+        }
+        .login-container h2 {
+          font-size: 18px;
+        }
+        .login-form input[type="password"] {
+          font-size: 12px;
+        }
+        .password-hint {
+          font-size: 11px;
+        }
+        .login-form button {
+          font-size: 16px;
+        }
       }
     </style>
   </head>
