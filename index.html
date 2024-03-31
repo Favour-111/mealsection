@@ -3,76 +3,157 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="stylesheet" href="./login.css" />
-    <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-    crossorigin="anonymous"
-  />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
+    <title>Password Login</title>
     <style>
-      @media screen and (-webkit-min-device-pixel-ratio: 0) {
-        select,
-        textarea,
-        input {
-          font-size: 16px;
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
-      img {
-        margin-bottom: 80px !important;
+      .login-container {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+      }
+      .login-container h2 {
+        margin-bottom: 20px;
+        color: #a4161a;
+        font-weight: 600;
+        font-size: 24px;
+      }
+      .login-form input[type="password"] {
+        width: calc(100% - 40px);
+        padding: 14px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: #f8f9fa;
+        border: 2px solid #a4161a;
+        transition: border-color 0.3s ease;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+      .password-hint {
+        color: #6c757d;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+      .login-form button {
+        width: calc(100% - 40px);
+        padding: 14px;
+        background-color: #a4161a;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+      .logo {
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      .logo img {
+        max-width: 70%;
+        max-height: 70%;
+      }
+
+      .moving-text {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+        color: #6c757d;
+        animation: moveText 5s infinite alternate;
+      }
+
+      /* Message box for incorrect password */
+      .message-box {
+        display: none;
+        background-color: #ffcccc;
+        color: #a4161a;
+        padding: 10px 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+
+      .show {
+        display: block;
       }
     </style>
-    <div class="body">
-      <div class="header">
-        <img src="./images/logowhite.jpg" width="100px" alt="" />
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="logo">
+        <img src="./images/logoblack.jpg" alt="Logo" />
       </div>
-      <div id="login-form" class="form">
-        <div class="d-flex align-items-center">
+      <h2>Welcome Back!</h2>
+      <form class="login-form" id="loginForm" method="post">
         <input
           type="password"
-          id="password-input"
-          placeholder="Enter password"
-          oninput="validatePassword()"
-        /><i class="fas fa-eye" id="toggle-password"></i><br />
-      </div>
-        <button
-          id="login-btn"
-          class="loginBtn"
-          onclick="redirectToAnotherPage()"
-          disabled
-        >
-          <i class="fa-solid fa-user"></i> Login
-        </button>
-      </div>
-      
-      <div id="scroll-container">
-        <div id="scroll-text">
-          The meal section website will be accessible from 12 PM to 7 PM. Orders placed after 7 PM will not be delivered.
-        <div>
-      </div>
+          id="password"
+          placeholder="Enter your password"
+          required
+        />
+        <div class="password-hint">HINT: University name</div>
+        <button type="submit">Login</button>
+      </form>
+      <div id="messageBox" class="message-box"></div>
     </div>
-    <script src="./javascript/login.js"></script>
-    <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"
-  ></script>
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var password = document.getElementById("password").value;
+          var messageBox = document.getElementById("messageBox");
+
+          if (password === "crawford") {
+            // Redirect to another page
+            window.location.href = "./htmlFolders/landing.html";
+          } else if (password === "Crawford") {
+            // Redirect to another page
+            window.location.href = "./htmlFolders/landing.html";
+          } else if (password === "CRAWFORD") {
+            // Redirect to another page
+            window.location.href = "./htmlFolders/landing.html";
+          } else {
+            // Show error message
+            messageBox.textContent = "Incorrect password. Please try again.";
+            messageBox.classList.add("show");
+
+            // Clear the message after 3 seconds
+            setTimeout(function () {
+              messageBox.textContent = "";
+              messageBox.classList.remove("show");
+            }, 3000);
+          }
+        });
+    </script>
   </body>
 </html>

@@ -25,6 +25,11 @@ const products = [
     about: "THE REAL SAVORS IS BACK !",
     href: "./savour.html",
   },
+  {
+    Image: "../images/WhatsApp Image 2024-03-19 at 15.54.38_5b3d672e.jpg",
+    description: "Chow on Deck",
+    href: "chickenRepublic.html",
+  },
 
   {
     Image: "../images/WhatsApp Image 2024-01-15 at 02.27.52_22a3d6c1.jpg",
@@ -66,7 +71,18 @@ const products = [
     about: "Even the Italiano's don’t make spaghetti this good",
     href: "annies.html",
   },
-
+  {
+    Image:
+      "https://img-global.cpcdn.com/recipes/17518cf43171332e/1200x630cq70/photo.jpg",
+    description: "Rhike’s foods(Aunty Funmi)",
+    about: "Even the Italiano's don’t make spaghetti this good",
+    href: "funmi.html",
+  },
+  {
+    Image: "../images/WhatsApp Image 2024-03-04 at 10.24.29_30e07e41.jpg",
+    description: "waffle dom(BOC)",
+    href: "waffle.html",
+  },
   {
     Image: "../images/IMG-20240115-WA0005.jpg",
     description: "snack ville(BOC)",
@@ -102,13 +118,6 @@ const products = [
     Image: "../images/IMG-20240115-WA0009.jpg",
     description: "kings food(BOC)6pm",
     href: "kings.html",
-  },
-
-  {
-    Image: "../images/WhatsApp Image 2024-03-04 at 10.24.29_30e07e41.jpg",
-    description:
-      'waffle dom(BOC)<span class="text-danger"> (UNAVAILABLE.....)</span>',
-    href: "#",
   },
 ];
 
