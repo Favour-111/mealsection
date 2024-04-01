@@ -13,9 +13,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Montserrat", sans-serif !important;
 }
 .navbar {
-  font-family: "Bebas Neue", sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 .intro {
   background-image: url("https://zenaskitchen.com/wp-content/uploads/2022/12/jollof-rice.jpg");
@@ -34,7 +35,7 @@
     no-repeat;
   background-size: cover;
   background-position: center;
-  height: 890px;
+  height: 600px !important;
 }
 .welcome-hero:before {
   position: absolute;
@@ -45,11 +46,12 @@
   width: 100%;
   height: 100%;
 }
+
 .header-text h2 {
   position: relative;
   z-index: 2 !important;
   color: #fff;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 700;
   text-transform: uppercase;
   line-height: 1.5;
@@ -130,15 +132,15 @@
 .boldText {
   text-transform: uppercase !important;
   font-weight: bolder !important;
-  font-family: "Bebas Neue", sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 .lighttxt {
   font-weight: lighter !important;
-  font-family: "Bebas Neue", sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 ::placeholder {
   font-weight: bold !important;
-  font-family: "Bebas Neue", sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 .hamburger {
   border: 2px solid rgba(0, 0, 0, 0.589) !important;
@@ -180,10 +182,10 @@
 .product {
   text-decoration: none !important;
   font-weight: bold !important;
-  font-family: "Bebas Neue", sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 .campus {
-  font-family: "Bebas Neue", sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
   font-size: 30px !important;
 }
 /* .fa-arrow-right {
@@ -209,63 +211,36 @@
 }
 .button-29 {
   align-items: center;
-  appearance: none;
-  background-image: radial-gradient(
-    100% 100% at 100% 0,
-    rgba(164, 22, 27, 0.705) 0,
-    rgba(164, 22, 27, 0.584) 100%
-  );
-  border: 0;
-  border-radius: 6px;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  background-color: #a4161bbb;
+  border-radius: 10px;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
   display: inline-flex;
-  font-family: "JetBrains Mono", monospace;
-  height: 48px;
+  font-family: "Montserrat", sans-serif !important;
   justify-content: center;
   line-height: 1;
   list-style: none;
   overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 15px 20px;
   position: relative;
   text-align: left;
   text-decoration: none;
-  transition: box-shadow 0.1s, transform 0.1s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  transition: 0.2s;
   white-space: nowrap;
-  will-change: box-shadow, transform;
   font-size: 18px;
+  box-shadow: -3px 3px 12px 2px rgba(0, 0, 0, 0.28);
 }
-
-.button-29:focus {
-  box-shadow: rgba(164, 22, 27, 0.584) 0 0 0 1.5px inset,
-    rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
-    rgba(164, 22, 27, 0.584) 0 -3px 0 inset;
-}
-
 .button-29:hover {
-  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
-    rgba(164, 22, 27, 0.584) 0 -3px 0 inset;
-  transform: translateY(-2px);
-}
-
-.button-29:active {
-  box-shadow: rgba(164, 22, 27, 0.584) 0 3px 7px inset;
-  transform: translateY(2px);
+  background-color: #a4161a;
 }
 .footer {
   background-color: #08090ad4 !important;
   width: 100% !important;
   color: #d3d3d3 !important;
-  font-family: "Bebas Neue", sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
+
 .facebook {
   background-color: #4267b2;
   padding: 10px 15px !important;

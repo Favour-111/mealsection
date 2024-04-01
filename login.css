@@ -1,14 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:ital,wght@1,5");
 
 .body {
-  font-family: Arial, sans-serif;
+  font-family: "Montserrat", sans-serif !important;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   height: 100vh;
   margin: 0;
-  font-family: "Bebas Neue", sans-serif !important;
   text-transform: uppercase;
 }
 .header {
@@ -54,8 +53,7 @@ h2 {
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: inline-flex;
-  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
-    Arial, sans-serif;
+  font-family: "Montserrat", sans-serif !important;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
