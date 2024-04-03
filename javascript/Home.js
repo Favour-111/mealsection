@@ -134,8 +134,8 @@ function displayProducts(productArray) {
       listItem.innerHTML = `
      <div >
      <a href="${product.href}"  class="product text-dark" >
-     <img  height="250px"
-     width="370px"
+     <img  height="300px"
+     width="385px"
      class="resturantImages mt-2" src="${product.Image}"/>
      <p class="text-capitalize mt-1">${product.description}</p>
       </a>
