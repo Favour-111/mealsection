@@ -23,11 +23,7 @@
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
     ></script>
-     <link
-      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../styling/nav.css" />
+    <link rel="stylesheet" href="../styling/style.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,105 +41,113 @@
     />
   </head>
   <body>
-    <nav>
-      <div class="navbar">
-        <i class="bx bx-menu"></i>
-        <div class="logo">
-          <a href="#"
-            ><img src="../images/logowhite.jpg" width="100px" alt=""
-          /></a>
-        </div>
-        <div class="nav-links">
-          <div class="sidebar-logo">
-            <span class="logo-name">Mealsection</span>
-            <i class="bx bx-x"></i>
-          </div>
-          <ul class="links">
-            <li><a href="./DashBoard.html">HOME</a></li>
-            <li>
-              <a href="#"> Campus martS</a>
-              <i class="bx bxs-chevron-down htmlcss-arrow arrow"></i>
-              <ul class="htmlCss-sub-menu sub-menu">
-                <li>
-                  <a href="./cafetaria.html">cafetaria</a>
-                </li>
-                <li>
-                  <a href="./Elegance.html">elegance</a>
-                </li>
-                <li>
-                  <a href="./savour.html">savours</a>
-                </li>
-                <li><a href="./EDS.html">EDS</a></li>
-                <li><a href="./FFO.html">FFO</a></li>
-                <li>
-                  <a href="./Huts.html">the huts</a>
-                </li>
-                <li>
-                  <a href="./funmi.html">RHIKE’S FOODS</a>
-                </li>
-                <li>
-                  <a href="./Sweetyme.html">sweettyme</a>
-                </li>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <img
+        src="../images/logowhite.jpg" 
+          alt=""
+          width="20px"
+          class="mx-2 rounded-circle meaLogo"
+        />
+        <a class="navbar-brand" href="#">Mealsection</a>
+        <button
+           class="navbar-toggler rounded-circle py-2 hamburger"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="./DashBoard.html"
+                >Home</a
+              >
+            </li>
 
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Campus mart
+              </a>
+              <ul class="dropdown-menu">
                 <li>
-                  <a href="./annies.html">annies</a>
+                  <a
+                    class="dropdown-item"
+                    href="./cafetaria.html"
+                    >cafetaria</a
+                  >
                 </li>
-                <li>
-                  <a href="./yummy.html">yummy taste</a>
-                </li>
+                <li><a class="dropdown-item" href="./Elegance.html">elegance</a></li>
+                <li><a class="dropdown-item" href="./savour.html">savours</a></li>
+                <li><a class="dropdown-item" href="./EDS.html">EDS</a></li>
+                <li><a class="dropdown-item" href="./FFO.html">FFO</a></li>
+          <li><a class="dropdown-item" href="./Huts.html">the huts</a></li>
+                <li><a class="dropdown-item" href="./funmi.html">RHIKE’S FOODS</a></li>
+                <li><a class="dropdown-item" href="./Sweetyme.html">sweettyme</a></li>
+                
+                <li><a class="dropdown-item" href="./annies.html">annies</a></li>
+                <li><a class="dropdown-item" href="./yummy.html">yummy taste</a></li>
 
-                <li class="more">
-                  <span
-                    ><a href="#">Special</a>
-                    <i class="bx bxs-chevron-right arrow more-arrow"></i>
-                  </span>
-                  <ul class="more-sub-menu sub-menu">
-                    <li>
-                      <a href="./chickenRepublic.html">ChickenRepublic</a>
-                    </li>
-                  </ul>
-                </li>
+              
               </ul>
             </li>
-            <li>
-              <a href="#"> Campus mart(BOC)</a>
-              <i class="bx bxs-chevron-down js-arrow arrow"></i>
-              <ul class="js-sub-menu sub-menu">
-                <li>
-                  <a href="./snack.html">snack ville</a>
-                </li>
-                <li>
-                  <a href="./ola.html">ola snack</a>
-                </li>
-                <li>
-                  <a href="./kings.html">kings food snack</a>
-                </li>
-                <li>
-                  <a href="./waakye.html">waakye</a>
-                </li>
-                <li>
-                  <a href="./dupseys.html">dupseys</a>
-                </li>
-                <li>
-                  <a href="./fruit.html">tk fruit arena</a>
-                </li>
-                <li>
-                  <a href="./waffle.html">waffle dom</a>
-                </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Campus mart(BOC)
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="./snack.html">snack ville</a></li>
+                <li><a class="dropdown-item" href="./ola.html">ola snack</a></li>
+                <li><a class="dropdown-item" href="./kings.html">kings food snack</a></li>
+                <li><a class="dropdown-item" href="./waakye.html">waakye</a></li>
+             <li><a class="dropdown-item" href="./dupseys.html">dupseys</a></li>
+                <li><a class="dropdown-item" href="./fruit.html">tk fruit arena</a></li><li><a class="dropdown-item" href="./waffle.html">waffle dom</a></li>
+
+
+              
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Special
+              </a>
+              <ul class="dropdown-menu">
+                 <li><a class="dropdown-item" href="./chickenRepublic.html">ChickenRepublic</a></li>
+                <li><a class="dropdown-item" href="./lavishh.html">lavishh cakes</a></li>
+               
+
+
+              
               </ul>
             </li>
           </ul>
-        </div>
-        <div class="search-box">
-          <i class="bx bx-search"></i>
-          <div class="input-box">
-            <input
-              type="text"
-              placeholder="Search..."
-              id="searchInput"
-              oninput="searchProducts()"
-            />
-          </div>
+          <a href="./help.html" class="button-29" role="button">help ?</a>
+
         </div>
       </div>
     </nav>
@@ -467,7 +471,7 @@
             <h2 class="food-title">nutri milk</h2>
             <div>
               <span>NGN</span>
-              <span class="food-price">500</span>
+              <span class="food-price">600</span>
             </div>
            <div class="add-cart"><i class="fa-solid fa-plus mx-1 cartIco"></i>add to cart</div>
           </div>
@@ -536,8 +540,7 @@
     ></script>
     
     <script src="../javascript/yummy.js"></script>
-    
-     <script src="../javascript/nav.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
     </script>

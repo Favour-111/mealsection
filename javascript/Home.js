@@ -119,6 +119,11 @@ const products = [
     description: "kings food(BOC)6pm",
     href: "kings.html",
   },
+  {
+    Image: "../images/lavishh imae.jpg",
+    description: "lavishh cakes",
+    href: "lavishh.html",
+  },
 ];
 
 // Function to display products

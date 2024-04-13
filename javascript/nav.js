@@ -1,38 +1,30 @@
-// search-box open close js code
-let navbar = document.querySelector(".navbar");
-let searchBox = document.querySelector(".search-box .bx-search");
-// let searchBoxCancel = document.querySelector(".search-box .bx-x");
+const toggleBtn = document.querySelector(".toggle_btn");
+const toggleBtnIcon = document.querySelector(".toggle_btn i");
+const dropDownMenu = document.querySelector(".dropdown_menu");
+const socialIcons = document.querySelectorAll(".socials i"); // Get all social icons
+const tooltip = document.getElementById("tooltip");
 
-searchBox.addEventListener("click", () => {
-  navbar.classList.toggle("showInput");
-  if (navbar.classList.contains("showInput")) {
-    searchBox.classList.replace("bx-search", "bx-x");
-  } else {
-    searchBox.classList.replace("bx-x", "bx-search");
-  }
+toggleBtn.onclick = function () {
+  dropDownMenu.classList.toggle("open");
+  const isOpen = dropDownMenu.classList.contains("open");
+
+  toggleBtnIcon.classList = isOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars";
+};
+
+// Event listeners for showing and hiding the tooltip
+socialIcons.forEach((icon) => {
+  icon.addEventListener("mouseenter", (event) => {
+    // Get the website name from the icon's ID
+    const websiteName = event.target.id;
+    // Set the tooltip content and position it at the bottom of the mouse
+    tooltip.innerText = websiteName;
+    tooltip.style.display = "block";
+    tooltip.style.left = event.clientX + "px";
+    tooltip.style.top = event.clientY + 20 + "px";
+  });
+
+  icon.addEventListener("mouseleave", () => {
+    // Hide the tooltip when the mouse leaves the icon
+    tooltip.style.display = "none";
+  });
 });
-
-// sidebar open close js code
-let navLinks = document.querySelector(".nav-links");
-let menuOpenBtn = document.querySelector(".navbar .bx-menu");
-let menuCloseBtn = document.querySelector(".nav-links .bx-x");
-menuOpenBtn.onclick = function () {
-  navLinks.style.left = "0";
-};
-menuCloseBtn.onclick = function () {
-  navLinks.style.left = "-100%";
-};
-
-// sidebar submenu open close js code
-let htmlcssArrow = document.querySelector(".htmlcss-arrow");
-htmlcssArrow.onclick = function () {
-  navLinks.classList.toggle("show1");
-};
-let moreArrow = document.querySelector(".more-arrow");
-moreArrow.onclick = function () {
-  navLinks.classList.toggle("show2");
-};
-let jsArrow = document.querySelector(".js-arrow");
-jsArrow.onclick = function () {
-  navLinks.classList.toggle("show3");
-};
