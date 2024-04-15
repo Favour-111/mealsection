@@ -201,7 +201,7 @@ function createCartProduct(title, price, imgSrc, quantity) {
 function updateTotal() {
   const cartItems = document.querySelectorAll(".cart-box");
   const totalValue = document.querySelector(".total-price");
-  let total = 300;
+  let total = 500;
 
   cartItems.forEach((product) => {
     let priceElement = product.querySelector(".cart-price");
@@ -346,7 +346,7 @@ function sendmessage() {
     0
   );
 
-  var deliveryFee = 300;
+  var deliveryFee = 500;
   totalPrice += deliveryFee;
 
   message += "\n\n" + "*Total*: N." + totalPrice.toFixed(2);

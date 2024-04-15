@@ -1,6 +1,11 @@
 // Sample product data as an array of objects
 const products = [
   {
+    Image: "../images/lavishh imae.jpg",
+    description: "lavishh cakes",
+    href: "lavishh.html",
+  },
+  {
     Image: "../images/IMG-20240115-WA0015.jpg",
     description: "cafeteria",
     about: "the original",
@@ -118,11 +123,6 @@ const products = [
     Image: "../images/IMG-20240115-WA0009.jpg",
     description: "kings food(BOC)6pm",
     href: "kings.html",
-  },
-  {
-    Image: "../images/lavishh imae.jpg",
-    description: "lavishh cakes",
-    href: "lavishh.html",
   },
 ];
 
