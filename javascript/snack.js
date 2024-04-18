@@ -164,20 +164,6 @@ document.addEventListener("click", function (event) {
 });
 
 function createCartProduct(title, price, imgSrc, quantity) {
-  let isSoup = title.toLowerCase().includes("soup");
-
-  if (isSoup) {
-    return `
-      <div class="cart-box">
-        <img src="${imgSrc}" class="cart-img">
-        <div class="detail-box">
-          <div class="cart-food-title">${title}</div>
-        </div>
-        <ion-icon name="trash" class="cart-remove"></ion-icon>
-      </div>
-    `;
-  }
-
   return `
     <div class="cart-box">
       <img src="${imgSrc}" class="cart-img">

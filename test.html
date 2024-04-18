@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinite Vertical Scrolling Text</title>
+    <style>
+      .scrolling-text-container {
+        width: 200px; /* Adjust width as needed */
+        height: 100px; /* Adjust height as needed */
+        overflow: hidden;
+        position: relative; /* Add relative positioning */
+        font-family: "Montserrat", sans-serif !important;
+      }
+
+      .scrolling-text {
+        position: absolute; /* Add absolute positioning */
+        bottom: 100%; /* Move text initially below the container */
+        animation: scroll-up 10s linear infinite; /* Adjust animation duration */
+      }
+
+      @keyframes scroll-up {
+        0% {
+          transform: translateY(100%);
+        }
+        100% {
+          transform: translateY(-100%);
+        }
+      }
+
+      /* Adjust styles for the text span */
+      .scrolling-text span {
+        display: block;
+        margin-bottom: 20px; /* Adjust spacing between lines */
+      }
+    </style>
+  </head>
+  <body></body>
+</html>

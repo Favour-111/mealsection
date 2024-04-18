@@ -32,6 +32,7 @@
         padding: 0;
         background-color: #f8f9fa;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -127,7 +128,36 @@
       .show {
         display: block;
       }
-      @media screen and (max-width: 500px) {
+      .scrolling-text-container {
+        text-transform: uppercase;
+        width: 200px; /* Adjust width as needed */
+        height: 100px; /* Adjust height as needed */
+        overflow: hidden;
+        margin-top: 30px;
+        position: relative; /* Add relative positioning */
+      }
+
+      .scrolling-text {
+        position: absolute; /* Add absolute positioning */
+        bottom: 100%; /* Move text initially below the container */
+        animation: scroll-up 20s linear infinite; /* Adjust animation duration */
+      }
+
+      @keyframes scroll-up {
+        0% {
+          transform: translateY(100%);
+        }
+        100% {
+          transform: translateY(-100%);
+        }
+      }
+
+      /* Adjust styles for the text span */
+      .scrolling-text span {
+        display: block;
+        margin-bottom: 20px; /* Adjust spacing between lines */
+      }
+      @media screen and (max-width: 600px) {
         .login-container {
           background-color: #fff;
           padding: 20px;
@@ -140,11 +170,11 @@
         }
         .logo {
           position: absolute;
-          top: -95px;
+          top: -85px;
           left: 50%;
           transform: translateX(-50%);
-          width: 120px;
-          height: 120px;
+          width: 100px;
+          height: 100px;
           border-radius: 50%;
           background-color: black;
           display: flex;
@@ -185,6 +215,17 @@
         <button type="submit">Login</button>
       </form>
       <div id="messageBox" class="message-box"></div>
+    </div>
+    <div class="scrolling-text-container">
+      <div class="scrolling-text">
+        <span class="fw-bold fs-6"
+          >Please Before proceeding to the site, please note that our
+          Mealsection's hours have been adjusted. We will now be open from 12:00
+          pm to 7:45 pm. Thank you for your attention, and we hope you enjoy
+          your visit!</span
+        >
+        <!-- Add more spans with your text here -->
+      </div>
     </div>
     <script>
       document
