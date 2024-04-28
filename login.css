@@ -102,6 +102,16 @@ h2 {
   padding: 5px;
   overflow: hidden;
 }
+@media screen and (max-width: 400px) {
+  #scroll-container {
+    /* border: 3px solid #a4161a; */
+    border-radius: 5px;
+    height: 100px;
+    width: 200px;
+    padding: 5px;
+    overflow: hidden;
+  }
+}
 
 #scroll-text {
   height: 100%;
