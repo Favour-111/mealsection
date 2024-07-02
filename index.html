@@ -40,31 +40,36 @@
       .login-container {
         background-color: #fff;
         padding: 40px;
-        border-radius: 20px;
+        border-radius: 5px !important;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         max-width: 400px;
         width: 100%;
         text-align: center;
         position: relative;
+        margin-top: 120px !important;
       }
       .login-container h2 {
         margin-bottom: 20px;
         color: #a4161a;
         font-weight: 600;
         font-size: 24px;
+        margin-top: 15px !important;
       }
       .login-form input[type="password"] {
-        width: calc(100% - 40px);
+        width: 300px;
         padding: 14px;
         margin-bottom: 20px;
         border: none;
-        border-radius: 10px;
-        background-color: #f8f9fa;
-        border: 2px solid #a4161a;
+        background-color: #d1d1d1;
         transition: border-color 0.3s ease;
         font-size: 16px;
         box-sizing: border-box;
         outline: none !important;
+        font-weight: bold !important;
+      }
+      ::placeholder {
+        font-family: "Roboto", sans-serif;
+        text-transform: capitalize;
       }
       .password-hint {
         color: #6c757d;
@@ -73,21 +78,26 @@
         margin-bottom: 15px;
       }
       .login-form button {
-        width: calc(100% - 40px);
+        width: 300px;
         padding: 14px;
-        background-color: #a4161a;
+        background-color: #a4161bba;
         color: #fff;
         border: none;
-        border-radius: 10px;
+        border-radius: 3px;
         cursor: pointer;
         transition: background-color 0.3s ease;
         font-size: 18px;
         font-weight: 600;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: 0.2s;
+      }
+      .login-form button:hover {
+        background-color: #a4161bdd;
       }
       .logo {
         position: absolute;
-        top: -80px;
+        top: -70px;
         left: 50%;
         transform: translateX(-50%);
         width: 120px;
@@ -105,16 +115,6 @@
         max-height: 70%;
       }
 
-      .moving-text {
-        position: absolute;
-        bottom: -50px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 14px;
-        color: #6c757d;
-        animation: moveText 5s infinite alternate;
-      }
-
       /* Message box for incorrect password */
       .message-box {
         display: none;
@@ -128,35 +128,15 @@
       .show {
         display: block;
       }
-      .scrolling-text-container {
+      .marquee_container {
+        width: 400px;
+        margin-top: 10px !important;
         text-transform: uppercase;
-        width: 400px; /* Adjust width as needed */
-        height: 100px; /* Adjust height as needed */
-        overflow: hidden;
-        margin-top: 30px;
-        position: relative; /* Add relative positioning */
+        font-size: 15px !important;
+        font-weight: lighter;
+        font-family: Arial, Helvetica, sans-serif;
       }
 
-      .scrolling-text {
-        position: absolute; /* Add absolute positioning */
-        bottom: 100%; /* Move text initially below the container */
-        animation: scroll-up 20s linear infinite; /* Adjust animation duration */
-      }
-
-      @keyframes scroll-up {
-        0% {
-          transform: translateY(100%);
-        }
-        100% {
-          transform: translateY(-100%);
-        }
-      }
-
-      /* Adjust styles for the text span */
-      .scrolling-text span {
-        display: block;
-        margin-bottom: 20px; /* Adjust spacing between lines */
-      }
       @media screen and (max-width: 600px) {
         .login-container {
           background-color: #fff;
@@ -195,14 +175,6 @@
         .login-form button {
           font-size: 16px;
         }
-        .scrolling-text-container {
-          text-transform: uppercase;
-          width: 300px; /* Adjust width as needed */
-          height: 100px; /* Adjust height as needed */
-          overflow: hidden;
-          margin-top: 30px;
-          position: relative; /* Add relative positioning */
-        }
       }
     </style>
   </head>
@@ -224,16 +196,14 @@
       </form>
       <div id="messageBox" class="message-box"></div>
     </div>
-    <div class="scrolling-text-container">
-      <div class="scrolling-text">
-        <span class="fw-light fs-6"
-          >Please Before proceeding to the site, please note that our
-          Mealsection's hours have been adjusted. We will now be open from 11:45
-          pm to 7:45 pm. Thank you for your attention, and we hope you enjoy
-          your visit!</span
-        >
-        <!-- Add more spans with your text here -->
-      </div>
+    <div class="marquee_container">
+      <marquee scrollamount="1" direction="up">
+        As the semester comes to a close and exams approach, we at Mealsection
+        want to inform you that we will be temporarily closing our doors to
+        focus on supporting our students during this crucial time. We believe in
+        the power of nourishment, both for the body and the mind, and want to
+        ensure our students have the best chance at success.
+      </marquee>
     </div>
     <script>
       document
@@ -243,13 +213,13 @@
           var password = document.getElementById("password").value;
           var messageBox = document.getElementById("messageBox");
 
-          if (password === "crawford") {
+          if (password === "mealsection") {
             // Redirect to another page
             window.location.href = "./htmlFolders/landing.html";
-          } else if (password === "Crawford") {
+          } else if (password === "mealsection") {
             // Redirect to another page
             window.location.href = "./htmlFolders/landing.html";
-          } else if (password === "CRAWFORD") {
+          } else if (password === "mealsection") {
             // Redirect to another page
             window.location.href = "./htmlFolders/landing.html";
           } else {
