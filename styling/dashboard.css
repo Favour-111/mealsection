@@ -3,6 +3,7 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: "Poppins", sans-serif !important;
 }
 .video {
   width: 100% !important;
@@ -13,10 +14,48 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Montserrat", sans-serif !important;
+}
+
+.nav-link {
+  color: rgba(0, 0, 0, 0.587) !important;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 18px;
+  letter-spacing: 1px;
+  transition: 0.2s;
+  letter-spacing: 1px !important;
 }
 .navbar {
-  font-family: "Montserrat", sans-serif !important;
+  box-shadow: -1px 13px 17px 3px rgba(0, 0, 0, 0.16) !important;
+}
+.nav-link:hover {
+  color: black !important;
+}
+.navbar-brand {
+  font-weight: bold !important;
+  font-size: 25px !important;
+  letter-spacing: 4px !important;
+  font-family: "Roboto", sans-serif !important;
+}
+.meaLogo {
+  height: 40px;
+}
+.carousel-item {
+  height: 100%;
+}
+.carousel-control-next-icon {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/3236/3236907.png") !important;
+}
+.carousel-control-prev-icon {
+  background-image: url("https://cdn-icons-png.freepik.com/512/44/44473.png") !important;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  display: inline-block;
+  width: 3rem !important;
+  height: 3rem !important;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100%;
 }
 .intro {
   background-image: url("https://zenaskitchen.com/wp-content/uploads/2022/12/jollof-rice.jpg");
@@ -31,8 +70,7 @@
   display: flex !important;
   background-color: gray;
   padding: 10px 15px;
-  border: 5px dotted white;
-  border-radius: 20px;
+  border-radius: 2px;
 }
 .Form_body input {
   background-color: transparent !important;
@@ -108,6 +146,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding: 20px !important;
 }
 
 .backtotop {
@@ -127,31 +166,66 @@
 .boldText {
   text-transform: uppercase !important;
   font-weight: bolder !important;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
 }
 .lighttxt {
   font-weight: lighter !important;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
 }
 ::placeholder {
   font-weight: bold !important;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
 }
 .hamburger {
-  border: 2px solid rgba(0, 0, 0, 0.589) !important;
+  border: none !important;
+  background-color: transparent !important;
+  padding: 0, 10px !important;
+}
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  border-color: none !important;
+}
+.DropDown_Link {
+  color: rgba(0, 0, 0, 0.751) !important;
+  text-decoration: none !important;
+  text-align: center;
+}
+
+.dropdown-item {
+  color: rgba(0, 0, 0, 0.587) !important;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 18px;
+  transition: 0.2s;
+  letter-spacing: 1px !important;
+}
+.dropdown-item:active {
+  background-color: rgba(128, 0, 128, 0.644) !important;
+  width: 100%;
+}
+.dropdown-menu {
+  width: 200px !important;
+  padding-top: 20px !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 .form {
   width: 300px !important;
   outline: none !important;
-  border-radius: 2px;
   padding-left: 10px;
   border-color: none !important;
-  border: 1px solid rgba(0, 0, 0, 0.395);
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 520px) {
   .resturantImages {
-    width: 320px;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .carousel-item {
+    height: 350px;
   }
 }
 
@@ -167,10 +241,10 @@
 .product {
   text-decoration: none !important;
   font-weight: bold !important;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
 }
 .campus {
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
   font-size: 30px !important;
 }
 /* .fa-arrow-right {
@@ -202,7 +276,7 @@
   color: #fff;
   cursor: pointer;
   display: inline-flex;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
   justify-content: center;
   line-height: 1;
   list-style: none;
@@ -223,7 +297,11 @@
   background-color: #08090ad4 !important;
   width: 100% !important;
   color: #d3d3d3 !important;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
+}
+.footer p {
+  letter-spacing: 2px;
+  font-size: 1.3em !important;
 }
 
 .facebook {
