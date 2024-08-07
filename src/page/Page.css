@@ -1,0 +1,137 @@
+.banner {
+  width: 100%;
+}
+.disc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  margin-top: 30px;
+}
+.disc div {
+  width: 300px;
+  font-size: 1em;
+  color: #1c1c1c;
+  font-family: inter, sans-serif;
+}
+.disc div .icons2 {
+  font-size: 50px;
+  color: #1c1c1c !important;
+  font-weight: bold;
+}
+
+.names {
+  font-size: 26px;
+  text-transform: capitalize;
+  color: #3d3d3d;
+  font-family: inter, sans-serif !important;
+  margin-top: 80px;
+  margin-left: 50px;
+  border-bottom: 2px solid #1c1c1ca6;
+  width: 230px;
+}
+.campusList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 30px;
+}
+.campusList img {
+  width: 350px;
+}
+.abt {
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 40px 100px;
+}
+.written_txt {
+  width: 60%;
+  font-size: 0.9em;
+}
+.abt button {
+  background-color: #1c1c1c;
+  border: none;
+  padding: 10px 20px;
+  font-weight: light;
+  font-size: 1.1em;
+  color: #daddd8;
+  text-transform: uppercase;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.header {
+  font-weight: 800;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 768px) {
+  .banner {
+    height: 400px;
+  }
+  .disc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  }
+  .disc div {
+    width: 350px;
+    font-size: 0.9em;
+    font-family: poppins, sans-serif;
+  }
+  .names {
+    font-size: 1.3em;
+    margin-top: 10px;
+    margin-left: 0 !important;
+  }
+  .campusList {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+    padding: 0;
+  }
+  .campusList img {
+    width: 380px;
+  }
+}
+@media screen and (max-width: 1138px) {
+  .disc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  }
+  .disc div {
+    width: 100%;
+    font-size: 0.9em;
+    font-family: poppins, sans-serif;
+  }
+  .abt {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+  .abt .written_txt {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .campusList img {
+    width: 350px;
+  }
+}
+@media screen and (max-width: 660px) {
+  .banner {
+    height: 350px;
+  }
+}
+@media screen and (max-width: 540px) {
+  .banner {
+    height: 300px;
+  }
+}

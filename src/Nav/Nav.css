@@ -1,0 +1,133 @@
+.logo {
+  font-family: inter, sans-serif !important;
+  background: transparent;
+  font-weight: 500;
+  font-size: 2em;
+  text-transform: capitalize;
+}
+nav {
+  padding: 4px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav div ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  list-style-type: none;
+}
+nav div ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 1.03em;
+  text-transform: capitalize;
+  font-family: poppins, sans-serif;
+  transition: 0.2s;
+  margin-top: 20px;
+}
+.spec_list {
+  display: block;
+  position: relative;
+}
+.dropdown {
+  position: absolute;
+  left: -10px !important;
+  background-color: white;
+  padding-right: 50px;
+  padding-left: 15px;
+  padding-bottom: 20px;
+  border-radius: 5px;
+}
+.dropdown ul {
+  display: none;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+  flex-direction: column;
+  transition: all 0.3s ease; /* Add this line for smooth transition */
+}
+.dropdown-active {
+  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
+}
+.dropdown-active ul {
+  display: block;
+  transition: all 0.3s ease; /* Add this line for smooth transition */
+  font-family: poppins, sans-serif;
+}
+.dropdown ul li {
+  color: rgba(119, 136, 119, 0.806);
+  margin-top: 20px;
+}
+.dropdown ul li:hover {
+  color: black;
+}
+.icons {
+  display: none;
+}
+
+li:hover:not(.icons) {
+  cursor: pointer;
+}
+li:focus {
+  background-color: rgba(0, 0, 0, 0.107);
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.link {
+  text-decoration: none;
+  color: #787878;
+  font-family: "Courier New", Courier, monospace !important;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    padding: 10px;
+  }
+  nav {
+    display: block;
+    padding: 0;
+  }
+  nav div ul li {
+    display: block;
+  }
+  nav div ul li span {
+    display: block;
+    font-size: 0.5em;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.379);
+  }
+  nav div ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    bottom: -15px;
+    padding: 0;
+    width: 100%;
+    height: 70px;
+    overflow: hidden !important;
+    background-color: white;
+    z-index: 2 !important;
+  }
+  .icons {
+    font-size: 28px;
+    font-weight: lighter;
+    display: block;
+    color: rgba(0, 0, 0, 0.699) !important;
+  }
+  .spec_list {
+    display: none;
+  }
+  .icons:hover {
+    transform: scale(1.1);
+    padding: 3px;
+  }
+  .avatar {
+    display: none;
+  }
+}
