@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { IoHome, IoHomeOutline, IoSearch } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { FiShoppingBag } from "react-icons/fi";
@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
 import Avatar from "react-avatar";
 import "./Nav.css";
 import { FaArrowDown } from "react-icons/fa";
+import { ContextApi } from "../ShopContext/ShopContext";
 const Nav = () => {
+  const { totalCartItems } = useContext(ContextApi);
   const dropdown = useRef();
   const drop = () => {
     dropdown.current.classList.toggle("dropdown-active");
@@ -28,10 +30,15 @@ const Nav = () => {
                 <span> Home</span>
               </li>
             </Link>
-            <li>
-              <FiShoppingBag className="icons" />
-              <span>cart</span>
-            </li>
+            <Link to="/cart" className="link">
+              <li className="counterBody">
+                <FiShoppingBag className="icons" />
+                <div>
+                  cart
+                  <span className="counter">({totalCartItems()}) </span>
+                </div>
+              </li>
+            </Link>
             <li>
               <CiHeart className="icons" />
               <span> wish List</span>

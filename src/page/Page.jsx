@@ -38,8 +38,15 @@ const Page = () => {
           </div>
         </div>
       </div>
+      <div className="StoreName_btn">
+        <div>college stores</div>
+        <div>BOC </div>
+        <div>Others</div>
+      </div>
       <div className="p-4">
-        <div className="names">campus mart</div>
+        <div className="names">
+          campus mart<div className="underline"></div>
+        </div>
       </div>
       <div className="campusList">
         <Link to="/cafeteria">
@@ -87,53 +94,7 @@ const Page = () => {
           />
         </div>
       </div>
-      <div className="p-4">
-        <p className="names">campus mart(BOC)</p>
-      </div>
-      <div className="campusList">
-        <div data-aos="zoom-out-right">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/65/Chicken_Republic_Akure.jpg"
-            alt=""
-            className="banner"
-          />
-        </div>
-        <div data-aos="zoom-out-right">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/65/Chicken_Republic_Akure.jpg"
-            alt=""
-            className="banner"
-          />
-        </div>
-        <div data-aos="zoom-out-right">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/65/Chicken_Republic_Akure.jpg"
-            alt=""
-            className="banner"
-          />
-        </div>
-        <div data-aos="zoom-out-right">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/65/Chicken_Republic_Akure.jpg"
-            alt=""
-            className="banner"
-          />
-        </div>
-        <div data-aos="zoom-out-right">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/65/Chicken_Republic_Akure.jpg"
-            alt=""
-            className="banner"
-          />
-        </div>
-        <div data-aos="zoom-out-right">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/65/Chicken_Republic_Akure.jpg"
-            alt=""
-            className="banner"
-          />
-        </div>
-      </div>
+
       <div className="abt">
         <div>
           <p className="header">mealsection.</p>
