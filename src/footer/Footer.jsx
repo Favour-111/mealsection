@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="footer">
         <div className="footer-body">
           <div className="footer_disc">
-            <p className="fs-3 fw-bold ">Meal Section</p>
+            <p className="footer-header ">Meal Section</p>
             <p className="written">
               MealSection ensures a delightful culinary experience with a
               diverse menu and a user-friendly platform for easy ordering.
@@ -18,16 +18,22 @@ const Footer = () => {
           </div>
 
           <div className="loc my-3">
-            <div className="fw-bold fs-3">
-              Pages <hr className="underline" />
+            <div
+              className="fw-bold fs-4"
+              style={{
+                fontFamily: "Inter, sans-serif",
+              }}
+            >
+              Navigation
             </div>
-            <div>Home</div>
+            <div className="mt-3">Home</div>
             <div>wish list</div>
             <div>cart</div>
             <div>about us</div>
           </div>
           <div className="loc">
-            <div>
+            <div className="fw-bold fs-4">Information</div>
+            <div className="mt-2">
               <FaPhone />
               :+2347013234960
             </div>
@@ -40,12 +46,54 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <hr />
+        <div className="copy-write my-5">
+          © 2024 MealSection .All Rights Reserved. Powered by Favour
+        </div>
         <div className="iconsbdy">
-          <FaFacebookSquare className="icons-itm" />
-          <FaInstagramSquare className="icons-itm" />
-          <FaWhatsapp className="icons-itm" />
-          <FaPhone className="icons-itm" />
+          <div
+            className="icons-itm shadow-sm"
+            onClick={() => {
+              window.location.replace(
+                "https://web.facebook.com/profile.php?id=61555818232401"
+              );
+            }}
+          >
+            <FaFacebookSquare size={16} />
+          </div>
+          <div className="icons-itm shadow-sm">
+            <FaInstagramSquare
+              size={16}
+              onClick={() => {
+                window.location.replace(
+                  "https://www.instagram.com/meal.section/"
+                );
+              }}
+            />
+          </div>
+          <div className="icons-itm shadow-sm">
+            <FaWhatsapp
+              size={16}
+              onClick={() => {
+                window.location.replace("https://wa.me/+2347013234960");
+              }}
+            />
+          </div>
+          <div
+            className="icons-itm shadow-sm"
+            onClick={() => {
+              window.location.replace("tel:+2347013234960");
+            }}
+          >
+            <FaPhone size={16} />
+          </div>
+          <div
+            className="icons-itm shadow-sm"
+            onClick={() =>
+              window.location.replace("mailto:mealsection@gmail.com")
+            }
+          >
+            <CiMail size={16} />
+          </div>
         </div>
       </div>
     </div>

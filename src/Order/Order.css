@@ -1,0 +1,50 @@
+:root {
+  --font: "Inter", sans-serif;
+  --shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.09);
+  --text-color: #181c14;
+  --nav-text-color: #233d63;
+  --default-color: #a4161bc0;
+}
+.lottie-background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  width: 100%;
+}
+.lottie-content {
+  color: var(--nav-text-color);
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 30px;
+  font-family: var(--font);
+}
+.lottiefiles2 {
+  width: 500px;
+  height: 300px;
+}
+.coninue-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: var(--default-color);
+  transition: 250ms;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: var(--font);
+}
+
+.coninue-btn:hover {
+  background-color: var(--nav-text-color);
+}
+@media screen and (max-width: 768px) {
+  .lottie-content {
+    width: 300px;
+    text-align: center;
+  }
+  .lottiefiles2 {
+    width: 350px;
+    height: 300px;
+  }
+}
