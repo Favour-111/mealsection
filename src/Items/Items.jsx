@@ -86,7 +86,7 @@ function Items(props) {
             <div className="d-flex align-items-center justify-content-between mt-3">
               <div className="price d-flex align-items-center mt-1">
                 <TbCurrencyNaira />
-                {price}
+                {Number(price)}
               </div>
             </div>
           </div>

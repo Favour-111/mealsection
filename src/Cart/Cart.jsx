@@ -10,6 +10,7 @@ import axios from "axios";
 import swal from "sweetalert";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { IoMdClose } from "react-icons/io";
 
 function Cart() {
   const Navigate = useNavigate();
@@ -20,11 +21,14 @@ function Cart() {
   const [deliveryFee, setDeliveryFee] = useState(0);
   const [uniqueVendor, setUniqueVendor] = useState(null);
 
+  console.log(uniqueVendor);
+  console.log(deliveryFee);
+
   const { cartItms, addToCart, Remove, deleteCart, getTotalValue } =
     useContext(ContextApi);
 
-  const [packselect, setPack] = useState("Small");
-  const [price, setPrice] = useState(100);
+  const [packselect, setPack] = useState("none");
+  const [price, setPrice] = useState(0);
 
   // Fetch all products
   const getAllProduct = async () => {
@@ -93,7 +97,7 @@ function Cart() {
   };
 
   // Calculate service fee
-  const totalFee = getTotalValue() + price;
+  const totalFee = getTotalValue() + Number(price);
   const serviceFee = (() => {
     if (totalFee <= 600) return 0.25 * totalFee;
     else if (totalFee <= 1000) return 0.15 * totalFee;
@@ -119,9 +123,13 @@ function Cart() {
           PackPrice: price,
           total: total,
           cartItem: cartProducts,
+          serviceFee: serviceFee,
+          deliveryFee: deliveryFee,
           vendor: uniqueVendor,
         },
       });
+      console.log(deliveryFee);
+      console.log(serviceFee);
     } else {
       // Show error message for multiple vendors
       swal({
@@ -140,7 +148,16 @@ function Cart() {
       });
     }
   };
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setModalIsOpen(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+  const modlalcontent =
+    "please remember to add a pack if you're ordering an eatable food item . Also take a screenshot of your order confirmation page before checking out for future reference .Thank you!";
   return (
     <div>
       <Nav />
@@ -173,7 +190,7 @@ function Cart() {
               >
                 Continue Shopping
               </button>
-              <br />
+              {/* <br />
               <select
                 name="packSize"
                 className="form-select w-50 mt-4"
@@ -183,7 +200,7 @@ function Cart() {
                 <option value="none">None</option>
                 <option value="Small">Small</option>
                 <option value="Big">Big</option>
-              </select>
+              </select> */}
             </div>
           </div>
         </div>
@@ -255,14 +272,10 @@ function Cart() {
                 {deliveryFee}
               </div>
               <hr />
-              <div className="delivery-fee">
-                Pack Price: <TbCurrencyNaira />
-                {price}
-              </div>
-              <hr />
+
               <div className="delivery-fee">
                 Service Fee: <TbCurrencyNaira />
-                {serviceFee}
+                {Math.floor(serviceFee)}
               </div>
               <hr />
               <div className="sub-total">
@@ -270,11 +283,46 @@ function Cart() {
                 {total}
               </div>
               <button className="checkout" onClick={CheckOut}>
-                Checkout
+                {deliveryFee ? (
+                  "CheckOut"
+                ) : (
+                  <div className="d-flex justify-content-center">
+                    <div className="spinner-border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
+                )}
               </button>
             </div>
           </div>
         )}
+      </div>
+      {/* Modal */}
+      <div className={modalIsOpen ? "modal-body-Active" : "modal-body"}>
+        <div className="modal-container shadow">
+          <div className="d-flex align-items-center justify-content-between">
+            <div className="modal-header">Note!!</div>
+            <div
+              className="back"
+              onClick={() => {
+                setModalIsOpen(false);
+                localStorage.clear("modalShown");
+              }}
+            >
+              <IoMdClose size={24} />
+            </div>
+          </div>
+          <hr />
+          {loader ? (
+            <div className="text-center mt-4">
+              <div className="spinner-border spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          ) : (
+            <div className="modal-content">{modlalcontent}</div>
+          )}
+        </div>
       </div>
     </div>
   );

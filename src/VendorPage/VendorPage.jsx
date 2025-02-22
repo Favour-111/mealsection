@@ -280,6 +280,16 @@ const VendorPage = ({ Store }) => {
               >
                 Proteins
               </div>
+              <div
+                className={
+                  category === "pack"
+                    ? "category-type-item-active"
+                    : "category-type-item"
+                }
+                onClick={() => setCategory("pack")}
+              >
+                pack
+              </div>
             </div>
             <div className="collection-body">
               {/* collection head */}

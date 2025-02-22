@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from "react";
 
 const getCartItem = () => {
   let cart = {};
-  for (let i = 1; i < 400 + 1; i++) {
+  for (let i = 1; i < 40000 + 1; i++) {
     cart[i] = 0;
   }
   return cart;

@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { ContextApi } from "../ShopContext/ShopContext";
 import { RiShoppingBag3Line } from "react-icons/ri";
+import { MdOutlineShoppingCart } from "react-icons/md";
 const Nav = () => {
   //date state
   const [time, setTime] = useState(new Date());
@@ -70,6 +71,11 @@ const Nav = () => {
                   Home
                 </Link>
               </li>
+              <li>
+                <Link className="Link" to="/AllStores">
+                  Stores
+                </Link>
+              </li>
 
               <li>
                 <Link className="Link" to="/about">
@@ -123,7 +129,7 @@ const Nav = () => {
           <div className="text-light">
             <FiPhone className="mx-1" />
             {""}
-            +234 702 521 9103
+            +234 701 323 4960
           </div>
           <div className="text-light">
             <FiMail className="mx-1" size={15} />
@@ -136,12 +142,26 @@ const Nav = () => {
             <img src={logo} className="nav-logo-sm" alt="" />
           </Link>
           <div
-            className="hamburger shadow-sm"
-            onClick={() => {
-              setIsOpen(true);
-            }}
+            className="d-flex align-items-center gap-3"
+            style={{ position: "relative" }}
           >
-            <RxHamburgerMenu />
+            <Link to="/cart" className="mt-3">
+              <MdOutlineShoppingCart className="mb-2" size={26} color="black" />
+              <div
+                className="Cart_COunt "
+                style={{ position: "absolute", top: 12, left: 14 }}
+              >
+                {totalCartItems()}
+              </div>
+            </Link>
+            <div
+              className="hamburger shadow-sm"
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              <RxHamburgerMenu />
+            </div>
           </div>
         </div>
 
@@ -168,6 +188,11 @@ const Nav = () => {
               <li>
                 <Link className="Link_sm" to="/store">
                   Home
+                </Link>
+              </li>
+              <li>
+                <Link className="Link_sm" to="/AllStores">
+                  Stores
                 </Link>
               </li>
 

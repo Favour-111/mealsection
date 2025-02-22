@@ -1,0 +1,18 @@
+:root {
+  --font: "Inter", sans-serif;
+  --shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.09);
+  --text-color: #181c14;
+  --default-color: #a4161bc0;
+  --default-light: #a4161b35;
+}
+.storesContent {
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--text-color);
+  font-family: var(--font);
+}
+.vendor-sub_head2 {
+  background-color: var(--default-light);
+  text-align: center;
+  color: var(--default-color);
+}

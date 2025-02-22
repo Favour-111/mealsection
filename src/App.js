@@ -18,6 +18,7 @@ import VendorLogin from "./VendorPage/VendorLogin";
 import VendorPage from "./VendorPage/VendorPage";
 import ProductForm from "./ProductForm/ProductForm";
 import EditForm from "./EditForm/EditForm";
+import AllStore from "./AllStore/AllStore";
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
           <Route path="/Order_payment" element={<Payment />} />
           <Route path="/FAQ" element={<FAQ />} />
           <Route path="/order" element={<Order />} />
+          <Route path="/AllStores" element={<AllStore />} />
           {Vendors.map((item) => {
             return (
               <Route
@@ -49,7 +51,7 @@ function App() {
           {Vendors.map((item) => {
             return (
               <Route
-                path={`/Admin/${item.name}`}
+                path={`/${item.name}`}
                 element={<VendorPage Store={`${item.name}`} />}
               />
             );

@@ -44,24 +44,27 @@ const ProductForm = ({ Store }) => {
     formData.append("category", form.category);
     formData.append("image", form.image);
     e.preventDefault();
-
-    try {
-      setIsloading(true);
-      const response = await axios.post(
-        "https://msback.onrender.com/products",
-        formData
-      );
-      if (response) {
-        toast.success(response.data.msg);
-        setForm(formInitialState);
-      } else {
-        toast.success(response.data.msg);
+    if (isNaN(form.price)) {
+      toast.error("price should only contain Numbers");
+    } else {
+      try {
+        setIsloading(true);
+        const response = await axios.post(
+          "https://msback.onrender.com/products",
+          formData
+        );
+        if (response) {
+          toast.success(response.data.msg);
+          setForm(formInitialState);
+        } else {
+          toast.success(response.data.msg);
+        }
+        console.log(response);
+      } catch (error) {
+        toast.error(error.message);
+      } finally {
+        setIsloading(false);
       }
-      console.log(response);
-    } catch (error) {
-      toast.error(error.message);
-    } finally {
-      setIsloading(false);
     }
   };
   // handle image upload function
@@ -137,6 +140,7 @@ const ProductForm = ({ Store }) => {
                       <option value="Protein">Protein</option>
                       <option value="Carbohydrate">Carbohydrate</option>
                       <option value="junks">junk</option>
+                      <option value="pack">pack</option>
                     </select>
                   </div>
                   <div>

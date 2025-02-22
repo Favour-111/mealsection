@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="copy-write my-5">
-          © 2024 MealSection .All Rights Reserved. Powered by Favour
+          © 2024 MealSection .All Rights Reserved. Powered by Horbah's tech
         </div>
         <div className="iconsbdy">
           <div

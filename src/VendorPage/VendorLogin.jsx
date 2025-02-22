@@ -4,12 +4,13 @@ import { CiLock } from "react-icons/ci";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Vendors from "../Vendors/Vendors";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const VendorLogin = () => {
   const router = useNavigate();
   // form state
   const [login, setLogin] = useState("");
-
+  const [formtoggle, setFormtoggle] = useState(true);
   const handleInput = (e) => {
     setLogin(e.target.value);
   };
@@ -24,12 +25,13 @@ const VendorLogin = () => {
     } else if (
       login.toLocaleLowerCase() === AdminPassword.toLocaleLowerCase()
     ) {
-      window.location.replace("https://adminpanel.mealsection.com/");
+      window.location.replace("http://adminpanel.mealsection.com/");
     } else {
       // Find the vendor that matches the password
       const vendor = Vendors.find(
         (vendor) =>
-          vendor.name.toLocaleLowerCase() === login.toLocaleLowerCase()
+          vendor.name.replace(/\s+/g, "").toLocaleLowerCase() ===
+          login.replace(/\s+/g, "").toLocaleLowerCase()
       );
 
       if (vendor) {
@@ -51,11 +53,24 @@ const VendorLogin = () => {
             <div className="d-flex align-items-center gap-2 form-input">
               <CiLock size={20} />
               <input
-                type="password"
+                type={formtoggle ? "text" : "password"}
                 placeholder="Input Vendor Password..."
                 name="password"
                 onChange={handleInput}
               />
+              {formtoggle ? (
+                <FiEyeOff
+                  style={{ cursor: "pointer" }}
+                  size={20}
+                  onClick={() => setFormtoggle(false)}
+                />
+              ) : (
+                <FiEye
+                  style={{ cursor: "pointer" }}
+                  size={20}
+                  onClick={() => setFormtoggle(true)}
+                />
+              )}
             </div>
             <button className="Vendor-login-submit" type="submit">
               Login

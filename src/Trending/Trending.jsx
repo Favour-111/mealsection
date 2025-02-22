@@ -134,7 +134,7 @@ const Trending = ({ Store }) => {
       ) : (
         <div className="trending-container">
           {trendingProduct
-            .filter((item) => item.category === "Drink")
+            .filter((item) => item.category === "pack")
             .map((item, index) => (
               <div className="Trending_Product_container" key={index}>
                 <div className="image-container mt-4">

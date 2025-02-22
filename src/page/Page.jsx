@@ -119,9 +119,9 @@ const Page = () => {
                 <img src={bike} width={80} />
               </div>
               <div>
-                <div className="offer-items-header"></div>
+                <div className="offer-items-header">Choose a product</div>
                 <div className="offer-items-content">
-                  Specify the delivery destination for your product
+                  Explore Vendors located anywhere within the school.
                 </div>
               </div>
             </div>
@@ -130,9 +130,11 @@ const Page = () => {
                 <img src={Placeholder} width={80} />
               </div>
               <div>
-                <div className="offer-items-header">Set Delivery Location</div>
+                <div className="offer-items-header">
+                  Get it delivered to your doorstep.
+                </div>
                 <div className="offer-items-content">
-                  Specify the delivery destination for your product
+                  Your delivery will arrive promptly.
                 </div>
               </div>
             </div>
@@ -227,7 +229,7 @@ const Page = () => {
                         <TbCurrencyNaira size={18} />
                       </div>
                       <div>|</div>
-                      <div>10-20min</div>
+                      <div>10-30min</div>
                     </div>
                     <div className="d-flex align-items-center">
                       <FaStar color="orange" className="mx-1" />5

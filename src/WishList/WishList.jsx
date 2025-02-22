@@ -57,7 +57,7 @@ function WishList() {
             </div>
             <div className="wishListAmount">
               There are <span className="text-success">{totalWishList()}</span>{" "}
-              items in the whilst
+              items in the wishlist
             </div>
             <div className="Whilst_container ">
               {all_product.map((product) => {
@@ -67,11 +67,7 @@ function WishList() {
                       <div className="mt-4 d-flex align-items-center shadow-sm p-3 rounded justify-content-between">
                         <div className="d-flex gap-2 w-sm-75 w-md-50 ">
                           <div>
-                            <img
-                              src={`https://msback.onrender.com/uploads/${product.image}`}
-                              width={40}
-                              alt=""
-                            />
+                            <img src={product.image} width={40} alt="" />
                           </div>
                           <div className="mx-4">
                             <div className="title">{product.Pname}</div>

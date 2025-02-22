@@ -11,6 +11,7 @@ import { FaFacebookF } from "react-icons/fa";
 import Footer from "../footer/Footer";
 import swal from "sweetalert";
 import axios from "axios";
+import { FaWhatsapp } from "react-icons/fa6";
 const Contact = () => {
   //form state
   const [form, setForm] = useState({
@@ -128,6 +129,14 @@ const Contact = () => {
                 }}
               >
                 <CiInstagram />
+              </div>
+              <div
+                className="social-media-icons"
+                onClick={() => {
+                  window.location.replace("https://wa.me/+2347013234960");
+                }}
+              >
+                <FaWhatsapp />
               </div>
             </div>
           </div>

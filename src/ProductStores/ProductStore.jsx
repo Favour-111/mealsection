@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Nav from "../Nav/Nav";
 import "./ProductStore.css";
 import { RiArrowRightSLine } from "react-icons/ri";
@@ -8,14 +8,22 @@ import Trending from "../Trending/Trending";
 import { toast } from "react-toastify";
 import { io } from "socket.io-client";
 import { CiSearch } from "react-icons/ci";
-
+import { Link } from "react-router-dom";
+import { FiSearch } from "react-icons/fi";
+import { MdKeyboardArrowLeft } from "react-icons/md";
+import { FaPlusCircle } from "react-icons/fa";
+import { TbCurrencyNaira } from "react-icons/tb";
+import { IoAdd } from "react-icons/io5";
+import { ContextApi } from "../ShopContext/ShopContext";
 const ProductStore = ({ Store }) => {
+  const { addToCart, cartItms } = useContext(ContextApi);
   const [category, setCategory] = useState("All");
   const [loader, SetLoader] = useState(false);
   const [product, setProduct] = useState([]);
   const [currentPage, setCurrentPage] = useState(1); // Page state
   const productPerPage = 10; // Set how many products per page
   const [input, setInput] = useState("");
+  const [productSearch, setProductSearch] = useState(false);
   // Fetch all products
   const getAllProduct = async () => {
     try {
@@ -112,13 +120,112 @@ const ProductStore = ({ Store }) => {
               <div className="description-other-text">to order</div>{" "}
             </div>
             <div style={{ fontSize: 16, fontWeight: "500" }}>
-              Home <RiArrowRightSLine /> Vendors <RiArrowRightSLine /> {Store}
+              <Link to="/store" className="BreadCrumbs-item-link">
+                Home
+              </Link>{" "}
+              <RiArrowRightSLine /> Vendors <RiArrowRightSLine /> {Store}
             </div>
           </div>
         </div>
         <div className="explore">
           <div className="explore-header">🎉Explore Popular Product</div>
+          <div
+            className="product_search shadow-sm"
+            onClick={() => {
+              setProductSearch(true);
+              setInput("");
+            }}
+          >
+            <FiSearch className="ProdctSearch_icn" />
+          </div>
         </div>
+        {productSearch ? (
+          <div className="Search-container-product shadow-sm">
+            {loader ? (
+              <div className="d-flex justify-content-center mt-5">
+                <div className="spinner-border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <div className="product-search-searc">
+                  <div
+                    className="back mt-3"
+                    onClick={() => setProductSearch(false)}
+                  >
+                    <MdKeyboardArrowLeft size={30} />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      className="product-search-search-input "
+                      placeholder="search something ..."
+                      onChange={(e) => setInput(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="p-3 ">
+                  {product.filter(
+                    (item) =>
+                      item.vendor === Store &&
+                      (input === "" ||
+                        item.Pname.toLowerCase().includes(input.toLowerCase()))
+                  ).length === 0 ? (
+                    <p className="text-center">No product found : "{input}"</p>
+                  ) : (
+                    product
+                      .filter(
+                        (item) =>
+                          item.vendor === Store &&
+                          (input === "" ||
+                            item.Pname.toLowerCase().includes(
+                              input.toLowerCase()
+                            ))
+                      )
+                      .map((item) => {
+                        return (
+                          <div className="d-flex align-items-center justify-content-between mb-5 mt-3">
+                            <div className="d-flex align-items-center gap-3">
+                              <img
+                                src={item.image}
+                                width={60}
+                                className="rounded-circle"
+                                height={60}
+                              />
+                              <div>
+                                <div className="product-name">{item.Pname}</div>
+                                <div className="price">
+                                  <TbCurrencyNaira /> {item.price}
+                                </div>
+                              </div>
+                            </div>
+                            {item.availability === "inStock" ? (
+                              <div className="buttons">
+                                {cartItms[item.id] > 0 ? (
+                                  <button className="incart">in cart</button>
+                                ) : (
+                                  <button
+                                    className="addCart"
+                                    onClick={() => addToCart(item.id)}
+                                  >
+                                    <IoAdd />
+                                    add
+                                  </button>
+                                )}
+                              </div>
+                            ) : (
+                              <div className="out-of-stock">out of stock</div>
+                            )}
+                          </div>
+                        );
+                      })
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        ) : null}
         <div className="Popular-container">
           <Trending Store={Store} />
         </div>
@@ -181,14 +288,16 @@ const ProductStore = ({ Store }) => {
             >
               Proteins
             </div>
-          </div>
-          <div className="d-flex align-items-center gap-2 search-cont">
-            <CiSearch />
-            <input
-              placeholder="search something"
-              onClick={() => setCategory("All")}
-              onChange={(e) => setInput(e.target.value)}
-            />
+            <div
+              className={
+                category === "pack"
+                  ? "category-type-item-active"
+                  : "category-type-item"
+              }
+              onClick={() => setCategory("pack")}
+            >
+              pack
+            </div>
           </div>
         </div>
         {loader ? (
@@ -203,26 +312,16 @@ const ProductStore = ({ Store }) => {
               {currentProduct.length === 0 ? (
                 <>No product found</>
               ) : (
-                currentProduct
-                  .filter((item) => {
-                    if (input === "") {
-                      return item;
-                    } else if (
-                      item.Pname.toLowerCase().includes(input.toLowerCase())
-                    ) {
-                      return item;
-                    }
-                  })
-                  .map((item) => (
-                    <Items
-                      key={item.id}
-                      Pname={item.Pname}
-                      price={item.price}
-                      image={item.image}
-                      id={item.id}
-                      availability={item.availability}
-                    />
-                  ))
+                currentProduct.map((item) => (
+                  <Items
+                    key={item.id}
+                    Pname={item.Pname}
+                    price={item.price}
+                    image={item.image}
+                    id={item.id}
+                    availability={item.availability}
+                  />
+                ))
               )}
             </div>
 

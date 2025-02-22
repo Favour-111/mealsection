@@ -8,12 +8,12 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 .breadcrumb-container {
-  background: url(../images/Background.jpg);
+  background: url(../assets/6030625561442894951.jpg);
   width: 100%;
   height: 350px;
-  background-position: top center;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   .bread-crumbs_content {
     background-color: #000;
     opacity: 0.8;

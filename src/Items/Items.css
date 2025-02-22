@@ -6,9 +6,9 @@
 }
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 .product_img {
-  width: 100px;
+  width: 120px;
   height: 120px;
-  margin-left: 50px;
+  margin-left: 30px;
 }
 
 .List {
@@ -61,7 +61,6 @@
   letter-spacing: 1px;
   border-radius: 20px;
   transition: 0.3s;
-  margin-top: 20px;
 }
 .addCart:hover {
   background-color: #a4161b;
@@ -239,6 +238,7 @@
     right: 10px;
     font-weight: 900 !important;
     width: 100px;
+    margin-top: 0;
   }
   .incart {
     border-radius: 10px !important;
