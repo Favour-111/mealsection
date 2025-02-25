@@ -2,13 +2,13 @@ import React from "react";
 import Nav from "./Nav/Nav";
 import Page from "./page/Page";
 import Footer from "./footer/Footer";
-import Top from "./backTotop/Top";
+import BackToTop from "./BackToTop/BackToTop";
 const Store = () => {
   return (
     <div>
       <Page />
       <Footer />
-      <Top />
+      <BackToTop />
     </div>
   );
 };

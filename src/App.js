@@ -19,6 +19,7 @@ import VendorPage from "./VendorPage/VendorPage";
 import ProductForm from "./ProductForm/ProductForm";
 import EditForm from "./EditForm/EditForm";
 import AllStore from "./AllStore/AllStore";
+import TawkToChat from "./TawkToChat";
 function App() {
   return (
     <>
@@ -63,6 +64,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/landing_Page" element={<Landing />} />
         </Routes>
+        <TawkToChat />
       </ShopContext>
     </>
   );

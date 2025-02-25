@@ -162,15 +162,7 @@ function Cart() {
     <div>
       <Nav />
       <div className="pageBody">
-        <div>
-          <div
-            className="badger mb-3 px-3"
-            onClick={() => {
-              window.history.back();
-            }}
-          >
-            <MdOutlineKeyboardArrowLeft size={30} />
-          </div>
+        <div className="mt-3">
           <div className="orderbody">
             <div>
               Your Order <div className="YourOrder"></div>

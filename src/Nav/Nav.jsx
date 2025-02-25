@@ -61,7 +61,7 @@ const Nav = () => {
 
         <div className="nav_container shadow-sm">
           <Link to="/store">
-            <img src={logo} alt="" />
+            <img src={logo} className="logo" alt="" />
           </Link>
           {/* navigation item  */}
           <div className="Navigation_Container">
@@ -94,27 +94,28 @@ const Nav = () => {
                 </Link>
               </li>
             </ul>
-            <Link
-              to="/wishList"
-              style={{
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <IoHeartOutline className="mb-2 " color="red" />
+            <Link to="/wishList" style={{ position: "relative" }}>
+              <img
+                width={25}
+                height={25}
+                src="https://img.icons8.com/3d-fluency/94/like--v1.png"
+                alt="like--v1"
+              />
               <div className="Cart_COunt mb-2">{totalWishList()}</div>
             </Link>
-            <Link
-              to="/cart"
-              style={{
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <RiShoppingBag3Line className="mb-2 " color="red" />
+            <Link to="/cart" style={{ position: "relative" }}>
+              <img
+                width="25"
+                height="25"
+                src="https://img.icons8.com/3d-fluency/94/shopping-cart.png"
+                alt="shopping-cart"
+              />
               <div className="Cart_COunt mb-2">{totalCartItems()}</div>
             </Link>
-            <button className="btn btn-danger">{formatTime(time)}</button>
+
+            <button className="btn btn-danger time-format">
+              {formatTime(time)}
+            </button>
           </div>
         </div>
       </div>

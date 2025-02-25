@@ -1,16 +1,32 @@
 :root {
-  --font: "Inter", sans-serif;
   --shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.09);
-  --nav-text-color: #233d63;
+  --text-color: #181c14;
+  --default-color: #a4161bc0;
+}
+@font-face {
+  font-family: poppinsBold;
+  src: url(../font/Poppins-Bold.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsMedium;
+  src: url(../font/Poppins-Medium.ttf);
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 .information {
   background-color: #181c14;
   div {
-    font-size: 14.35px;
+    font-size: 13.35px;
     font-weight: bold;
-    font-family: var(--font);
+    font-family: poppinsSemiBold;
     a {
       color: white;
       text-decoration: none;
@@ -35,7 +51,7 @@
   align-items: center;
   justify-content: space-between;
 
-  img {
+  .logo {
     width: 150px;
   }
 }
@@ -46,14 +62,16 @@
   ul {
     display: flex;
     gap: 30px;
+    margin-top: 10px;
     li {
       list-style-type: none;
       .Link {
         text-decoration: none;
         color: var(--nav-text-color);
         font-weight: 500;
-        font-size: 17px;
+        font-size: 15px;
         transition: 250ms;
+        font-family: poppinsMedium;
       }
       .Link:hover {
         color: #b8001f;
@@ -73,8 +91,11 @@
   color: white;
   text-decoration: none !important;
   font-weight: bold;
-  font-family: var(--font);
+  font-family: poppinsSemiBold;
   font-size: 10px;
+  position: absolute;
+  top: 0;
+  right: -7px;
 }
 .nav-sm {
   display: none;
@@ -92,6 +113,9 @@
 }
 .Search-icon:hover {
   color: #b8001f;
+}
+.time-format {
+  font-family: poppinsMedium;
 }
 @media screen and (max-width: 768px) {
   .nav-position_container {

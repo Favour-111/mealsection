@@ -76,11 +76,13 @@ const ProductStore = ({ Store }) => {
   }, [category, Store]);
 
   // Pagination and Filter Logic
-  const filteredProducts = product.filter((item) =>
-    category === "All"
-      ? item.vendor === Store
-      : item.vendor === Store && item.category === category
-  );
+  const filteredProducts = product
+    .filter((item) =>
+      category === "All"
+        ? item.vendor === Store
+        : item.vendor === Store && item.category === category
+    )
+    .sort((a, b) => a.Pname.localeCompare(b.Pname)); // Sorting before pagination
 
   // Reset page to 1 when category or store changes
   useEffect(() => {
@@ -300,6 +302,8 @@ const ProductStore = ({ Store }) => {
             </div>
           </div>
         </div>
+        {/* sort by  */}
+
         {loader ? (
           <div className="d-flex justify-content-center mt-5">
             <div className="spinner-border" role="status">

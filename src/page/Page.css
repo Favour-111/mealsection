@@ -1,9 +1,23 @@
 :root {
-  --font: "Inter", sans-serif;
   --shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.09);
   --text-color: #181c14;
   --default-color: #a4161bc0;
-  --default-light: #a4161b35;
+}
+@font-face {
+  font-family: poppinsBold;
+  src: url(../font/Poppins-Bold.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsMedium;
+  src: url(../font/Poppins-Medium.ttf);
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
@@ -22,9 +36,12 @@
     align-items: center;
     justify-content: space-between;
     padding: 60px 30px 0px 30px;
+    .bread-crumb-head {
+      font-size: 35px;
+    }
     div {
       color: #fff;
-      font-family: var(--font);
+      font-family: poppinsSemiBold;
     }
   }
 }
@@ -37,16 +54,15 @@
     padding: 2px 5px;
     border-radius: 5px;
     font-weight: lighter !important;
-    font-family: var(--font);
+    font-family: poppinsMedium;
     margin: auto;
-
     color: var(--default-color);
     text-transform: capitalize;
     text-align: center;
     background-color: var(--default-light);
   }
   .category-head {
-    font-family: var(--font);
+    font-family: poppinsMedium;
     width: 100%;
     font-size: 25px;
     color: var(--text-color);
@@ -78,7 +94,8 @@
       color: var(--text-color);
       font-weight: 600;
       font-size: 13px;
-      font-family: var(--font);
+      font-family: poppinsMedium;
+      color: #000000b4;
     }
   }
 }
@@ -128,7 +145,7 @@
     color: var(--default-color);
     background-color: var(--default-light);
     width: 20%;
-    font-family: var(--font);
+    font-family: poppinsMedium;
     text-align: center;
     margin: auto;
     padding: 0 5px;
@@ -156,7 +173,7 @@
     .vendor-contents {
       margin: 20px 20px;
       color: var(--text-color);
-      font-family: var(--font);
+      font-family: poppinsMedium;
       font-weight: bold;
       text-transform: capitalize;
     }
@@ -192,12 +209,11 @@
 .offer-header {
   font-size: 25px;
   margin: 20px 0;
-  font-family: var(--font);
-  color: var(--text-color);
-  font-weight: bold;
+  font-family: poppinsBold;
+  color: #000000be;
 }
 .offer-container {
-  padding: 20px;
+  padding: 50px;
 }
 .what-we-offer-container {
   padding: 10px;
@@ -216,72 +232,22 @@
     text-align: center;
     background-color: white;
     gap: 30px;
+    height: 330px;
     .offer-items-header {
-      font-size: 20px;
-      font-weight: bold;
+      font-size: 18px;
       color: var(--text-color);
-      font-family: var(--font);
+      font-family: poppinsBold;
       margin-top: 10px;
     }
     .offer-items-content {
-      font-weight: 500;
-      font-family: var(--font);
+      font-family: poppinsMedium;
       width: 300px;
       margin: 10px 0;
+      font-size: 15px;
     }
   }
 }
-.feed-back-container {
-  margin: 60px 20px;
-  .header {
-    .feed_Back_SUbhead {
-      width: 10%;
-      text-align: center;
-      border-radius: 10px;
-      margin: auto;
-      background-color: var(--default-light);
-      color: var(--default-color);
-      opacity: 0.8;
-      font-family: var(--font);
-    }
-    .feed-back-header {
-      text-align: center;
-      font-weight: bold;
-      font-size: 25px;
-      color: var(--text-color);
-      font-family: var(--font);
-      margin: 10px 0;
-    }
-  }
-  .feed-backs {
-    width: 280px;
-    height: 350px;
-    .user-feedback-name {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--text-color);
-      opacity: 0.9;
-      font-family: var(--font);
-    }
-    .user-feedback-category {
-      font-size: 17px;
-      font-weight: 500;
-      color: var(--text-color);
-      opacity: 0.7;
-      font-family: var(--font);
-    }
-    .feed-back-content {
-      width: 250px;
-      height: 200px;
-      overflow: scroll;
-      scrollbar-width: none;
-      font-weight: 500;
-      color: var(--text-color);
-      opacity: 0.6;
-      font-family: var(--font);
-    }
-  }
-}
+
 .modal-body {
   display: none;
 }
@@ -318,10 +284,21 @@
 .modal-content {
   font-family: var(--font);
 }
+.quote {
+  border: 1px solid #0000003b;
+  width: 45px;
+  height: 45px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (max-width: 768px) {
   /* .category_container {
     flex-direction: column;
   } */
+
   .bread-crumbs_content {
     flex-direction: column;
     justify-content: center !important;
@@ -336,9 +313,7 @@
   .vendor-sub_head {
     width: 65% !important;
   }
-  .feed_Back_SUbhead {
-    width: 30% !important;
-  }
+
   .category_container {
     row-gap: 0 !important;
   }
@@ -350,5 +325,8 @@
   }
   .vendor-items {
     width: 90% !important;
+  }
+  .offer-container {
+    padding: 20px;
   }
 }

@@ -18,11 +18,30 @@ import { FaStar, FaStore, FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { IoMdClose } from "react-icons/io";
+import { ImQuotesLeft } from "react-icons/im";
+
+import { MdChevronLeft } from "react-icons/md";
+import FeedBack from "../FeedBack/FeedBack";
 
 const Page = () => {
   // Modal state
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modal, setModal] = useState([]);
+  const [shuffledVendors, setShuffledVendors] = useState([]);
+
+  // Function to shuffle vendors using Fisher-Yates algorithm
+  const shuffleArray = (array) => {
+    let shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  useEffect(() => {
+    setShuffledVendors(shuffleArray(Vendors)); // Shuffle vendors on component mount
+  }, []);
 
   // Fetch modal data
   const getAllModal = async () => {
@@ -53,10 +72,12 @@ const Page = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const vendorsPerPage = 6;
 
-  // Get current vendors
   const indexOfLastVendor = currentPage * vendorsPerPage;
   const indexOfFirstVendor = indexOfLastVendor - vendorsPerPage;
-  const currentVendors = Vendors.slice(indexOfFirstVendor, indexOfLastVendor);
+  const currentVendors = shuffledVendors.slice(
+    indexOfFirstVendor,
+    indexOfLastVendor
+  );
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -92,7 +113,7 @@ const Page = () => {
         {/* Breadcrumbs */}
         <div className="breadcrumb-container">
           <div className="bread-crumbs_content">
-            <div style={{ fontSize: 35, fontWeight: "900" }}>MealSection</div>
+            <div className="bread-crumb-head">MealSection</div>
             <div style={{ fontSize: 16, fontWeight: "500" }}>
               Home <RiArrowRightSLine /> Vendors
             </div>
@@ -101,7 +122,7 @@ const Page = () => {
 
         {/* Offer Section */}
         <div className="offer-container">
-          <div className="d-flex align-items-center justify-content-between">
+          <div className="d-md-flex d-sm-block align-items-center justify-content-between">
             <div className="offer-header">What we offer at MealSection</div>
             <div className="arrows-direction-container">
               <div>
@@ -113,7 +134,7 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="what-we-offer-container">
+          <div className="what-we-offer-container mt-3">
             <div className="offer-items shadow-sm rounded">
               <div className="shadow-sm p-3 rounded-circle">
                 <img src={bike} width={80} />
@@ -161,6 +182,8 @@ const Page = () => {
           </div>
         </div>
 
+        {/* feed back  */}
+        <FeedBack />
         {/* Category Section */}
         <div className="Category">
           <div className="category-head-container">
@@ -254,57 +277,7 @@ const Page = () => {
             ))}
           </div>
         </div>
-        {/* /feed back  */}
-        <div className="feed-back-container mt-4">
-          <div className="header">
-            <div className="feed_Back_SUbhead">Feed-Backs</div>
-            <div className="feed-back-header">Customer Feedback💛</div>
-          </div>
-          <div
-            className="p-5"
-            style={{
-              display: "flex",
-              alignItems: "start",
-              justifyContent: "space-around",
-              gap: 30,
-              overflow: "scroll",
-              scrollbarWidth: "none",
-            }}
-          >
-            {loader ? (
-              <div className="d-flex justify-content-center mt-5">
-                <div className="spinner-border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </div>
-              </div>
-            ) : (
-              review
-                .filter((item) => item.show === true)
-                .map((item) => {
-                  return (
-                    <div className="feed-backs shadow-sm rounded p-3">
-                      <div
-                        style={{
-                          display: "flex",
-                          gap: 10,
-                          alignItems: "center",
-                        }}
-                      >
-                        <FaUserCircle color="#787878" size={60} />
-                        <div>
-                          <div className="user-feedback-name">{item.name}</div>
-                          <div className="user-feedback-category">Student</div>
-                        </div>
-                      </div>
-                      <div className="feed-back-content mt-4">
-                        {item.Content}
-                      </div>
-                    </div>
-                  );
-                })
-            )}
-          </div>
-        </div>
+
         {/* Modal */}
         <div className={modalIsOpen ? "modal-body-Active" : "modal-body"}>
           <div className="modal-container shadow">

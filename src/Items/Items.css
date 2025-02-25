@@ -1,8 +1,23 @@
 :root {
-  --font: "Inter", sans-serif;
   --shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.09);
   --text-color: #181c14;
   --default-color: #a4161bc0;
+}
+@font-face {
+  font-family: poppinsBold;
+  src: url(../font/Poppins-Bold.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsMedium;
+  src: url(../font/Poppins-Medium.ttf);
 }
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 .product_img {
@@ -29,7 +44,7 @@
   font-family: inter, sans-serif;
 }
 .name {
-  font-family: inter, sans-serif !important;
+  font-family: poppinsMedium !important;
   /* font-weight: 600; */
   font-size: 14px;
   width: 170px;
@@ -37,30 +52,32 @@
 }
 .price {
   font-size: 15px;
-  font-family: inter, sans-serif !important;
+  font-family: poppinsMedium !important;
 }
 .addCart {
   border: none;
   background-color: #a4161bc0;
   color: #fff;
   padding: 5px 15px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: poppinsMedium;
   text-transform: capitalize;
   letter-spacing: 1px;
   border-radius: 20px;
   transition: 0.3s;
   margin-top: 20px;
+  font-size: 14px;
 }
 .incart {
   border: none;
   background-color: rgb(20, 20, 20);
   color: #fff;
   padding: 5px 15px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: poppinsMedium;
   text-transform: capitalize;
   letter-spacing: 1px;
   border-radius: 20px;
   transition: 0.3s;
+  font-size: 14px;
 }
 .addCart:hover {
   background-color: #a4161b;
@@ -162,7 +179,7 @@
   color: red;
   text-transform: capitalize;
   font-weight: bold;
-  font-family: var(--font);
+  font-family: poppinsMedium;
 }
 @media screen and (max-width: 420px) {
   .quantityBox {
