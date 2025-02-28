@@ -15,6 +15,9 @@ import { FaPlusCircle } from "react-icons/fa";
 import { TbCurrencyNaira } from "react-icons/tb";
 import { IoAdd } from "react-icons/io5";
 import { ContextApi } from "../ShopContext/ShopContext";
+import Footer from "../footer/Footer";
+import BackToTop from "../BackToTop/BackToTop";
+import Slider from "react-slick";
 const ProductStore = ({ Store }) => {
   const { addToCart, cartItms } = useContext(ContextApi);
   const [category, setCategory] = useState("All");
@@ -109,7 +112,40 @@ const ProductStore = ({ Store }) => {
   ) {
     pageNumbers.push(i);
   }
-
+  var settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <div>
       <Nav />
@@ -228,9 +264,7 @@ const ProductStore = ({ Store }) => {
             )}
           </div>
         ) : null}
-        <div className="Popular-container">
-          <Trending Store={Store} />
-        </div>
+        <Trending Store={Store} />
         <div className="category-type-container">
           <div style={{ position: "relative" }}>
             <div className="Product_SUbhead text-center">
@@ -240,66 +274,68 @@ const ProductStore = ({ Store }) => {
           </div>
 
           <div className="category-type my-3">
-            <div
-              className={
-                category === "All"
-                  ? "category-type-item-active"
-                  : "category-type-item"
-              }
-              onClick={() => setCategory("All")}
-            >
-              All
-            </div>
-            <div
-              className={
-                category === "Carbohydrate"
-                  ? "category-type-item-active"
-                  : "category-type-item"
-              }
-              onClick={() => setCategory("Carbohydrate")}
-            >
-              Carbohydrate
-            </div>
-            <div
-              className={
-                category === "Drink"
-                  ? "category-type-item-active"
-                  : "category-type-item"
-              }
-              onClick={() => setCategory("Drink")}
-            >
-              Drinks
-            </div>
-            <div
-              className={
-                category === "junks"
-                  ? "category-type-item-active"
-                  : "category-type-item"
-              }
-              onClick={() => setCategory("junks")}
-            >
-              Pastries & junks
-            </div>
-            <div
-              className={
-                category === "Protein"
-                  ? "category-type-item-active"
-                  : "category-type-item"
-              }
-              onClick={() => setCategory("Protein")}
-            >
-              Proteins
-            </div>
-            <div
-              className={
-                category === "pack"
-                  ? "category-type-item-active"
-                  : "category-type-item"
-              }
-              onClick={() => setCategory("pack")}
-            >
-              pack
-            </div>
+            <Slider {...settings}>
+              <div
+                className={
+                  category === "All"
+                    ? "category-type-item-active"
+                    : "category-type-item"
+                }
+                onClick={() => setCategory("All")}
+              >
+                All
+              </div>
+              <div
+                className={
+                  category === "Carbohydrate"
+                    ? "category-type-item-active"
+                    : "category-type-item"
+                }
+                onClick={() => setCategory("Carbohydrate")}
+              >
+                Carbohydrate
+              </div>
+              <div
+                className={
+                  category === "Drink"
+                    ? "category-type-item-active"
+                    : "category-type-item"
+                }
+                onClick={() => setCategory("Drink")}
+              >
+                Drinks
+              </div>
+              <div
+                className={
+                  category === "junks"
+                    ? "category-type-item-active"
+                    : "category-type-item"
+                }
+                onClick={() => setCategory("junks")}
+              >
+                Pastries
+              </div>
+              <div
+                className={
+                  category === "Protein"
+                    ? "category-type-item-active"
+                    : "category-type-item"
+                }
+                onClick={() => setCategory("Protein")}
+              >
+                Proteins
+              </div>
+              <div
+                className={
+                  category === "pack"
+                    ? "category-type-item-active"
+                    : "category-type-item"
+                }
+                onClick={() => setCategory("pack")}
+              >
+                pack
+              </div>
+            </Slider>
           </div>
         </div>
         {/* sort by  */}
@@ -312,7 +348,7 @@ const ProductStore = ({ Store }) => {
           </div>
         ) : (
           <div className="products">
-            <div className="our-product-container mt-3">
+            <div className="itemBody1">
               {currentProduct.length === 0 ? (
                 <>No product found</>
               ) : (
@@ -321,6 +357,7 @@ const ProductStore = ({ Store }) => {
                     key={item.id}
                     Pname={item.Pname}
                     price={item.price}
+                    category={item.category}
                     image={item.image}
                     id={item.id}
                     availability={item.availability}
@@ -346,6 +383,8 @@ const ProductStore = ({ Store }) => {
           </div>
         )}
       </div>
+      <BackToTop />
+      <Footer />
     </div>
   );
 };

@@ -173,17 +173,21 @@ const Nav = () => {
               : "navigation-box-sm-active shadow"
           }
         >
-          <div className="close-btn-cont d-flex align-items-end justify-content-end p-3">
-            <div
-              className="close-btn shadow-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              <IoClose size={20} />
+          <div className="d-flex align-items-center justify-content-between ps-4 pe-3 pt-3 pb-1">
+            <div className="">
+              <div className="menu">menu</div>
+            </div>
+            <div className="close-btn-cont d-flex align-items-end justify-content-end">
+              <div
+                className="close-btn shadow-sm"
+                onClick={() => setIsOpen(false)}
+              >
+                <IoClose size={20} />
+              </div>
             </div>
           </div>
-          <div className="px-4">
-            <img src={logo} className="nav-logo-sm" alt="" />
-          </div>
+          <div className="menu-hr"></div>
+
           <div className="Navigation_Container_sm">
             <ul>
               <li>
@@ -212,18 +216,22 @@ const Nav = () => {
                   FAQ
                 </Link>
               </li>
-              <div>
+              <li>
                 <Link to="/cart" className="wishlistandcart">
                   Cart
                   <div className="Cart_COunt-sm mb-2">{totalCartItems()}</div>
                 </Link>
+              </li>
+
+              <li>
                 <Link to="/wishlist" className="wishlistandcart">
                   WishList
                   <div className="Cart_COunt-sm mb-2">{totalWishList()}</div>
                 </Link>
-              </div>
-
-              <button className="btn btn-danger">{formatTime(time)}</button>
+              </li>
+              <button className="btn btn-danger time">
+                {formatTime(time)}
+              </button>
             </ul>
           </div>
         </div>

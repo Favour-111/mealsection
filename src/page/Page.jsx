@@ -233,6 +233,7 @@ const Page = () => {
           <div className="vendor-list-container">
             {currentVendors.map((item, index) => (
               <Link
+                onClick={() => window.scrollTo(0, 0)}
                 to={`/${item.name}`}
                 key={index}
                 className="vendor-items shadow-sm"

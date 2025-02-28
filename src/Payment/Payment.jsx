@@ -20,28 +20,32 @@ import { ContextApi } from "../ShopContext/ShopContext";
 import axios from "axios";
 import swal from "sweetalert";
 import { FaNoteSticky, FaPaperclip, FaWhatsapp } from "react-icons/fa6";
+import { PaystackButton } from "react-paystack";
+import formBlob from "../assets/login1.png";
+import { useRef } from "react";
+
 const Payment = () => {
   const { cartItms } = useContext(ContextApi);
   const location = useLocation();
-  const { receiptID, total, cartItem, vendor, deliveryFee, serviceFee } =
-    location.state;
-  const navigate = useNavigate();
-  const [copied, setCopied] = useState(false);
-  const textToCopy = "6413130454";
-  const [page, setPage] = useState("form");
-  const [uploadPage, setUploadPage] = useState("uploadpg");
-  const [image, setImage] = useState();
-  const [loader, setLoader] = useState(false);
-  // Handle image upload
-  const handleImage = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
-    setForm((prevForm) => ({ ...prevForm, image: file }));
-  };
+  const {
+    receiptID,
+    total,
+    cartItem,
+    vendor,
+    deliveryFee,
+    serviceFee,
+    checked,
+  } = location.state || {};
 
+  const navigate = useNavigate();
+  // const [copied, setCopied] = useState(false);
+  const textToCopy = "6413130454";
+  const [loader, setLoader] = useState(false);
+  const publickey = "pk_test_906a70561b64d6cbee516bc9258552ffce77f14a";
   // Form state with cart items and their quantities
   const [form, setForm] = useState({
     name: "",
+    email: "",
     phoneNumber: "",
     WhatsApp: "",
     gender: "",
@@ -51,14 +55,12 @@ const Payment = () => {
     Note: "",
     cartItems: cartItem, // Initialize with an empty array
     Vendor: vendor || "",
-    image: image,
   });
 
   // Populate cart items with product names and quantities
   useEffect(() => {
     if (cartItem?.length > 0 && cartItms) {
       const updatedCartItems = cartItem.map((item) => ({
-        productImage: item.image,
         category: item.category,
         productId: item.id,
         productName: item.Pname,
@@ -81,40 +83,7 @@ const Payment = () => {
     setForm({ ...form, [name]: value });
   };
 
-  // Handle copy to clipboard
-  const handleCopy = () => {
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        setCopied(true);
-        toast.success("Copied to clipboard!");
-        setTimeout(() => setCopied(false), 2000);
-      });
-    } else {
-      const textArea = document.createElement("textarea");
-      textArea.value = textToCopy;
-      document.body.appendChild(textArea);
-      textArea.select();
-      try {
-        document.execCommand("copy");
-        setCopied(true);
-        toast.success("Copied to clipboard!");
-      } catch (err) {
-        console.error("Failed to copy: ", err);
-        toast.error("Failed to copy text.");
-      }
-      document.body.removeChild(textArea);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!form.image) {
-      toast.error("Please upload an image");
-      return;
-    }
-
+  const handlePaymentSuccess = async (response) => {
     const formData = new FormData();
     formData.append("name", form.name);
     formData.append("phoneNumber", form.phoneNumber);
@@ -126,21 +95,27 @@ const Payment = () => {
     formData.append("Note", form.Note);
     formData.append("cartItems", JSON.stringify(form.cartItems));
     formData.append("Vendor", form.Vendor);
-    formData.append("image", form.image);
+    formData.append("email", form.email);
 
     try {
       setLoader(true);
-      const response = await axios.post(
-        "https://msback.onrender.com/PostOrder",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/PostOrder",
+          form,
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        console.log("Response:", response.data);
+      } catch (error) {
+        console.error("Axios Error:", error.message);
+      }
 
-      if (response) {
+      console.log("Server Response:", response.data);
+      console.log(form);
+
+      if (response.status === 200) {
         navigate("/order", { state: { form, deliveryFee, serviceFee } }); // Pass the form state to the next page
       } else {
         swal({
@@ -165,271 +140,232 @@ const Payment = () => {
     }
   };
 
-  const changePage = () => {
-    if (
-      form.name === "" ||
-      form.phoneNumber === "" ||
-      form.WhatsApp === "" ||
-      form.gender === "" ||
-      form.Address === ""
-    ) {
-      swal({
-        title: "Error!",
-        text: "inputs are required",
-        icon: "error",
-        buttons: {
-          confirm: {
-            text: "Okay",
-            value: true,
-            visible: true,
-            className: "btn btn-danger",
-            closeModal: true,
-          },
-        },
-      });
-    } else if (isNaN(form.phoneNumber) || isNaN(form.WhatsApp)) {
-      swal({
-        title: "Error!",
-        text: "inputs numbers in the phone number and whatApp number space",
-        icon: "error",
-        buttons: {
-          confirm: {
-            text: "Okay",
-            value: true,
-            visible: true,
-            className: "btn btn-danger",
-            closeModal: true,
-          },
-        },
-      });
-    } else {
-      setPage("uploadpg");
-    }
+  // Paystack configuration
+  const paystackConfig = {
+    email: form.email,
+    amount: total * 100, // Convert to Kobo
+    publicKey: publickey,
+    reference: `MS_${new Date().getTime()}`, // Generate unique reference
+    currency: "NGN",
+    metadata: {
+      name: form.name,
+      phoneNumber: form.phoneNumber,
+    },
+    text: "Pay Now",
+    onSuccess: handlePaymentSuccess,
+    onClose: () => alert("Are you sure you want to close?"),
   };
 
+  // Handle copy to clipboard
+  // const handleCopy = () => {
+  //   if (navigator.clipboard && window.isSecureContext) {
+  //     navigator.clipboard.writeText(textToCopy).then(() => {
+  //       setCopied(true);
+  //       toast.success("Copied to clipboard!");
+  //       setTimeout(() => setCopied(false), 2000);
+  //     });
+  //   } else {
+  //     const textArea = document.createElement("textarea");
+  //     textArea.value = textToCopy;
+  //     document.body.appendChild(textArea);
+  //     textArea.select();
+  //     try {
+  //       document.execCommand("copy");
+  //       setCopied(true);
+  //       toast.success("Copied to clipboard!");
+  //     } catch (err) {
+  //       console.error("Failed to copy: ", err);
+  //       toast.error("Failed to copy text.");
+  //     }
+  //     document.body.removeChild(textArea);
+  //     setTimeout(() => setCopied(false), 2000);
+  //   }
+  // };
+
+  // const handlePaymentSuccess = async (response) => {
+  //   try {
+  //     setLoader(true);
+
+  //     const formData = new FormData();
+  //     formData.append("name", form.name);
+  //     formData.append("phoneNumber", form.phoneNumber);
+  //     formData.append("WhatsApp", form.WhatsApp);
+  //     formData.append("gender", form.gender);
+  //     formData.append("totalPrice", form.totalPrice);
+  //     formData.append("Address", form.Address);
+  //     formData.append("orderId", form.orderId);
+  //     formData.append("Note", form.Note);
+  //     formData.append("cartItems", JSON.stringify(form.cartItems));
+  //     formData.append("Vendor", form.Vendor);
+
+  //     const response = await axios.post(
+  //       "https://msback.onrender.com/PostOrder",
+  //       formData,
+  //       {
+  //         headers: { "Content-Type": "multipart/form-data" },
+  //       }
+  //     );
+
+  //     if (response.status === 200) {
+  //       navigate("/order", { state: { form, deliveryFee, serviceFee } });
+  //     } else {
+  //       swal({
+  //         title: "Error!",
+  //         text: "Network Error, try again.",
+  //         icon: "error",
+  //         buttons: {
+  //           confirm: {
+  //             text: "Okay",
+  //             value: true,
+  //             visible: true,
+  //             className: "btn btn-danger",
+  //             closeModal: true,
+  //           },
+  //         },
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error(error.message);
+  //     swal({
+  //       title: "Error!",
+  //       text: "Something went wrong. Try again.",
+  //       icon: "error",
+  //       buttons: {
+  //         confirm: {
+  //           text: "Okay",
+  //           value: true,
+  //           visible: true,
+  //           className: "btn btn-danger",
+  //           closeModal: true,
+  //         },
+  //       },
+  //     });
+  //   } finally {
+  //     setLoader(false);
+  //   }
+  // };
   return (
     <div>
-      {uploadPage === "uploadpg" ? (
-        <div className="header">
-          <div className="back mt-3" onClick={() => window.history.back()}>
-            <MdKeyboardArrowLeft size={30} />
-          </div>
-          <div className="logo p-4">
-            <img src={background} alt="" width={170} />
-          </div>
-          <div className="breadcrumbs">
-            home <MdKeyboardArrowRight /> cart <MdKeyboardArrowRight /> checkout{" "}
-            <MdKeyboardArrowRight />
-          </div>
+      <div className="header">
+        <div className="back m-3" onClick={() => window.history.back()}>
+          <MdKeyboardArrowLeft size={30} />
+        </div>
 
-          {page === "form" ? (
-            <div className="form-container2">
+        <div className="bread-crumbs">
+          <div className="bread-crumbs-container">
+            <div className="Bread-crumbs-Header">Checkout</div>
+            <div className="d-flex gap-1 breadCrumb-content">
+              <div
+                onClick={() => navigate("/home")}
+                style={{
+                  cursor: "pointer",
+                }}
+              >
+                Home
+              </div>
+              <div>
+                <img
+                  width="10"
+                  height="10"
+                  src="https://img.icons8.com/ios-glyphs/30/forward.png"
+                  alt="forward"
+                />
+              </div>
+              <span>checkout</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="form-container2">
+          <div>
+            <img src={formBlob} alt="" className="form-blob" />
+          </div>
+          <div className="mt-5">
+            <div className="form-body">
               <div className="headercontact">Contact Information</div>
-              <div className="form-body">
-                <div className="review-form shadow p-4">
-                  <form>
-                    <div className="review-form-item">
+              <div className="headercontact2 mb-1">
+                input all contact information
+              </div>
+              <div className="instruction">
+                Please ensure that all fields are filled out before proceeding.
+                Every input is required to complete this form successfully
+              </div>
+              <div className="review-form shadow p-4">
+                <form onSubmit={(e) => e.preventDefault()}>
+                  <div className="row w-100">
+                    <div className="review-form-item col-md-6 col-sm-12">
                       <label htmlFor="name">Your Name</label>
-                      <div className="d-flex align-items-center gap-2 form-input">
-                        <CiUser size={20} />
-                        <input
-                          type="text"
-                          onChange={handleInput}
-                          placeholder="Input Name"
-                          name="name"
-                        />
-                      </div>
+
+                      <input type="text" onChange={handleInput} name="name" />
                     </div>
-                    <div className="review-form-item">
+                    <div className="review-form-item col-md-6 col-sm-12">
                       <label htmlFor="phone">Phone number</label>
-                      <div className="d-flex align-items-center gap-2 form-input">
-                        <CiPhone size={20} />
-                        <input
-                          type="text"
-                          onChange={handleInput}
-                          placeholder="Input Phone Number"
-                          name="phoneNumber"
-                        />
-                      </div>
-                    </div>
-                    <div className="review-form-item">
-                      <label htmlFor="phone">Note</label>
-                      <div className="d-flex align-items-center gap-2 form-input">
-                        <FaPaperclip size={20} />
-                        <input
-                          type="text"
-                          onChange={handleInput}
-                          placeholder="Input Note(Optional)"
-                          name="Note"
-                        />
-                      </div>
-                    </div>
-                    <div className="review-form-item">
-                      <label htmlFor="phone">WhatsApp</label>
-                      <div className="d-flex align-items-center gap-2 form-input">
-                        <FaWhatsapp size={20} />
-                        <input
-                          type="text"
-                          onChange={handleInput}
-                          placeholder="Input whatApp Number"
-                          name="WhatsApp"
-                        />
-                      </div>
-                    </div>
-                    <div className="review-form-item">
-                      <label htmlFor="gender">Gender</label>
-                      <select
-                        className="form-select"
+
+                      <input
+                        type="text"
                         onChange={handleInput}
-                        name="gender"
-                      >
-                        <option value="">Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                      </select>
+                        name="phoneNumber"
+                      />
                     </div>
+                  </div>
+                  <div className="review-form-item ">
+                    <label htmlFor="phone">Email</label>
+
+                    <input type="email" onChange={handleInput} name="email" />
+                  </div>
+
+                  <div className="row w-100">
+                    <div className="review-form-item col-md-6 col-sm-12">
+                      <label htmlFor="phone">Note</label>
+
+                      <input
+                        type="text"
+                        onChange={handleInput}
+                        placeholder="(Optional)"
+                        name="Note"
+                      />
+                    </div>
+
+                    <div className="review-form-item col-md-6 col-sm-12">
+                      <label htmlFor="phone">WhatsApp</label>
+
+                      <input
+                        type="text"
+                        onChange={handleInput}
+                        name="WhatsApp"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="review-form-item">
+                    <label htmlFor="gender">Gender</label>
+                    <br />
+                    <select onChange={handleInput} name="gender">
+                      <option value="">Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+                  {checked === true ? null : (
                     <div className="review-form-item">
                       <label htmlFor="location">Location</label>
                       <textarea
                         onChange={handleInput}
                         name="Address"
-                        className="p-2 mt-2"
-                        placeholder="Input delivery location here"
+                        className="p-2 mt-1"
                       ></textarea>
                     </div>
-
-                    <div>
-                      <button
-                        className="review-submit-btn"
-                        type="button"
-                        onClick={changePage}
-                      >
-                        Next <MdKeyboardArrowRight size={20} />
-                      </button>
-                    </div>
-                  </form>
-                </div>
+                  )}
+                  <PaystackButton
+                    className="review-button"
+                    {...paystackConfig}
+                  />
+                </form>
               </div>
             </div>
-          ) : (
-            /* Payment Info */
-            <div className="payment-info-container py-5">
-              <div className="Payment-icn">
-                <img src={hourglass} width={170} alt="" />
-              </div>
-              <div className="account-information-cont">
-                <div className="">
-                  <div className="account">Total Amount: {total || 0}</div>
-                </div>
-                <div className="d-flex gap-1">
-                  <div className="account d-flex justify-content-center align-items-center">
-                    {textToCopy}{" "}
-                    <div className="back ms-0" onClick={handleCopy}>
-                      <FaRegCopy />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="">
-                  <div className="account">Account Name : TAYE AWHANA</div>
-                </div>
-              </div>
-              <div className="">
-                <div className="account">Bank: Moniepoint MFB</div>
-              </div>
-
-              {/* Account Info */}
-              <div className="mt-3 px-3">
-                <button
-                  className="review-submit-btn"
-                  onClick={() => setUploadPage("")}
-                  type="button"
-                >
-                  Next <MdKeyboardArrowRight size={20} />
-                </button>
-                <button
-                  className="review-submit-btn ms-3"
-                  onClick={() => setPage("form")}
-                  type="button"
-                >
-                  Previous <MdKeyboardArrowLeft size={20} />
-                </button>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
-      ) : (
-        <>
-          <div className="back mt-3" onClick={() => window.history.back()}>
-            <MdKeyboardArrowLeft size={30} />
-          </div>
-          <div className="logo p-4">
-            <img src={background} alt="" width={170} />
-          </div>
-          <div className="breadcrumbs">
-            home <MdKeyboardArrowRight /> cart <MdKeyboardArrowRight /> checkout{" "}
-            <MdKeyboardArrowRight />
-          </div>
-          <div className="px-3">
-            <p className="text-danger fw-bold">Avoid refreshing this page</p>
-            <p className="text-danger fw-bold">
-              Note:"Please upload your proof of payment here if the payment has
-              been completed"
-            </p>
-          </div>
-          <div className="payment-receipt">
-            <form action="" onSubmit={handleSubmit}>
-              <label htmlFor="form-image" className="form-label mb-3">
-                payment receipt
-              </label>
-
-              <input
-                type="file"
-                hidden
-                id="form-image"
-                onChange={handleImage}
-              />
-              <label
-                htmlFor="form-image"
-                className="upload-area"
-                id="form-image"
-              >
-                {image ? (
-                  <img src={URL.createObjectURL(image)} width={80} />
-                ) : (
-                  <LuUploadCloud size={80} />
-                )}
-              </label>
-              <button
-                className={
-                  image ? "item-submit-btn-active" : "item-submit-btn "
-                }
-                type="submit"
-              >
-                {loader ? (
-                  <div
-                    className="spinner-border spinner-border-sm"
-                    role="status"
-                  >
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
-                ) : (
-                  <span>
-                    Submit <MdKeyboardArrowRight size={20} />
-                  </span>
-                )}
-              </button>
-              <button
-                className="review-submit-btn ms-3"
-                onClick={() => setPage("form")}
-                type="button"
-              >
-                Previous <MdKeyboardArrowLeft size={20} />
-              </button>
-            </form>
-          </div>
-        </>
-      )}
+      </div>
 
       <ToastContainer />
     </div>

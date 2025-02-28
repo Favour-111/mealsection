@@ -48,14 +48,23 @@ const ShopContext = (props) => {
       [itemId]: Math.max(0, prev[itemId] - 1),
     }));
   };
+  // Add item to wishlist
   const addtowishList = (itemId) => {
-    setWishList((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    if (!itemId) {
+      console.error("Invalid itemId passed to addtowishList:", itemId);
+      return;
+    }
+    setWishList((prev = {}) => ({ ...prev, [itemId]: 1 }));
   };
+
+  // Remove item from wishlist
   const RemoveList = (itemId) => {
-    setWishList((prev) => ({
-      ...prev,
-      [itemId]: 0,
-    }));
+    setWishList((prev) => {
+      if (!prev[itemId]) return prev;
+      const updatedList = { ...prev };
+      delete updatedList[itemId]; // Remove the key instead of setting 0
+      return updatedList;
+    });
   };
   const totalCartItems = () => {
     let total = 0;
@@ -105,6 +114,7 @@ const ShopContext = (props) => {
     getTotalValue,
     totalWishList,
   };
+
   return (
     <ContextApi.Provider value={values}>{props.children}</ContextApi.Provider>
   );

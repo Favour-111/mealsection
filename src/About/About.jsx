@@ -7,6 +7,7 @@ import background from "../images/Background.jpg";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import axios from "axios";
+import FeedBack from "../FeedBack/FeedBack";
 const About = () => {
   //getting review state
   const [review, setReview] = useState([]);
@@ -117,51 +118,8 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="feed-back-container">
-          <div className="header">
-            <div className="feed_Back_SUbhead">Feed-Backs</div>
-            <div className="feed-back-header">Customer Feedback💛</div>
-          </div>
-          <div
-            className="p-5"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-around",
-              gap: 30,
-              overflow: "scroll",
-              scrollbarWidth: "none",
-            }}
-          >
-            {loader ? (
-              <div className="d-flex justify-content-center mt-5">
-                <div className="spinner-border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </div>
-              </div>
-            ) : (
-              review.map((item) => {
-                return (
-                  <div className="feed-backs shadow-sm rounded p-3">
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: 10,
-                        alignItems: "center",
-                      }}
-                    >
-                      <FaUserCircle color="#787878" size={60} />
-                      <div>
-                        <div className="user-feedback-name">{item.name}</div>
-                        <div className="user-feedback-category">Student</div>
-                      </div>
-                    </div>
-                    <div className="feed-back-content mt-4">{item.Content}</div>
-                  </div>
-                );
-              })
-            )}
-          </div>
+        <div>
+          <FeedBack />
         </div>
         <Footer />
       </div>

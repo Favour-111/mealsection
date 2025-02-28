@@ -1,9 +1,25 @@
 :root {
-  --font: "Inter", sans-serif;
   --shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.09);
   --text-color: #181c14;
   --default-color: #a4161bc0;
 }
+@font-face {
+  font-family: poppinsBold;
+  src: url(../font/Poppins-Bold.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsMedium;
+  src: url(../font/Poppins-Medium.ttf);
+}
+
 .breadcrumbs {
   padding: 10px 20px;
   color: var(--text-color);
@@ -12,11 +28,25 @@
   font-weight: 600;
 }
 .headercontact {
-  font-weight: bold;
-  font-size: 27px;
-  text-align: center;
+  font-size: 23px;
   color: var(--text-color);
-  font-family: var(--font);
+  font-family: poppinsSemiBold;
+}
+.headercontact2 {
+  font-size: 13px;
+  color: #787878;
+  font-family: poppinsMedium;
+  margin-top: 10px;
+}
+.instruction {
+  font-family: poppinsLight;
+  color: #787878;
+  font-size: 12px;
+  width: 400px;
+  margin-top: 20px;
+}
+.headercontact2::first-letter {
+  text-transform: capitalize;
 }
 .form-input {
   overflow: scroll !important;
@@ -24,82 +54,81 @@
 }
 .form-container2 {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 50px;
   width: 100% !important;
   padding: 0 !important;
+}
+.form-blob {
+  width: 300px;
 }
 .form-body {
   margin-top: 20px;
 }
-.payment-info-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
-.Payment-icn {
-  background-color: #00000018;
-  height: 250px;
-  width: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100%;
-  margin-top: 40px;
-}
-.account {
-  background-color: #00000018;
-  padding: 10px;
-  margin-bottom: 10px;
-  width: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.account-information-cont {
-  margin-top: 80px;
-}
-.payment-receipt {
-  padding: 10px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.upload-area {
-  height: 200px;
-  width: 500px;
-  border: 3px dotted rgba(0, 0, 0, 0.338);
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .review-form {
-  height: 100% !important;
-}
-.item-submit-btn {
-  padding: 10px 40px;
-  transition: 250ms;
-  border: none;
-  border-radius: 5px;
-  margin-top: 10px;
-  font-family: var(--font);
-  background-color: #0000001e;
-}
-.item-submit-btn-active {
-  padding: 10px 40px;
-  transition: 250ms;
-  border: none;
-  border-radius: 5px;
-  margin-top: 10px;
-  font-family: var(--font);
-  background-color: var(--default-color);
+  width: 500px;
+  height: auto !important;
+  label {
+    font-family: poppinsMedium;
+    font-size: 13px;
+    color: #181c14 !important;
+  }
+  .review-form-item {
+    margin-top: 10px;
+  }
+  input {
+    border: 1px solid #e3e3e3;
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-family: poppinsMedium;
+    font-size: 13px;
+    width: 100% !important;
+    outline: blue !important;
+  }
+  ::placeholder {
+    font-family: poppinsMedium;
+    font-size: 12px;
+  }
+  select {
+    font-family: poppinsMedium;
+    font-size: 13px;
+    width: 95% !important;
+    border: 1px solid #e3e3e3;
+    padding: 8px 10px;
+    border-radius: 5px;
+    outline: none !important;
+  }
+  textarea {
+    font-family: poppinsMedium;
+    font-size: 13px;
+    width: 95% !important;
+    border: 1px solid #e3e3e3;
+    padding: 8px 10px;
+    border-radius: 5px;
+    outline: none !important;
+    resize: none;
+    height: 80px !important;
+  }
+  .review-button {
+    font-family: poppinsMedium;
+    font-size: 13px;
+    width: 95% !important;
+    margin-top: 10px;
+    border: none;
+    padding: 10px 0;
+    border-radius: 10px;
+    transition: 350ms;
+  }
+  .review-button:hover {
+    color: white;
+    background-color: var(--default-color);
+  }
 }
 @media screen and (max-width: 768px) {
+  .form-blob {
+    display: none;
+  }
   .headercontact {
     margin-top: 30px;
   }
@@ -107,12 +136,18 @@
     width: 100% !important;
   }
   .form-body {
-    margin-top: 1px;
-    padding: 20px;
+    margin-top: 0 !important;
+    padding: 15px;
     width: 100% !important;
   }
   .upload-area {
     width: 350px;
+  }
+  .form-container2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 !important;
   }
 }
 @media screen and (max-width: 540px) {

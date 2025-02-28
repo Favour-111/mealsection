@@ -3,7 +3,7 @@ import Store from "./Store";
 import { Route, Routes } from "react-router-dom";
 import ProductStore from "./ProductStores/ProductStore";
 import ShopContext from "./ShopContext/ShopContext";
-import Cart from "./Cart/Cart";
+import Cart from "./cart/Cart";
 import WishList from "./WishList/WishList";
 import Login from "./Login/Login";
 import Landing from "./Landing/Landing";
