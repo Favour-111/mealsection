@@ -76,6 +76,7 @@
   }
   .review-form-item {
     margin-top: 10px;
+    width: 100% !important;
   }
   input {
     border: 1px solid #e3e3e3;
@@ -95,7 +96,8 @@
     font-size: 13px;
     width: 95% !important;
     border: 1px solid #e3e3e3;
-    padding: 8px 10px;
+    padding: 8px 10px !important;
+    color: #181c14 !important;
     border-radius: 5px;
     outline: none !important;
   }
@@ -114,6 +116,7 @@
     font-family: poppinsMedium;
     font-size: 13px;
     width: 95% !important;
+    color: #181c14 !important;
     margin-top: 10px;
     border: none;
     padding: 10px 0;
@@ -121,7 +124,7 @@
     transition: 350ms;
   }
   .review-button:hover {
-    color: white;
+    color: white !important;
     background-color: var(--default-color);
   }
 }
@@ -143,6 +146,7 @@
   }
   .instruction {
     padding: 0 20px;
+    width: 100% !important;
   }
   .review-form {
     width: 100% !important;

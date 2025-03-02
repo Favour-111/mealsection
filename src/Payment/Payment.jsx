@@ -382,7 +382,7 @@ const Payment = () => {
                         )}
                       </div>
                     </div>
-                    <div className="review-form-item ">
+                    <div className="review-form-item col-sm-12">
                       <label htmlFor="phone">Email</label>
 
                       <input type="email" onChange={handleInput} name="email" />
