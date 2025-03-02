@@ -27,6 +27,10 @@ const ProductStore = ({ Store }) => {
   const productPerPage = 10; // Set how many products per page
   const [input, setInput] = useState("");
   const [productSearch, setProductSearch] = useState(false);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Fetch all products
   const getAllProduct = async () => {
     try {

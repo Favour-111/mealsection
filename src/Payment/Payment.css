@@ -105,9 +105,15 @@
     outline: none !important;
     background-color: transparent;
   }
+  input,
+  select,
+  textarea {
+    font-size: 13px !important;
+  }
+
   textarea {
     font-family: poppinsMedium;
-    font-size: 13px;
+    font-size: 13px !;
     border: 1px solid #e3e3e3;
     padding: 8px 10px;
     border-radius: 5px;
