@@ -151,7 +151,7 @@ const Payment = () => {
     try {
       setLoader(true);
       const response = await axios.post(
-        "http://localhost:5000/PostOrder",
+        "https://msback.onrender.com/PostOrder",
         formDataObject,
         {
           headers: { "Content-Type": "application/json" },
