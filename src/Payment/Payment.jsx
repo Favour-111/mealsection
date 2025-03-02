@@ -13,14 +13,13 @@ import {
   FaRegCopy,
   FaStore,
 } from "react-icons/fa";
-import { LuUploadCloud } from "react-icons/lu";
+// import { LuUploadCloud } from "react-icons/lu";
 import { useLocation, useNavigate } from "react-router-dom";
-import { FiPackage } from "react-icons/fi";
+// import { FiPackage } from "react-icons/fi";
 import { ContextApi } from "../ShopContext/ShopContext";
 import axios from "axios";
 import swal from "sweetalert";
-import { FaNoteSticky, FaPaperclip, FaWhatsapp } from "react-icons/fa6";
-import { PaystackButton } from "react-paystack";
+// import { FaNoteSticky, FaPaperclip, FaWhatsapp } from "react-icons/fa6";
 import formBlob from "../assets/login1.png";
 import PaystackPop from "@paystack/inline-js";
 
