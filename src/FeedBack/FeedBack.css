@@ -19,9 +19,22 @@
   font-family: poppinsMedium;
   src: url(../font/Poppins-Medium.ttf);
 }
+.feed {
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+  width: 100%;
+}
+
+.slick-slider {
+  overflow: hidden; /* Prevents horizontal scrolling due to Slick */
+}
 
 .feed-back-container {
-  margin: 60px 20px;
+  width: 100% !important; /* Ensures it takes full width */
+  max-width: 1200px; /* Prevents it from being too wide on larger screens */
+  margin: auto; /* Centers it properly */
+  overflow: hidden; /* Prevents unnecessary scrolling */
+
+  width: 95% !important;
   .header {
     .feed_Back_SUbhead {
       width: 10%;
@@ -91,5 +104,8 @@
 @media screen and (max-width: 480px) {
   .feed_Back_SUbhead {
     width: 30% !important;
+  }
+  .feed-back-header {
+    font-size: 20px;
   }
 }

@@ -266,7 +266,16 @@
   flex-wrap: wrap;
   gap: 20px;
 }
-
+.slick-slider {
+  overflow: hidden; /* Prevents horizontal scrolling due to Slick */
+}
+.type {
+  width: 100% !important;
+  overflow: hidden;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
 /* Responsive Styling */
 @media screen and (max-width: 768px) {
   .category-type {
@@ -291,5 +300,13 @@
   .Search-container-product {
     height: 650px;
     padding-bottom: 40px !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .Description {
+    font-size: 25px !important;
+  }
+  .description-other-text {
+    font-size: 25px !important;
   }
 }

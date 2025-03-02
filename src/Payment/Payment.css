@@ -135,14 +135,20 @@
     display: none;
   }
   .headercontact {
+    padding: 10px 20px;
     margin-top: 30px;
+  }
+  .headercontact2 {
+    padding: 0 20px;
+  }
+  .instruction {
+    padding: 0 20px;
   }
   .review-form {
     width: 100% !important;
   }
   .form-body {
     margin-top: 0 !important;
-    padding: 15px;
     width: 100% !important;
   }
   .upload-area {
@@ -153,6 +159,13 @@
     align-items: center;
     justify-content: center;
     gap: 0 !important;
+  }
+  .frm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
   }
 }
 @media screen and (max-width: 540px) {

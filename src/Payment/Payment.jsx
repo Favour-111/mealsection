@@ -355,101 +355,105 @@ const Payment = () => {
                 Please ensure that all fields are filled out before proceeding.
                 Every input is required to complete this form successfully
               </div>
-              <div className="review-form shadow p-4">
-                <form onSubmit={(e) => e.preventDefault()}>
-                  <div className="row w-100">
-                    <div className="review-form-item col-md-6 col-sm-12">
-                      <label htmlFor="name">Your Name</label>
+              <div className="frm">
+                <div className="review-form shadow p-4">
+                  <form onSubmit={(e) => e.preventDefault()}>
+                    <div className="row w-100">
+                      <div className="review-form-item col-md-6 col-sm-12">
+                        <label htmlFor="name">Your Name</label>
 
-                      <input type="text" onChange={handleInput} name="name" />
-                      {formErrors.name && (
-                        <span className="error">{formErrors.name}</span>
+                        <input type="text" onChange={handleInput} name="name" />
+                        {formErrors.name && (
+                          <span className="error">{formErrors.name}</span>
+                        )}
+                      </div>
+                      <div className="review-form-item col-md-6 col-sm-12">
+                        <label htmlFor="phone">Phone number</label>
+
+                        <input
+                          type="text"
+                          onChange={handleInput}
+                          name="phoneNumber"
+                        />
+                        {formErrors.phoneNumber && (
+                          <span className="error">
+                            {formErrors.phoneNumber}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="review-form-item ">
+                      <label htmlFor="phone">Email</label>
+
+                      <input type="email" onChange={handleInput} name="email" />
+                      {formErrors.email && (
+                        <span className="error">{formErrors.email}</span>
                       )}
                     </div>
-                    <div className="review-form-item col-md-6 col-sm-12">
-                      <label htmlFor="phone">Phone number</label>
 
-                      <input
-                        type="text"
-                        onChange={handleInput}
-                        name="phoneNumber"
-                      />
-                      {formErrors.phoneNumber && (
-                        <span className="error">{formErrors.phoneNumber}</span>
-                      )}
-                    </div>
-                  </div>
-                  <div className="review-form-item ">
-                    <label htmlFor="phone">Email</label>
+                    <div className="row w-100">
+                      <div className="review-form-item col-md-6 col-sm-12">
+                        <label htmlFor="phone">Note</label>
 
-                    <input type="email" onChange={handleInput} name="email" />
-                    {formErrors.email && (
-                      <span className="error">{formErrors.email}</span>
-                    )}
-                  </div>
+                        <input
+                          type="text"
+                          onChange={handleInput}
+                          placeholder="(Optional)"
+                          name="Note"
+                        />
+                      </div>
 
-                  <div className="row w-100">
-                    <div className="review-form-item col-md-6 col-sm-12">
-                      <label htmlFor="phone">Note</label>
+                      <div className="review-form-item col-md-6 col-sm-12">
+                        <label htmlFor="phone">WhatsApp</label>
 
-                      <input
-                        type="text"
-                        onChange={handleInput}
-                        placeholder="(Optional)"
-                        name="Note"
-                      />
+                        <input
+                          type="text"
+                          onChange={handleInput}
+                          name="WhatsApp"
+                        />
+                      </div>
                     </div>
 
-                    <div className="review-form-item col-md-6 col-sm-12">
-                      <label htmlFor="phone">WhatsApp</label>
-
-                      <input
-                        type="text"
-                        onChange={handleInput}
-                        name="WhatsApp"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="review-form-item">
-                    <label htmlFor="gender">Gender</label>
-                    <br />
-                    <select onChange={handleInput} name="gender">
-                      <option value="">Gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                    </select>
-                    {formErrors.gender && (
-                      <span className="error">{formErrors.gender}</span>
-                    )}
-                  </div>
-                  {checked === true ? null : (
                     <div className="review-form-item">
-                      <label htmlFor="location">Location</label>
-                      <textarea
-                        onChange={handleInput}
-                        name="Address"
-                        className="p-2 mt-1"
-                      ></textarea>
-                      {formErrors.Address && (
-                        <span className="error">{formErrors.Address}</span>
+                      <label htmlFor="gender">Gender</label>
+                      <br />
+                      <select onChange={handleInput} name="gender">
+                        <option value="">Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                      {formErrors.gender && (
+                        <span className="error">{formErrors.gender}</span>
                       )}
                     </div>
-                  )}
-                  {/* <button
+                    {checked === true ? null : (
+                      <div className="review-form-item">
+                        <label htmlFor="location">Location</label>
+                        <textarea
+                          onChange={handleInput}
+                          name="Address"
+                          className="p-2 mt-1"
+                        ></textarea>
+                        {formErrors.Address && (
+                          <span className="error">{formErrors.Address}</span>
+                        )}
+                      </div>
+                    )}
+                    {/* <button
                     className="submit-btn"
                     onClick={handlePaymentSuccess}
                     disabled={loader}
                   >
                     {loader ? "Processing..." : "Submit Order"}
                   </button> */}
-                  <button
-                    onClick={handlePaystackPayment}
-                    className="review-button"
-                  >
-                    Pay with Paystack
-                  </button>
-                </form>
+                    <button
+                      onClick={handlePaystackPayment}
+                      className="review-button"
+                    >
+                      Pay with Paystack
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>

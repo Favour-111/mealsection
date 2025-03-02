@@ -422,9 +422,11 @@ function Cart() {
               </div>
               <div className="buttons">
                 <Link
-                  onClick={window.scrollTo(0, 0)}
+                  onClick={() => {
+                    Navigate(-1);
+                    window.scrollTo(0, 0);
+                  }}
                   className="continue"
-                  to={"/product"}
                 >
                   continue shopping
                 </Link>

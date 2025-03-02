@@ -329,4 +329,12 @@
   .offer-container {
     padding: 20px;
   }
+  .category-head {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .bread-crumb-head {
+    font-size: 25px !important;
+  }
 }

@@ -66,7 +66,7 @@ const FeedBack = () => {
     ],
   };
   return (
-    <div>
+    <div className="feed">
       {/* /feed back  */}
       <div className="feed-back-container mt-4">
         <div className="header">

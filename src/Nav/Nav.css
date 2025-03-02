@@ -147,7 +147,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    right: 0;
     background-color: white;
   }
   .information-sm {
@@ -199,7 +198,7 @@
     position: fixed;
     top: 25px;
     left: 0;
-    width: 350px !important;
+    width: 290px !important;
     height: 100%;
     transition: 250ms;
     background-color: white;

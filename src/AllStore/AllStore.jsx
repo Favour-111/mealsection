@@ -39,6 +39,7 @@ const AllStore = () => {
           }).map((item, index) => (
             <Link
               to={`/${item.name}`}
+              onClick={() => window.scroll(0, 0)}
               key={index}
               className="vendor-items shadow-sm"
             >

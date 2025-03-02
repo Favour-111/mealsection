@@ -133,7 +133,7 @@ const ProductStore = ({ Store }) => {
         breakpoint: 600,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 2,
+          slidesToScroll: 3,
           initialSlide: 2,
         },
       },
@@ -141,7 +141,7 @@ const ProductStore = ({ Store }) => {
         breakpoint: 480,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 3,
         },
       },
     ],
@@ -273,69 +273,71 @@ const ProductStore = ({ Store }) => {
             <div className="Our-Product-head">Our Product</div>
           </div>
 
-          <div className="category-type my-3">
-            <Slider {...settings}>
-              <div
-                className={
-                  category === "All"
-                    ? "category-type-item-active"
-                    : "category-type-item"
-                }
-                onClick={() => setCategory("All")}
-              >
-                All
-              </div>
-              <div
-                className={
-                  category === "Carbohydrate"
-                    ? "category-type-item-active"
-                    : "category-type-item"
-                }
-                onClick={() => setCategory("Carbohydrate")}
-              >
-                Carbohydrate
-              </div>
-              <div
-                className={
-                  category === "Drink"
-                    ? "category-type-item-active"
-                    : "category-type-item"
-                }
-                onClick={() => setCategory("Drink")}
-              >
-                Drinks
-              </div>
-              <div
-                className={
-                  category === "junks"
-                    ? "category-type-item-active"
-                    : "category-type-item"
-                }
-                onClick={() => setCategory("junks")}
-              >
-                Pastries
-              </div>
-              <div
-                className={
-                  category === "Protein"
-                    ? "category-type-item-active"
-                    : "category-type-item"
-                }
-                onClick={() => setCategory("Protein")}
-              >
-                Proteins
-              </div>
-              <div
-                className={
-                  category === "pack"
-                    ? "category-type-item-active"
-                    : "category-type-item"
-                }
-                onClick={() => setCategory("pack")}
-              >
-                pack
-              </div>
-            </Slider>
+          <div className="type">
+            <div className="category-type my-3">
+              <Slider {...settings}>
+                <div
+                  className={
+                    category === "All"
+                      ? "category-type-item-active"
+                      : "category-type-item"
+                  }
+                  onClick={() => setCategory("All")}
+                >
+                  All
+                </div>
+                <div
+                  className={
+                    category === "Carbohydrate"
+                      ? "category-type-item-active"
+                      : "category-type-item"
+                  }
+                  onClick={() => setCategory("Carbohydrate")}
+                >
+                  Carbohydrate
+                </div>
+                <div
+                  className={
+                    category === "Drink"
+                      ? "category-type-item-active"
+                      : "category-type-item"
+                  }
+                  onClick={() => setCategory("Drink")}
+                >
+                  Drinks
+                </div>
+                <div
+                  className={
+                    category === "junks"
+                      ? "category-type-item-active"
+                      : "category-type-item"
+                  }
+                  onClick={() => setCategory("junks")}
+                >
+                  Pastries
+                </div>
+                <div
+                  className={
+                    category === "Protein"
+                      ? "category-type-item-active"
+                      : "category-type-item"
+                  }
+                  onClick={() => setCategory("Protein")}
+                >
+                  Proteins
+                </div>
+                <div
+                  className={
+                    category === "pack"
+                      ? "category-type-item-active"
+                      : "category-type-item"
+                  }
+                  onClick={() => setCategory("pack")}
+                >
+                  pack
+                </div>
+              </Slider>
+            </div>
           </div>
         </div>
         {/* sort by  */}
