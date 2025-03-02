@@ -19,11 +19,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { IoMdClose } from "react-icons/io";
 import { ImQuotesLeft } from "react-icons/im";
-
+import { useNavigate } from "react-router-dom";
 import { MdChevronLeft } from "react-icons/md";
 import FeedBack from "../FeedBack/FeedBack";
 
 const Page = () => {
+  const Navigate = useNavigate();
   // Modal state
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modal, setModal] = useState([]);
@@ -232,9 +233,11 @@ const Page = () => {
 
           <div className="vendor-list-container">
             {currentVendors.map((item, index) => (
-              <Link
-                onClick={() => window.scrollTo(0, 0)}
-                to={`/${item.name}`}
+              <div
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                  Navigate(`/${item.name}`);
+                }}
                 key={index}
                 className="vendor-items shadow-sm"
               >
@@ -260,7 +263,7 @@ const Page = () => {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
           {/* Pagination Controls */}

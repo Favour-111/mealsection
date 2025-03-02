@@ -219,6 +219,7 @@
           padding: 0 10px;
           width: 100%;
           display: flex;
+          font-size: 14px;
           color: var(--nav-text-color);
           font-family: var(--font);
           font-weight: bold;
@@ -230,6 +231,7 @@
         height: 50px;
         padding: 0 10px;
         width: 100%;
+        font-size: 14px;
         display: flex;
         margin-top: 0 !important;
         color: var(--nav-text-color);
@@ -240,7 +242,11 @@
         .Cart_COunt-sm {
           background-color: red;
           padding: 3px 8px;
-          height: 30px;
+          height: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 12px;
           color: white !important;
           border-radius: 10px;
         }
