@@ -52,7 +52,7 @@ input {
 table {
   width: 100%;
 }
-.category-type {
+.category-type2 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,7 +128,7 @@ tr {
   .imageHead {
     display: none;
   }
-  .category-type {
+  .category-type2 {
     width: auto !important;
   }
 }

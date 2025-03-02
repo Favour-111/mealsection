@@ -125,11 +125,6 @@ const Nav = () => {
           <div className="text-light">
             <FiPhone className="mx-1" />
             {""}
-            +234 805 900 5517
-          </div>
-          <div className="text-light">
-            <FiPhone className="mx-1" />
-            {""}
             +234 701 323 4960
           </div>
           <div className="text-light">

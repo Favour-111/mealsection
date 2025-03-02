@@ -229,7 +229,7 @@ const VendorPage = ({ Store }) => {
           </div>
         ) : (
           <>
-            <div className="category-type my-3 ms-5">
+            <div className="category-type2 my-3 ms-5">
               <div
                 className={
                   category === "All"
