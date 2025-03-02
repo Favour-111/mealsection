@@ -22,10 +22,14 @@ import swal from "sweetalert";
 import { FaNoteSticky, FaPaperclip, FaWhatsapp } from "react-icons/fa6";
 import { PaystackButton } from "react-paystack";
 import formBlob from "../assets/login1.png";
+import PaystackPop from "@paystack/inline-js";
+
 import { useRef } from "react";
 
 const Payment = () => {
   const { cartItms } = useContext(ContextApi);
+  const [formErrors, setFormErrors] = useState({});
+
   const location = useLocation();
   const {
     receiptID,
@@ -82,79 +86,141 @@ const Payment = () => {
     const value = e.target.value;
     setForm({ ...form, [name]: value });
   };
+  const showErrorAlert = () => {
+    swal({
+      title: "Error!",
+      text: "Network Error, try again.",
+      icon: "error",
+      buttons: {
+        confirm: {
+          text: "Okay",
+          value: true,
+          visible: true,
+          className: "btn btn-danger",
+          closeModal: true,
+        },
+      },
+    });
+  };
+  const validateForm = () => {
+    let errors = {};
 
-  const handlePaymentSuccess = async (response) => {
-    const formData = new FormData();
-    formData.append("name", form.name);
-    formData.append("phoneNumber", form.phoneNumber);
-    formData.append("WhatsApp", form.WhatsApp);
-    formData.append("gender", form.gender);
-    formData.append("totalPrice", form.totalPrice);
-    formData.append("Address", form.Address);
-    formData.append("orderId", form.orderId);
-    formData.append("Note", form.Note);
-    formData.append("cartItems", JSON.stringify(form.cartItems));
-    formData.append("Vendor", form.Vendor);
-    formData.append("email", form.email);
+    if (!form.name.trim()) errors.name = "Name is required";
+    if (!form.email.trim()) {
+      errors.email = "Email is required";
+    } else if (!/^\S+@\S+\.\S+$/.test(form.email)) {
+      errors.email = "Invalid email format";
+    }
+
+    if (!form.phoneNumber.trim()) {
+      errors.phoneNumber = "Phone number is required";
+    } else if (!/^\d{11}$/.test(form.phoneNumber)) {
+      errors.phoneNumber = "Phone number must be 11 digits";
+    }
+    if (checked === false) {
+      if (!form.Address.trim()) errors.Address = "Address is required";
+      if (!form.gender) errors.gender = "Gender selection is required";
+    }
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handlePaymentSuccess = async (res) => {
+    if (!validateForm()) {
+      toast.error("Please fill all required fields correctly.");
+      return;
+    }
+
+    console.log("User Details:", form); // Log user details
+
+    const formDataObject = {
+      name: form.name,
+      phoneNumber: form.phoneNumber,
+      WhatsApp: form.WhatsApp,
+      gender: form.gender,
+      totalPrice: form.totalPrice,
+      Address: form.Address,
+      orderId: form.orderId,
+      Note: form.Note,
+      Vendor: form.Vendor,
+      email: form.email,
+      cartItems: JSON.stringify(form.cartItems),
+    };
+
+    console.log("Sending Data:", JSON.stringify(formDataObject, null, 2)); // Debugging
 
     try {
       setLoader(true);
-      try {
-        const response = await axios.post(
-          "http://localhost:5000/PostOrder",
-          form,
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        );
-        console.log("Response:", response.data);
-      } catch (error) {
-        console.error("Axios Error:", error.message);
-      }
+      const response = await axios.post(
+        "http://localhost:5000/PostOrder",
+        formDataObject,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-      console.log("Server Response:", response.data);
-      console.log(form);
-
-      if (response.status === 200) {
-        navigate("/order", { state: { form, deliveryFee, serviceFee } }); // Pass the form state to the next page
+      if (response.status === 200 || response.status === 201) {
+        console.log("Payment Success:", response.data);
+        navigate("/order", { state: { form, deliveryFee, serviceFee } });
       } else {
-        swal({
-          title: "Error!",
-          text: "Network Error, try again.",
-          icon: "error",
-          buttons: {
-            confirm: {
-              text: "Okay",
-              value: true,
-              visible: true,
-              className: "btn btn-danger",
-              closeModal: true,
-            },
-          },
-        });
+        showErrorAlert();
       }
     } catch (error) {
-      console.error(error.message);
+      console.error(
+        "Error Response:",
+        error.response ? error.response.data : error.message
+      );
+      showErrorAlert();
     } finally {
       setLoader(false);
     }
   };
 
-  // Paystack configuration
+  const handlePaystackPayment = () => {
+    if (!validateForm()) {
+      toast.error("Please fill all required fields correctly.");
+      return;
+    }
+
+    const paystack = new PaystackPop();
+    paystack.newTransaction({
+      key: publickey, // Replace with your Paystack Public Key
+      email: form.email,
+      amount: Math.round(total * 100), // Convert to Kobo (smallest unit)
+      currency: "NGN",
+      reference: `MS_${new Date().getTime()}`, // Generate unique reference
+      metadata: {
+        name: form.name || "No Name",
+        phoneNumber: form.phoneNumber || "No Phone",
+      },
+      onSuccess: (response) => {
+        toast.success("Payment successful!");
+        console.log("Payment Response:", response);
+        handlePaymentSuccess(response);
+      },
+      onCancel: () => {
+        toast.error("Payment was canceled.");
+      },
+    });
+  };
+
   const paystackConfig = {
     email: form.email,
-    amount: total * 100, // Convert to Kobo
+    amount: Math.round(total * 100), // Ensure it's an integer in Kobo
     publicKey: publickey,
     reference: `MS_${new Date().getTime()}`, // Generate unique reference
     currency: "NGN",
     metadata: {
-      name: form.name,
-      phoneNumber: form.phoneNumber,
+      name: form.name || "No Name",
+      phoneNumber: form.phoneNumber || "No Phone",
     },
     text: "Pay Now",
     onSuccess: handlePaymentSuccess,
     onClose: () => alert("Are you sure you want to close?"),
   };
+
+  // Log config to check for missing fields
+  console.log("Paystack Config:", paystackConfig);
 
   // Handle copy to clipboard
   // const handleCopy = () => {
@@ -297,6 +363,9 @@ const Payment = () => {
                       <label htmlFor="name">Your Name</label>
 
                       <input type="text" onChange={handleInput} name="name" />
+                      {formErrors.name && (
+                        <span className="error">{formErrors.name}</span>
+                      )}
                     </div>
                     <div className="review-form-item col-md-6 col-sm-12">
                       <label htmlFor="phone">Phone number</label>
@@ -306,12 +375,18 @@ const Payment = () => {
                         onChange={handleInput}
                         name="phoneNumber"
                       />
+                      {formErrors.phoneNumber && (
+                        <span className="error">{formErrors.phoneNumber}</span>
+                      )}
                     </div>
                   </div>
                   <div className="review-form-item ">
                     <label htmlFor="phone">Email</label>
 
                     <input type="email" onChange={handleInput} name="email" />
+                    {formErrors.email && (
+                      <span className="error">{formErrors.email}</span>
+                    )}
                   </div>
 
                   <div className="row w-100">
@@ -345,6 +420,9 @@ const Payment = () => {
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
                     </select>
+                    {formErrors.gender && (
+                      <span className="error">{formErrors.gender}</span>
+                    )}
                   </div>
                   {checked === true ? null : (
                     <div className="review-form-item">
@@ -354,12 +432,24 @@ const Payment = () => {
                         name="Address"
                         className="p-2 mt-1"
                       ></textarea>
+                      {formErrors.Address && (
+                        <span className="error">{formErrors.Address}</span>
+                      )}
                     </div>
                   )}
-                  <PaystackButton
+                  {/* <button
+                    className="submit-btn"
+                    onClick={handlePaymentSuccess}
+                    disabled={loader}
+                  >
+                    {loader ? "Processing..." : "Submit Order"}
+                  </button> */}
+                  <button
+                    onClick={handlePaystackPayment}
                     className="review-button"
-                    {...paystackConfig}
-                  />
+                  >
+                    Pay with Paystack
+                  </button>
                 </form>
               </div>
             </div>

@@ -125,6 +125,11 @@
     background-color: var(--default-color);
   }
 }
+.error {
+  color: red;
+  font-size: 12px;
+  font-family: poppinsMedium;
+}
 @media screen and (max-width: 768px) {
   .form-blob {
     display: none;
