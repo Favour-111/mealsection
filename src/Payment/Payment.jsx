@@ -177,7 +177,6 @@ const Payment = () => {
 
   const handlePaystackPayment = () => {
     if (!validateForm()) {
-      toast.error("Please fill all required fields correctly.");
       return;
     }
 
@@ -358,8 +357,8 @@ const Payment = () => {
               <div className="frm">
                 <div className="review-form shadow p-4">
                   <form onSubmit={(e) => e.preventDefault()}>
-                    <div className="row w-100">
-                      <div className="review-form-item col-md-6 col-sm-12">
+                    <div className="form-flex">
+                      <div className="review-form-item ">
                         <label htmlFor="name">Your Name</label>
 
                         <input type="text" onChange={handleInput} name="name" />
@@ -367,7 +366,7 @@ const Payment = () => {
                           <span className="error">{formErrors.name}</span>
                         )}
                       </div>
-                      <div className="review-form-item col-md-6 col-sm-12">
+                      <div className="review-form-item ">
                         <label htmlFor="phone">Phone number</label>
 
                         <input
@@ -382,7 +381,7 @@ const Payment = () => {
                         )}
                       </div>
                     </div>
-                    <div className="review-form-item col-sm-12">
+                    <div className="review-form-item ">
                       <label htmlFor="phone">Email</label>
 
                       <input type="email" onChange={handleInput} name="email" />
@@ -391,8 +390,8 @@ const Payment = () => {
                       )}
                     </div>
 
-                    <div className="row w-100">
-                      <div className="review-form-item col-md-6 col-sm-12">
+                    <div className="form-flex">
+                      <div className="review-form-item ">
                         <label htmlFor="phone">Note</label>
 
                         <input
@@ -403,7 +402,7 @@ const Payment = () => {
                         />
                       </div>
 
-                      <div className="review-form-item col-md-6 col-sm-12">
+                      <div className="review-form-item">
                         <label htmlFor="phone">WhatsApp</label>
 
                         <input
