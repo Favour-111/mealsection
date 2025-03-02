@@ -30,7 +30,7 @@ const VendorLogin = () => {
       // Find the vendor that matches the password
       const vendor = Vendors.find(
         (vendor) =>
-          vendor.name.replace(/\s+/g, "").toLocaleLowerCase() ===
+          vendor.password.replace(/\s+/g, "").toLocaleLowerCase() ===
           login.replace(/\s+/g, "").toLocaleLowerCase()
       );
 

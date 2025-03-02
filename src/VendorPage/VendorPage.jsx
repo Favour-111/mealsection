@@ -233,8 +233,8 @@ const VendorPage = ({ Store }) => {
               <div
                 className={
                   category === "All"
-                    ? "category-type-item-active"
-                    : "category-type-item"
+                    ? "category-type-item-active2"
+                    : "category-type-item2"
                 }
                 onClick={() => setCategory("All")}
               >
@@ -243,8 +243,8 @@ const VendorPage = ({ Store }) => {
               <div
                 className={
                   category === "Carbohydrate"
-                    ? "category-type-item-active"
-                    : "category-type-item"
+                    ? "category-type-item-active2"
+                    : "category-type-item2"
                 }
                 onClick={() => setCategory("Carbohydrate")}
               >
@@ -253,8 +253,8 @@ const VendorPage = ({ Store }) => {
               <div
                 className={
                   category === "Drink"
-                    ? "category-type-item-active"
-                    : "category-type-item"
+                    ? "category-type-item-active2"
+                    : "category-type-item2"
                 }
                 onClick={() => setCategory("Drink")}
               >
@@ -263,8 +263,8 @@ const VendorPage = ({ Store }) => {
               <div
                 className={
                   category === "junks"
-                    ? "category-type-item-active"
-                    : "category-type-item"
+                    ? "category-type-item-active2"
+                    : "category-type-item2"
                 }
                 onClick={() => setCategory("junks")}
               >
@@ -273,8 +273,8 @@ const VendorPage = ({ Store }) => {
               <div
                 className={
                   category === "Protein"
-                    ? "category-type-item-active"
-                    : "category-type-item"
+                    ? "category-type-item-active2"
+                    : "category-type-item2"
                 }
                 onClick={() => setCategory("Protein")}
               >
@@ -283,8 +283,8 @@ const VendorPage = ({ Store }) => {
               <div
                 className={
                   category === "pack"
-                    ? "category-type-item-active"
-                    : "category-type-item"
+                    ? "category-type-item-active2"
+                    : "category-type-item2"
                 }
                 onClick={() => setCategory("pack")}
               >

@@ -44,7 +44,7 @@ const Payment = () => {
   // const [copied, setCopied] = useState(false);
   const textToCopy = "6413130454";
   const [loader, setLoader] = useState(false);
-  const publickey = "pk_test_906a70561b64d6cbee516bc9258552ffce77f14a";
+  const publickey = "pk_live_d81f3f269cac923e20a2b7555a420a7c01f53e32";
   // Form state with cart items and their quantities
   const [form, setForm] = useState({
     name: "",

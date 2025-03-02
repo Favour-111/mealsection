@@ -52,7 +52,7 @@ function App() {
           {Vendors.map((item) => {
             return (
               <Route
-                path={`/${item.name}`}
+                path={`Admin/${item.name}`}
                 element={<VendorPage Store={`${item.name}`} />}
               />
             );

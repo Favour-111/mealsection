@@ -18,10 +18,13 @@ import image17 from "../images/IMG-20240115-WA0009.jpg";
 import image18 from "../images/IMG-20240115-WA0003.jpg";
 import image19 from "../assets/venture.jpg";
 import image20 from "../images/6051108805938366132.jpg";
+import image21 from "../images/5920321395303237341.jpg";
+
 const Vendors = [
   {
     Image: image1,
     name: "cafeteria",
+    password: "cafeteria",
     about: "the original",
     href: "/cafeteria",
     location: "campus-mart",
@@ -30,6 +33,7 @@ const Vendors = [
   {
     Image: image2,
     name: "elegance",
+    password: "elegance",
     about: "best restaurant in the school? You tell us",
     href: "/Elegance",
     location: "campus-mart",
@@ -37,9 +41,18 @@ const Vendors = [
   {
     Image: image20,
     name: "Grace MeatPie",
+    password: "Grace MeatPie",
     about: "best restaurant in the school? You tell us",
     href: "/Grace MeatPie",
     location: "campus-mart",
+  },
+  {
+    Image: image21,
+    name: "Culture Crave By Suppy",
+    password: "Suppy",
+    about: "best restaurant in the school? You tell us",
+    href: "/Culture Crave By Suppy",
+    location: "Back Of College",
   },
 
   // {
@@ -60,6 +73,7 @@ const Vendors = [
   {
     Image: image8,
     name: "the huts",
+    password: "the huts",
     about: "This is the real sensation 🔥",
     href: "#",
     location: "campus-mart",
@@ -68,6 +82,7 @@ const Vendors = [
   {
     Image: image9,
     name: "sweetyme",
+    password: "sweetyme",
     about: "YOU KNOW WHAT TIME IT IS.",
     href: "/Sweetyme",
     location: "campus-mart",
@@ -75,6 +90,7 @@ const Vendors = [
   {
     Image: image10,
     name: "yummy taste",
+    password: "yummy taste",
     about: "You know the name best in the business",
     href: "/yummy",
     location: "campus-mart",
@@ -83,6 +99,7 @@ const Vendors = [
   {
     Image: image18,
     name: "school complex",
+    password: "school complex",
     href: "/school_complex",
     about: "drinks,snacks and your favorite edibles",
     location: "campus-mart",
@@ -91,6 +108,7 @@ const Vendors = [
     Image:
       "https://urbanblisslife.com/wp-content/uploads/2023/01/Jolibee-Spaghetti-FEATURE.jpg",
     name: "annie’s eatery",
+    password: "annie’s eatery",
     about: "Even the Italiano's don’t make spaghetti this good",
     href: "/annies",
     location: "campus-mart",
@@ -99,6 +117,7 @@ const Vendors = [
     Image:
       "https://img-global.cpcdn.com/recipes/17518cf43171332e/1200x630cq70/photo.jpg",
     name: "Rhike’s foods",
+    password: "Rhike’s foods",
     about: "Even the Italiano's don’t make spaghetti this good",
     href: "/funmi",
     location: "campus-mart",
@@ -106,6 +125,7 @@ const Vendors = [
   {
     Image: image11,
     name: "waffle dom",
+    password: "waffle dom",
     href: "/waffle",
     location: "Back Of College",
   },
@@ -113,6 +133,7 @@ const Vendors = [
   {
     Image: image12,
     name: "snack ville",
+    password: "snack ville",
     about: "drinks,snacks and your favorite edibles",
     href: "/snack",
     location: "Back Of College",
@@ -120,6 +141,7 @@ const Vendors = [
   {
     Image: image13,
     name: "dupsey",
+    password: "dupsey",
     about: "Best noodles in the school??",
     href: "/dupseys",
     location: "Back Of College",
@@ -127,6 +149,7 @@ const Vendors = [
   {
     Image: image14,
     name: "waakye",
+    password: "waakye",
     about: "mummy Waakye does it best",
     href: "/waakye",
     location: "Back Of College",
@@ -140,18 +163,21 @@ const Vendors = [
   {
     Image: image16,
     name: "TK fruit Arena",
+    password: "TK fruit Arena",
     href: "/fruit",
     location: "Back Of College",
   },
   {
     Image: image17,
     name: "kings food",
+    password: "kings food",
     href: "/kings",
     location: "Back Of College",
   },
   {
     Image: image19,
     name: "Hallelujah ventures",
+    password: "Hallelujah ventures",
     href: "/Hallelujah_ventures",
     location: "Back Of College",
   },

@@ -4,6 +4,7 @@
   --text-color: #181c14;
   --default-color: #a4161bc0;
 }
+
 .container {
   display: flex;
   align-items: center;
@@ -50,6 +51,23 @@ input {
 }
 table {
   width: 100%;
+}
+.category-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 90% !important;
+}
+.category-type-item2 {
+  cursor: pointer;
+}
+.category-type-item-active2 {
+  background-color: #e3e3e3;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 3px;
 }
 .collection-body {
   padding: 10px;
@@ -109,6 +127,9 @@ tr {
   }
   .imageHead {
     display: none;
+  }
+  .category-type {
+    width: auto !important;
   }
 }
 @media screen and (max-width: 450px) {
