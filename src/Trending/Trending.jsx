@@ -289,7 +289,10 @@ const Trending = ({ Store }) => {
                     <div style={{ display: "flex", marginTop: 10 }}></div>
 
                     <div className="d-flex gap-2 align-items-center">
-                      <div className="new-price">${item.price}</div>
+                      <div className="new-price">
+                        <TbCurrencyNaira />
+                        {item.price}
+                      </div>
                     </div>
                     <div
                       className={

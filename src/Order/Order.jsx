@@ -8,6 +8,7 @@ import { TbCurrencyNaira } from "react-icons/tb";
 import { CiCircleInfo } from "react-icons/ci";
 import { IoRadioButtonOnOutline } from "react-icons/io5";
 import { CiBank } from "react-icons/ci";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 const Order = () => {
   const routes = useNavigate();
   const location = useLocation();
@@ -49,7 +50,9 @@ const Order = () => {
         </div>
       </div>
       <div className="order-summary-body">
-        <div className="order-summary-header p-2">order summary</div>
+        <div className="order-summary-header text-success p-2">
+          order Approved <IoMdCheckmarkCircleOutline />
+        </div>
         <div className="row w-100 mt-4">
           <div className="col-md-8 col-sm-12">
             <div className="order-summary-header">delivery option</div>

@@ -62,13 +62,14 @@ const Vendors = [
   //   location: "special",
   // },
 
-  // {
-  //   Image: image7,
-  //   name: "Ffo",
-  //   href: "/FFO",
-  //   about: "SIMPLY CANT GET ENOUGH",
-  //   location: "campus-mart",
-  // },
+  {
+    Image: image7,
+    name: "Ffo",
+    href: "/FFO",
+    password: "FFO",
+    about: "SIMPLY CANT GET ENOUGH",
+    location: "campus-mart",
+  },
 
   {
     Image: image8,
@@ -79,14 +80,14 @@ const Vendors = [
     location: "campus-mart",
   },
 
-  {
-    Image: image9,
-    name: "sweetyme",
-    password: "sweetyme",
-    about: "YOU KNOW WHAT TIME IT IS.",
-    href: "/Sweetyme",
-    location: "campus-mart",
-  },
+  // {
+  //   Image: image9,
+  //   name: "sweetyme",
+  //   password: "sweetyme",
+  //   about: "YOU KNOW WHAT TIME IT IS.",
+  //   href: "/Sweetyme",
+  //   location: "campus-mart",
+  // },
   {
     Image: image10,
     name: "yummy taste",

@@ -172,7 +172,7 @@ function Cart() {
               <div className="Bread-crumbs-Header">Cart</div>
               <div className="d-flex gap-1 breadCrumb-content">
                 <div
-                  onClick={() => Navigate("/home")}
+                  onClick={() => Navigate("/store")}
                   style={{
                     cursor: "pointer",
                   }}

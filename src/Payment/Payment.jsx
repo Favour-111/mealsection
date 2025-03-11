@@ -174,7 +174,14 @@ const Payment = () => {
       setLoader(false);
     }
   };
-
+  const calculatePaystackCharges = (amount) => {
+    const percentageCharge = 0.015 * amount; // 1.5% of the total
+    const additionalCharge = amount <= 250000 ? 10000 : 0; // ₦100 extra for transactions ≤ ₦2500
+    const cappedCharge = Math.min(percentageCharge + additionalCharge, 200000); // Max ₦2000 cap
+    return Math.round(cappedCharge); // Convert to the nearest integer for Kobo
+  };
+  const paystackCharges = calculatePaystackCharges(total * 100); // Convert total to Kobo
+  const totalAmountWithCharges = Math.round(total * 100 + paystackCharges); // Final amount in Kobo
   const handlePaystackPayment = () => {
     if (!validateForm()) {
       return;
@@ -184,7 +191,7 @@ const Payment = () => {
     paystack.newTransaction({
       key: publickey, // Replace with your Paystack Public Key
       email: form.email,
-      amount: Math.round(total * 100), // Convert to Kobo (smallest unit)
+      amount: totalAmountWithCharges, // Convert to Kobo (smallest unit)
       currency: "NGN",
       reference: `MS_${new Date().getTime()}`, // Generate unique reference
       metadata: {
